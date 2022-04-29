@@ -25,6 +25,16 @@ export default {
   canvasContainer:
   {
     flex: 1,
+    width: '100%',
+    backgroundColor: Colors.background_light,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+  toolsContainer:
+  {
+    flex: 1,
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',

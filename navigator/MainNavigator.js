@@ -1,11 +1,9 @@
 import React from "react";
-import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@expo/vector-icons'
 import BuildScreen from '../screens/BuildScreen'
 import ShareScreen from '../screens/ShareScreen'
-import LayoutStyles from "../constants/LayoutStyles";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +29,7 @@ export default MainNavigator = () => {
         <Tab.Screen name='Build' component={BuildScreen} />
         <Tab.Screen name='Share' component={ShareScreen} />
       </Tab.Navigator>
-      
+
     </NavigationContainer>
   )
 } 

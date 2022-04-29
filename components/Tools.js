@@ -15,8 +15,8 @@ export default Tools = () => {
   return (
     <View style={LayoutStyles.toolsContainer}>
       <Text>Build Fish</Text>
-      <Button title='right' onPress={ () => buttonHandler(10, 0)} />
-      <Button title='left' onPress={ () => buttonHandler(-10, 0)} />
+      <Button title='right' onPress={() => buttonHandler(10, 0)} />
+      <Button title='left' onPress={() => buttonHandler(-10, 0)} />
     </View>
   );
 };

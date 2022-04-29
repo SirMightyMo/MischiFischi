@@ -1,15 +1,15 @@
 import Colors from "./Colors"
 export default {
-  mainContainerVertical: { // unbenutzt
-    flex: 1,  
+  mainContainerVertical: { // unused
+    flex: 1,
     backgroundColor: Colors.background_light,
     //alignItems: 'center',
     //justifyContent: 'center',
     borderWidth: 1,
     borderColor: 'black',
-    margin:0,
+    margin: 0,
   },
-  mainContainerHorizonatal: { // unbenutzt
+  mainContainerHorizonatal: { // unused
     flex: 1,
     flexDirection: 'row',
     backgroundColor: Colors.background_light,

@@ -15,8 +15,8 @@ export default SvgCanvas = () => {
 
       <Svg height="100%" width="100%" viewBox="0 0 500 500" >
 
-        <ForeignObject x={appData.xPos} y={appData.yPos} >
-          <Pfeile height="100%" width="100%" />
+        <ForeignObject x={appData.fish[0].xPos} y={appData.fish[0].yPos}  >
+          <Pfeile height="100%" width="100%" fill='#00ff00' stroke='#ff0000' />
         </ForeignObject>
 
       </Svg>

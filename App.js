@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import MainNavigator from './navigator/MainNavigator';
 import { AppContext } from './data/AppContext';
-import Fish from './models/fish';
+import Fish from './components/Fish';
 
 export default App => {
 
   const [appData, setAppData] = useState({
 
-    idCounterFish: 0,
-    fish: [new Fish(0,100,100)]
+    id: 0, body: 1 , fin:1 , backFin:1,  color:'#FF0000'
   });
 
 

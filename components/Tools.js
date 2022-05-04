@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import { Button } from "react-native-elements";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
-import Fish from "../models/fish";
+import Fish from "./Fish";
 import ColorChoser from "./ColorChoser";
 
 export default Tools = () => {

@@ -4,6 +4,7 @@ import { Button } from "react-native-elements";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import Fish from "../models/fish";
+import ColorChoser from "./ColorChoser";
 
 export default Tools = () => {
   const [appData, setAppData] = useContext(AppContext);
@@ -29,6 +30,8 @@ export default Tools = () => {
       <View style={{flexDirection:'row'}}>
         <Button title='left' onPress={() => moveButtonHandler(-10, 0)} />
         <Button title='right' onPress={() => moveButtonHandler(10, 0)} />
+
+ 
       </View>
     </View>
   );

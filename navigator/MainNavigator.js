@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@expo/vector-icons'
 import BuildScreen from '../screens/BuildScreen'
 import ShareScreen from '../screens/ShareScreen'
+import Test from '../screens/Test' // TODO: Delete
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,7 @@ export default MainNavigator = () => {
       })}>
         <Tab.Screen name='Build' component={BuildScreen} />
         <Tab.Screen name='Share' component={ShareScreen} />
+        <Tab.Screen name='TEST' component={Test} />
       </Tab.Navigator>
 
     </NavigationContainer>

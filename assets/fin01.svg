@@ -1,1 +1,13 @@
-<svg id="Ebene_2" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1104.93 937.99"><defs><style>.cls-1{fill:lime;stroke:#000;stroke-miterlimit:10;}</style></defs><rect class="cls-1" x="0.5" y="0.5" width="325.29" height="254.12"/><rect class="cls-1" x="54.03" y="533.44" width="199.41" height="172.94"/><path d="M8158.37,7740.23a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z" transform="translate(-7054.88 -6802.24)"/></svg>
+<svg id="Ebene_2" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="815.88" y="143.24" width="325.29" height="254.12"/>
+  <rect class="cls-1" x="869.41" y="676.18" width="199.41" height="172.94"/>
+  <path d="M1918.87,1080.73a1.5,1.5,0,0,0,0-3,1.5,1.5,0,0,0,0,3Z"/>
+</svg>

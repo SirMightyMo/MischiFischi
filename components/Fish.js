@@ -1,13 +1,9 @@
-import Svg, { ForeignObject } from "react-native-svg";
-import React, { useContext, useState } from "react";
-import { View, Text } from "react-native";
+import Svg from "react-native-svg";
+import React, { useContext} from "react";
 import { AppContext } from "../data/AppContext";
-import LayoutStyles from "../constants/LayoutStyles";
 import Body01 from '../assets/body01'
 import Fin01 from '../assets/fin01'
 import BackFin01 from '../assets/backFin01'
-import Background from '../assets/bg'
-import { Button } from "react-native-elements";
 
 export default Fish = () => {
   const [appData, setAppData] = useContext(AppContext);
@@ -52,8 +48,9 @@ export default Fish = () => {
         break;
     }
   }
-
+console.log(finToRender(currentFish))
   return (
+    
     <Svg>
       {finToRender(currentFish)}
       {bodyToRender(currentFish)}

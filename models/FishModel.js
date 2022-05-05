@@ -1,10 +1,11 @@
-class Fish {
+class FishModel {
   constructor(id, body, fin, backFin,  color) {
     this.id = id;
     this.body = body;
-    this.fin = backFin;
+    this.fin = fin;
+    this.backFin = backFin;
     this.color =color;
   }
 }
 
-export default Fish;
+export default FishModel;

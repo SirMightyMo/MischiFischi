@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import MainNavigator from './navigator/MainNavigator';
 import { AppContext } from './data/AppContext';
-import Fish from './components/Fish';
+import FishModel from './models/FishModel';
 
 export default App => {
 
   const [appData, setAppData] = useState({
 
     currentId: 0,
-    fish: [{id: 0 ,body: 1 , fin:1 , backFin:1,  color:'#FF0000'}]
+    fish: [new FishModel(0,1,1,1,'#ff0000')]
+    //fish: [{id: 0 ,body: 1 , fin:1 , backFin:1,  color:'#FF0000'}]
   });
 
 

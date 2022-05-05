@@ -8,7 +8,8 @@ export default App => {
 
   const [appData, setAppData] = useState({
 
-    id: 0, body: 1 , fin:1 , backFin:1,  color:'#FF0000'
+    currentId: 0,
+    fish: [{id: 0 ,body: 1 , fin:1 , backFin:1,  color:'#FF0000'}]
   });
 
 

@@ -11,32 +11,53 @@ import { Button } from "react-native-elements";
 
 export default Fish = () => {
   const [appData, setAppData] = useContext(AppContext);
+  const currentFish = appData.fish.find(fish => fish.id === appData.currentId)
+  const fishToRender = (currentFish) => {
+    switch (currentFish.body) {
+      case 0:
+        return (<Body01 fillOpacity={1} strokeOpacity={1} fill='#00FF00' strokeWidth={20} stroke='#FF0000' />)
+      case 1:
+        return (<Body01 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={20} stroke='#FF0000' />)
+      case 2:
+        return (<Body01 fillOpacity={1} strokeOpacity={1} fill='#FF0000' strokeWidth={20} stroke='#FF0000' />)
 
-  const [opacity, setOpacity] = useState('0');
-
-  const buttonHandler = () => {
-    console.log('click')
-    if(appData.body == 1){
-      setOpacity('100%')
-      console.log('click')
+      default:
+        break;
     }
-}
-
-  return (
-  <View style={{ borderColor:'red', borderWidth:2, margin:10}}>
-      <Button style={{flex:1}} title='on' onPress={() => buttonHandler()} />
-    <Svg style={{flex:1}} >
-      <Background />
-      <ForeignObject x={100} y={100}>
-        <Body01 fillOpacity={opacity} strokeOpacity={opacity} />
-      </ForeignObject>
-
-      <Fin01 fillOpacity='0%' strokeOpacity='0%' />
-      <BackFin01 />
-    </Svg>
-
-  </View>
-  );
+  }
+return (
+  fishToRender(currentFish)
+);
+  
 };
 
 //width='1920px' height='1080px' viewBox="0 0 1920 1080" 
+
+/*
+
+
+  if (currentFish.body == 1) {
+    return (
+      <Svg>
+        <Background />
+        <ForeignObject x={100} y={100}>
+          <Body01 fillOpacity={1} strokeOpacity={1} fill='#00FF00' strokeWidth={20} stroke='#FF0000' />
+        </ForeignObject>
+        <Fin01 fillOpacity='0%' strokeOpacity='0%' />
+        <BackFin01 />
+      </Svg>
+    );
+  } else {
+    return (
+      <Svg>
+        <Background />
+        <ForeignObject x={100} y={100}>
+          <Body01 fillOpacity={0} strokeOpacity={0} />
+        </ForeignObject>
+        <Fin01 fillOpacity='0%' strokeOpacity='0%' />
+        <BackFin01 />
+      </Svg>
+    )
+  }
+
+  */

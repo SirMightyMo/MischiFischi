@@ -12,11 +12,7 @@ export default SvgCanvas = () => {
   return (
     <View style={LayoutStyles.canvasContainer}>
       <Text>See Fish</Text>
-      <Svg>
       <Fish />
-
-      </Svg>
-
     </View>
   );
 };

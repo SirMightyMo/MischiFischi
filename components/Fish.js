@@ -52,9 +52,15 @@ console.log(finToRender(currentFish))
   return (
     
     <Svg>
+      <Svg>
       {finToRender(currentFish)}
+      </Svg>
+      <Svg>
       {bodyToRender(currentFish)}
+      </Svg>
+      <Svg>
       {backFinToRender(currentFish)}
+      </Svg>
     </Svg>
   );
 };

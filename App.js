@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import MainNavigator from './navigator/MainNavigator';
 import { AppContext } from './data/AppContext';
 import FishModel from './models/FishModel';
+import ShareScreen from './screens/ShareScreen';
 
 export default App => {
 
@@ -20,6 +21,9 @@ export default App => {
     </AppContext.Provider>
   );
 }
+
+
+
 
 const styles = StyleSheet.create({
   container: {

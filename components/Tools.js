@@ -19,13 +19,19 @@ export default Tools = () => {
       currentId: appData.currentId,
       fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
     }));
-    console.log(appData)
+    //console.log(appData)
+  }
+  const handler = () =>{
+console.log('hello')
   }
 
   return (
     <View style={LayoutStyles.toolsContainer}>
       <Text>Build Fish</Text>
       <Text>Body</Text>
+      <View>
+
+      </View>
       <View style={{ flexDirection: 'row' }}>
         <Button title='1' onPress={() => bodyPartHandler(0, 'body')} />
         <Button title='2' onPress={() => bodyPartHandler(1, 'body')} />

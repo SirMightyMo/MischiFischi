@@ -10,7 +10,6 @@ import ReactDOMServer from "react-dom/server";
 // Canvas to SVG
 
 const isWeb = Platform.OS === "web";
-
 const childToWeb = child => {
   const { type, props } = child;
   const name = type && type.displayName;
@@ -27,13 +26,12 @@ renderSvg = () => {
       <Background />
       <Fish />
     </Svg>
-
-
   );
 }
 serialize = () => {
   const element = renderSvg();
   const webJsx = isWeb ? element : toWeb(element);
+  console.log(webJsx)
   const svgString = ReactDOMServer.renderToStaticMarkup(webJsx);
   console.log(svgString);
 };
@@ -57,14 +55,6 @@ export default SvgCanvas = () => {
 
 };
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#ecf0f1"
-  }
-});
 /* <View style={LayoutStyles.canvasContainer}>
 <Text>See Fish</Text>
 <Svg>

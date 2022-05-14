@@ -48,7 +48,7 @@ export default Fish = () => {
         break;
     }
   }
-console.log(finToRender(currentFish))
+//console.log(finToRender(currentFish))
   return (
     
     <Svg>

@@ -35,10 +35,30 @@ export default {
   toolsContainer:
   {
     flex: 1,
+    width: '100%',
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  toolButton:{
+    flex:1,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderColor: 'black',
+    borderWidth: 3
+  },
+  toolRow:{
+    flex:1,
+    width: '100%',
+     flexDirection: 'row', 
+
+     borderColor: 'red',
+     borderWidth: 1,
+
+
+  }
+  ,
   shareContainer: {
     flex: 1,
     backgroundColor: Colors.background_light,
@@ -51,4 +71,5 @@ export default {
     fontSize: 18,
     fontWeight: 'bold',
   }
+
 }

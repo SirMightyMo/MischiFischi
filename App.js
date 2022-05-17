@@ -1,29 +1,26 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import MainNavigator from './navigator/MainNavigator';
-import { AppContext } from './data/AppContext';
-import FishModel from './models/FishModel';
-import ShareScreen from './screens/ShareScreen';
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import MyPicker from './MyPicker'
 
-export default App => {
+export default function App() {
 
-  const [appData, setAppData] = useState({
+  const changeColor = (color) => {
+    console.log(tinycolor(color).toHex())
+  }
 
-    currentId: 0,
-    fish: [new FishModel(0,1,1,1,'#ff0000')]
-    //fish: [{id: 0 ,body: 1 , fin:1 , backFin:1,  color:'#FF0000'}]
-  });
-
+  const sliderWidth = 200
 
   return (
-    <AppContext.Provider value={[appData, setAppData]}>
-      <MainNavigator />
-    </AppContext.Provider>
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+
+     <MyPicker />
+
+    </View>
   );
 }
-
-
-
 
 const styles = StyleSheet.create({
   container: {

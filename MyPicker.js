@@ -3,7 +3,7 @@ import {
     SliderHuePicker,
     SliderSaturationPicker,
     SliderValuePicker,
-} from '../local_modules/react-native-slider-color-picker';
+} from './local_modules/react-native-slider-color-picker';
 import {
     AppRegistry,
     Dimensions,

@@ -1,10 +1,11 @@
 {
   "expo": {
-    "name": "MischiFischi",
-    "slug": "MischiFischi",
+    "name": "ColorPicker_test",
+    "slug": "ColorPicker_test",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

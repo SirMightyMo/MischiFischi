@@ -1,4 +1,8 @@
 import Colors from "./Colors"
+import { Dimensions } from "react-native";
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 export default {
   mainContainerVertical: { // unused
     flex: 1,
@@ -25,7 +29,7 @@ export default {
   canvasContainer:
   {
     flex: 1,
-    width: '100%',
+    width: windowWidth,
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',
@@ -70,6 +74,15 @@ export default {
     color: Colors.text,
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  backgroundVideo: {
+    height: windowHeight,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    alignItems: "stretch",
+    bottom: 0,
+    right: 0
   }
 
 }

@@ -6,6 +6,7 @@ import Fish from "./Fish";
 import { Svg, Rect } from "react-native-svg";
 import Background from '../assets/bg'
 import ReactDOMServer from "react-dom/server";
+import Video from 'react-native';
 
 // Canvas to SVG
 
@@ -22,10 +23,7 @@ const toWeb = children => React.Children.map(children, childToWeb);
 
 renderSvg = () => {
   return (
-    <Svg>
-      <Background />
-      <Fish />
-    </Svg>
+      <Fish />      
   );
 }
 serialize = () => {
@@ -36,20 +34,30 @@ serialize = () => {
   console.log(svgString);
 };
 
-render = () => {
+/* render = () => {
   return (
     <TouchableOpacity style={styles.container} onPress={this.serialize}>
       {this.renderSvg()}
     </TouchableOpacity>
   );
-}
+} */
 
 export default SvgCanvas = () => {
   const [appData, setAppData] = useContext(AppContext);
   return (
     <View style={LayoutStyles.canvasContainer}>
-      {renderSvg()}
-      <Button title="save" onPress={() => serialize()} />
+      {/* <Video
+        source={require("../assets/fish/bg.mp4")}
+        style={LayoutStyles.backgroundVideo}
+        muted={true}
+        repeat={true}
+        resizeMode={"cover"}
+        rate={1.0}
+        ignoreSilentSwitch={"obey"}
+      /> */}
+      <Fish />
+      {/* <Background style={{position: "absolute"}}/> */}
+      {/* <Button style={{position: "absolute"}} title="save" onPress={() => serialize()} /> */}
     </View>
   )
 

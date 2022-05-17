@@ -53,10 +53,10 @@ export default Tools = () => {
         
       </View>
       
+      <ColorTool />
       </ScrollView>
     </View>
   );
 };
 
-// <ColorTool />
 

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Immutable from 'immutable';
 import tinycolor from 'tinycolor2';
-import Slider from "@rneui/themed";
+import {Slider} from "@rneui/themed";
 
 export class SliderHuePicker extends React.Component {
 

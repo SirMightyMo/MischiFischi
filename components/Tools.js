@@ -3,6 +3,7 @@ import { View, Text} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
+import  ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
 
 export default Tools = () => {
@@ -49,12 +50,13 @@ export default Tools = () => {
 
       <Text>Color</Text>
       <View style={LayoutStyles.toolRow}>
+        
       </View>
-
+      
       </ScrollView>
     </View>
   );
 };
 
-
+// <ColorTool />
 

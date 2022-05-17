@@ -8,7 +8,6 @@ export default ShareScreen = () => {
   return (
     <View style={LayoutStyles.shareContainer}>
       <Text>share your stuff</Text>
-      <ColorTool/>
     </View>
   );
 };

@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import MainNavigator from './navigator/MainNavigator';
 import { AppContext } from './data/AppContext';
 import FishModel from './models/FishModel';
+import ColorSlider from './components/ColorSlider';
 
 export default App => {
 
@@ -16,7 +17,7 @@ export default App => {
 
   return (
     <AppContext.Provider value={[appData, setAppData]}>
-      <MainNavigator />
+      <ColorSlider />
     </AppContext.Provider>
   );
 }

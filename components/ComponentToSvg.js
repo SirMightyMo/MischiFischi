@@ -2,7 +2,7 @@ import * as React from "react";
 import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { Svg, Rect } from "react-native-svg";
 import ReactDOMServer from "react-dom/server";
-
+import Body01 from '../assets/Body01'
 const isWeb = Platform.OS === "web";
 
 const childToWeb = child => {
@@ -18,16 +18,9 @@ const toWeb = children => React.Children.map(children, childToWeb);
 export default class App extends React.Component {
   renderSvg() {
     return (
-      <Svg height="100%" width="100%" style={{ backgroundColor: "#33AAFF" }}>
-        <Rect
-          x="50"
-          y="50"
-          width="50"
-          height="50"
-          fill="#3399ff"
-          strokeWidth="3"
-          stroke="rgb(0,0,0)"
-        />
+      <Svg height="100%" width="100%" style={{ backgroundColor: "#FF0000" }}>
+
+        <Body01 height="100%" width="100%" fill='FF0000' />
       </Svg>
     );
   }

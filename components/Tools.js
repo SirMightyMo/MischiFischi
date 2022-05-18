@@ -37,28 +37,24 @@ export default Tools = () => {
     <View style={LayoutStyles.toolsContainer}>
       <ScrollView style={{ width: '100%' }}>
 
-        <Text>Body</Text>
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='1' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} />
           <ToolButton title='2' source= {require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} />
           <ToolButton title='3' source= {require('../assets/fish/body1.png')}onPress={() => bodyPartHandler(2, 'body')} />
         </View>
 
-        <Text>Fin</Text>
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='1' source= {require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'fin')} />
           <ToolButton title='2' source= {require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'fin')} />
           <ToolButton title='3' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'fin')} />
         </View>
 
-        <Text>BackFin</Text>
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'backFin')} />
-          <ToolButton title='2' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(1, 'backFin')} />
+          <ToolButton title='1' source= {require('../assets/fish/backfins1.png')} onPress={() => bodyPartHandler(0, 'backFin')} />
+          <ToolButton title='2' source= {require('../assets/fish/backfins2.png')} onPress={() => bodyPartHandler(1, 'backFin')} />
           <ToolButton title='3' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} />
         </View>
 
-        <Text>Color</Text>
         <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => bodyColorHandler(color)} />
 
 

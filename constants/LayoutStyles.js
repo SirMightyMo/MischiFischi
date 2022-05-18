@@ -43,6 +43,7 @@ export default {
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',
+    padding:10
   },
   toolButton:{
     flex:1,
@@ -50,7 +51,8 @@ export default {
     alignItems: 'center',
     borderRadius: 5,
     borderColor: 'black',
-    borderWidth: 3
+    borderWidth: 3,
+    marginTop:10
   },
   toolRow:{
     flex:1,

@@ -12,8 +12,7 @@ export default ToolButton = (props) => {
 
 
       <TouchableOpacity onPress={props.onPress}>
-        <Text> {props.title} </Text>
-        <View width={50} height={50}>
+        <View width={50} height={60}>
           <Image 
           source={props.source}
           style={{

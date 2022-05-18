@@ -16,12 +16,17 @@ export default class SliderColorPicker extends React.Component {
 
     changeColor = (colorHsvOrRgb, resType) => {
         this.changeColor;
+        this.colorHandler(tinycolor(colorHsvOrRgb).toHexString())
+        this.setState({
+            oldColor: tinycolor(colorHsvOrRgb).toHexString(),
+        });
+        /* without if statement more responsive! problems?
         if (resType === 'end') {
             this.setState({
                 oldColor: tinycolor(colorHsvOrRgb).toHexString(),
-            });
-            this.colorHandler(tinycolor(colorHsvOrRgb).toHexString())
+            }); 
         }
+        */
     }
 
     render() {

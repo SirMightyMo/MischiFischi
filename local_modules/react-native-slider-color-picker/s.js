@@ -120,6 +120,7 @@ export class SliderSaturationPicker extends React.Component {
             trackStyle,
             trackImage,
             thumbStyle,
+            backgroundColor,
             minimumValue,
             maximumValue,
             step,
@@ -134,7 +135,7 @@ export class SliderSaturationPicker extends React.Component {
 
         return (
             <View style={styles.container}>
-                <ImageBackground source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
+                <ImageBackground backgroundColor={backgroundColor} source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
                     <Slider
                         maximumTrackTintColor='transparent'
                         minimumTrackTintColor='trasparent'

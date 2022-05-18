@@ -49,10 +49,11 @@ export default class SliderColorPicker extends React.Component {
                         thumbStyle={styles.thumb}
                         useNativeDriver={true}
                         onColorChange={this.changeColor}
+                        backgroundColor= {tinycolor({ h: tinycolor(oldColor).toHsv().h, s: 1, v: 1 }).toHexString()}
                         style={{
                             height: 12,
                             borderRadius: 6,
-                            backgroundColor: tinycolor({ h: tinycolor(oldColor).toHsv().h, s: 1, v: 1 }).toHexString()
+                            
                         }}
                     />
                 </View>

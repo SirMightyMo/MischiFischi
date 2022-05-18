@@ -41,7 +41,7 @@ export default Fish = () => {
   const bodyToRender = (currentFish) => {
     switch (currentFish.body) {
       case 0:
-        return <Body1 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke='#FF0000' />;
+        return <Body1 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke={appData.fish[appData.currentId].color} />;
       case 1:
         return <Body2 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke='#FF0000' />;
       case 2:

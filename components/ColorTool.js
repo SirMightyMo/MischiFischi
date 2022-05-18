@@ -1,42 +1,33 @@
-import React from 'react';
-import {
-    SliderHuePicker,
-    SliderSaturationPicker,
-    SliderValuePicker,
+import React , { useContext } from 'react';
+import {SliderHuePicker,SliderSaturationPicker,SliderValuePicker,
 } from '../local_modules/react-native-slider-color-picker';
-import {
-    AppRegistry,
-    Dimensions,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+import {Dimensions,StyleSheet,View,} from 'react-native';
 import tinycolor from 'tinycolor2';
+import { AppContext } from "../data/AppContext";
 
-const {
-    width,
-} = Dimensions.get('window');
+const {width,} = Dimensions.get('window');
 
-export default class SliderColorPickerExample extends React.Component {
+export default class SliderColorPicker extends React.Component {
+
+
     constructor(props) {
         super(props);
-        this.state = {
-            oldColor: "#FFFF00",
-        };
+        this.state = {oldColor: '#ff0000' };
+        this.sliderHandler = props.sliderHandler
     }
 
     changeColor = (colorHsvOrRgb, resType) => {
+        this.changeColor;
         if (resType === 'end') {
             this.setState({
                 oldColor: tinycolor(colorHsvOrRgb).toHexString(),
             });
+            this.sliderHandler(tinycolor(colorHsvOrRgb).toHexString())
         }
     }
 
     render() {
-        const {
-            oldColor,
-        } = this.state;
+        const { oldColor,} = this.state;
 
         return (
             <View style={styles.container}>

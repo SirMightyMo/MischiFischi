@@ -50,7 +50,7 @@ export default Fish = (props) => {
       case 1:
         return <Body2 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke={appData.fish[appData.currentId].color} />;
       case 2:
-        return <Body3 gradientCol1={appData.fish[appData.currentId].color} gradientCol2="#fff" stroke='#000' />;
+        return <Body3 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} stroke='#000' />;
       default:
         break;
     }

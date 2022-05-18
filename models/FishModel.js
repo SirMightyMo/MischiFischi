@@ -1,10 +1,11 @@
 class FishModel {
-  constructor(id, body, fin, backFin,  color) {
+  constructor(id, body, fin, backFin,  color1 , color2) {
     this.id = id;
     this.body = body;
     this.fin = fin;
     this.backFin = backFin;
-    this.color = color;
+    this.color1 = color1;
+    this.color2 = color2;
   }
 }
 

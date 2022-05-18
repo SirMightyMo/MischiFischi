@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View} from "react-native";
+import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
@@ -10,9 +10,18 @@ export default ToolsContainer = () => {
   const [appData, setAppData] = useContext(AppContext);
   const currentId = appData.currentId;
 
-  const bodyColorHandler = (color) => {
+  const frontColorHandler = (color) => {
     let fishToChange = appData.fish.find(fish => fish.id === currentId)
-    fishToChange.color = color;
+    fishToChange.color1 = color;
+
+    setAppData(appData => ({
+      currentId: appData.currentId,
+      fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
+    }));
+  }
+  const backColorHandler = (color) => {
+    let fishToChange = appData.fish.find(fish => fish.id === currentId)
+    fishToChange.color2 = color;
 
     setAppData(appData => ({
       currentId: appData.currentId,
@@ -55,8 +64,13 @@ export default ToolsContainer = () => {
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => bodyColorHandler(color)} />
+          <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => frontColorHandler(color)} />
+
         </View>
+        <View style={LayoutStyles.toolRow}>
+          <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => backColorHandler(color)} />
+        </View>
+
       </ScrollView>
     </View>
   );

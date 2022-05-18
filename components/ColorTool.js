@@ -63,12 +63,11 @@ export default class SliderColorPicker extends React.Component {
                         minimumValue={0.02}
                         step={0.05}
                         trackStyle={[{ height: 12, width: width - 48 }]}
-                        trackImage={require('../local_modules/react-native-slider-color-picker/brightness_mask.png')}
                         thumbStyle={styles.thumb}
                         onColorChange={this.changeColor}
-                        style={{ height: 12, borderRadius: 6, backgroundColor: 'black' }}
-                        minimumValueTintColor='#FF0000'
-                        maximumValueTintColor='#000000'
+                        style={{ height: 12, borderRadius: 6, backgroundColor: 'transparent' }}
+                        minimumTrackTintColor='transparent'
+                        maximumTrackTintColor='transparent'
                     />
                 </View>
             </View>

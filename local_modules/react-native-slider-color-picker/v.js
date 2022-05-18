@@ -83,6 +83,7 @@ export class SliderValuePicker extends React.Component {
         maximumTrackTintColor: '#b3b3b3',
         moveVelocityThreshold: 2000,
         useNativeDriver: false,
+        trackImage: require('./brightness_mask.png'),
     };
 
     getColor() {
@@ -153,14 +154,13 @@ export class SliderValuePicker extends React.Component {
 
         return (
             <View style={styles.container}>
-                <ImageBackground source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
+                <ImageBackground backgroundColor='black' source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
                     <Slider
                         style={style || styles.style}
                         trackStyle={[{ backgroundColor: 'transparent' }, trackStyle, { borderRadius }]}
-                        trackImage={trackImage}
                         thumbStyle={[{ backgroundColor: thumbColor }, thumbStyle]}
-                        minimumTrackTintColor={'transparent'}
-                        maximumTrackTintColor={'transparent'}
+                        minimumTrackTintColor={minimumTrackTintColor}
+                        maximumTrackTintColor={maximumTrackTintColor}
                         minimumValue={minimumValue}
                         maximumValue={maximumValue}
                         value={color.v}

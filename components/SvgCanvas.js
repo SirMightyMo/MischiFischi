@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 import { AppContext } from "../data/AppContext";
 import LayoutStyles from "../constants/LayoutStyles";
 import Fish from "./Fish";

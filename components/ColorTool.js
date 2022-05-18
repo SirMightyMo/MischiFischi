@@ -1,14 +1,12 @@
-import React, { useContext } from 'react';
-import {
-    SliderHuePicker, SliderSaturationPicker, SliderValuePicker,
-} from '../local_modules/react-native-slider-color-picker';
+import React from 'react';
+import { SliderHuePicker, SliderSaturationPicker, SliderValuePicker,} 
+from '../local_modules/react-native-slider-color-picker';
 import { Dimensions, StyleSheet, View, } from 'react-native';
 import tinycolor from 'tinycolor2';
 
 const { width, } = Dimensions.get('window');
 
 export default class SliderColorPicker extends React.Component {
-
 
     constructor(props) {
         super(props);

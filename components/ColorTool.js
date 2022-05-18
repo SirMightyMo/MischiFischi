@@ -53,7 +53,6 @@ export default class SliderColorPicker extends React.Component {
                         style={{
                             height: 12,
                             borderRadius: 6,
-                            
                         }}
                     />
                 </View>
@@ -63,12 +62,10 @@ export default class SliderColorPicker extends React.Component {
                         oldColor={oldColor}
                         minimumValue={0.02}
                         step={0.05}
-                        trackStyle={[{ height: 12, width: width - 48 }]}
+                        trackStyle={[{ height: 12, width: width - 48, }]}
                         thumbStyle={styles.thumb}
                         onColorChange={this.changeColor}
-                        style={{ height: 12, borderRadius: 6, backgroundColor: 'transparent' }}
-                        minimumTrackTintColor='transparent'
-                        maximumTrackTintColor='transparent'
+                        style={{ height: 12, borderRadius: 6  }}
                     />
                 </View>
             </View>

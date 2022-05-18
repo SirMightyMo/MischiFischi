@@ -79,8 +79,8 @@ export class SliderValuePicker extends React.Component {
         minimumValue: 0.01, // 0 will cause h and s to 0 too, so 0.01 by default
         maximumValue: 1,
         step: 0.01,
-        minimumTrackTintColor: '#3f3f3f',
-        maximumTrackTintColor: '#b3b3b3',
+        minimumTrackTintColor:'transparent',
+        maximumTrackTintColor:'transparent',
         moveVelocityThreshold: 2000,
         useNativeDriver: false,
         trackImage: require('./brightness_mask.png'),

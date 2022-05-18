@@ -39,23 +39,23 @@ export default Tools = () => {
 
         <Text>Body</Text>
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' onPress={() => bodyPartHandler(0, 'body')} />
-          <ToolButton title='2' onPress={() => bodyPartHandler(1, 'body')} />
-          <ToolButton title='3' onPress={() => bodyPartHandler(2, 'body')} />
+          <ToolButton title='1' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} />
+          <ToolButton title='2' source= {require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} />
+          <ToolButton title='3' source= {require('../assets/fish/body1.png')}onPress={() => bodyPartHandler(2, 'body')} />
         </View>
 
         <Text>Fin</Text>
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' onPress={() => bodyPartHandler(0, 'fin')} />
-          <ToolButton title='2' onPress={() => bodyPartHandler(1, 'fin')} />
-          <ToolButton title='3' onPress={() => bodyPartHandler(2, 'fin')} />
+          <ToolButton title='1' source= {require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'fin')} />
+          <ToolButton title='2' source= {require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'fin')} />
+          <ToolButton title='3' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'fin')} />
         </View>
 
         <Text>BackFin</Text>
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' onPress={() => bodyPartHandler(0, 'backFin')} />
-          <ToolButton title='2' onPress={() => bodyPartHandler(1, 'backFin')} />
-          <ToolButton title='3' onPress={() => bodyPartHandler(2, 'backFin')} />
+          <ToolButton title='1' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'backFin')} />
+          <ToolButton title='2' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(1, 'backFin')} />
+          <ToolButton title='3' source= {require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} />
         </View>
 
         <Text>Color</Text>

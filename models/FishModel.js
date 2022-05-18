@@ -4,7 +4,7 @@ class FishModel {
     this.body = body;
     this.fin = fin;
     this.backFin = backFin;
-    this.color =color;
+    this.color = color;
   }
 }
 

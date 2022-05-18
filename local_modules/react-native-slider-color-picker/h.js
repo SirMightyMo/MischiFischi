@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
     Image,
+    ImageBackground,
     StyleSheet,
     View,
 } from 'react-native';
 import Immutable from 'immutable';
 import tinycolor from 'tinycolor2';
-import {Slider} from "@rneui/themed";
+import { Slider } from "@rneui/themed";
+import { BackgroundImage } from '@rneui/base';
 
 export class SliderHuePicker extends React.Component {
 
@@ -34,7 +36,7 @@ export class SliderHuePicker extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState = {}) {
         return !Immutable.is(Immutable.fromJS(this.props), Immutable.fromJS(nextProps))
-        || !Immutable.is(Immutable.fromJS(this.state), Immutable.fromJS(nextState));
+            || !Immutable.is(Immutable.fromJS(this.state), Immutable.fromJS(nextState));
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -134,19 +136,23 @@ export class SliderHuePicker extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Slider
-                    style={style}
-                    trackStyle={[{backgroundColor: 'transparent'}, trackStyle]}
-                    trackImage={trackImage}
-                    thumbStyle={[{backgroundColor: thumbColor}, thumbStyle]}
-                    minimumValue={minimumValue}
-                    maximumValue={maximumValue}
-                    value={color.h}
-                    step={step}
-                    moveVelocityThreshold={moveVelocityThreshold}
-                    useNativeDriver={useNativeDriver}
-                    onValueChange={value => this._onColorChange(value)}
-                    onSlidingComplete={value => this._onColorChange(value, 'end')}/>
+                <ImageBackground source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
+                    <Slider
+                        maximumTrackTintColor='transparent'
+                        minimumTrackTintColor='trasparent'
+                        style={style}
+                        trackStyle={[{ backgroundColor: 'transparent' }, trackStyle]}
+                        thumbStyle={[{ backgroundColor: thumbColor }, thumbStyle]}
+                        minimumValue={minimumValue}
+                        maximumValue={maximumValue}
+                        value={color.h}
+                        step={step}
+                        moveVelocityThreshold={moveVelocityThreshold}
+                        useNativeDriver={useNativeDriver}
+                        onValueChange={value => this._onColorChange(value)}
+                        onSlidingComplete={value => this._onColorChange(value, 'end')} />
+
+                </ImageBackground>
             </View>
         );
     }

@@ -5,19 +5,15 @@ import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
-import { SliderHuePicker, SliderSaturationPicker, SliderValuePicker } from "../local_modules/react-native-slider-color-picker";
-import tinycolor from "tinycolor2";
-
 
 export default Tools = () => {
   const [appData, setAppData] = useContext(AppContext);
   const currentId = appData.currentId;
 
-  const changeColor = (color) => {
-    console.log(color)
+  const bodyColorHandler = (color) => {
     let fishToChange = appData.fish.find(fish => fish.id === currentId)
     fishToChange.color = color;
-    
+
     setAppData(appData => ({
       currentId: appData.currentId,
       fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
@@ -63,7 +59,7 @@ export default Tools = () => {
         </View>
 
         <Text>Color</Text>
-        <ColorTool currentColor='#00ff00' sliderHandler={color => changeColor(color)} />
+        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => bodyColorHandler(color)} />
 
 
       </ScrollView>

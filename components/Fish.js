@@ -43,9 +43,9 @@ export default Fish = () => {
       case 0:
         return <Body1 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke={appData.fish[appData.currentId].color} />;
       case 1:
-        return <Body2 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke='#FF0000' />;
+        return <Body2 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={5} stroke={appData.fish[appData.currentId].color} />;
       case 2:
-        return <Body01 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={20} stroke='#FF0000' />;
+        return <Body01 fillOpacity={1} strokeOpacity={1} fill='#0000FF' strokeWidth={20} stroke={appData.fish[appData.currentId].color} />;
       default:
         break;
     }

@@ -1,19 +1,19 @@
-import React , { useContext } from 'react';
-import {SliderHuePicker,SliderSaturationPicker,SliderValuePicker,
+import React, { useContext } from 'react';
+import {
+    SliderHuePicker, SliderSaturationPicker, SliderValuePicker,
 } from '../local_modules/react-native-slider-color-picker';
-import {Dimensions,StyleSheet,View,} from 'react-native';
+import { Dimensions, StyleSheet, View, } from 'react-native';
 import tinycolor from 'tinycolor2';
-import { AppContext } from "../data/AppContext";
 
-const {width,} = Dimensions.get('window');
+const { width, } = Dimensions.get('window');
 
 export default class SliderColorPicker extends React.Component {
 
 
     constructor(props) {
         super(props);
-        this.state = {oldColor: '#ff0000' };
-        this.sliderHandler = props.sliderHandler
+        this.state = { oldColor: props.currentColor };
+        this.colorHandler = props.colorHandler
     }
 
     changeColor = (colorHsvOrRgb, resType) => {
@@ -22,47 +22,53 @@ export default class SliderColorPicker extends React.Component {
             this.setState({
                 oldColor: tinycolor(colorHsvOrRgb).toHexString(),
             });
-            this.sliderHandler(tinycolor(colorHsvOrRgb).toHexString())
+            this.colorHandler(tinycolor(colorHsvOrRgb).toHexString())
         }
     }
 
     render() {
-        const { oldColor,} = this.state;
+        const { oldColor, } = this.state;
 
         return (
             <View style={styles.container}>
-                <View style={{marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48}}>
+                <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
                     <SliderHuePicker
-                        ref={view => {this.sliderHuePicker = view;}}
+                        ref={view => { this.sliderHuePicker = view; }}
                         oldColor={oldColor}
-                        trackStyle={[{height: 12, width: width - 48}]}
+                        trackStyle={[{ height: 12, width: width - 48 }]}
                         thumbStyle={styles.thumb}
                         useNativeDriver={true}
                         onColorChange={this.changeColor}
                     />
                 </View>
-                <View style={{marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48}}>
+                <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
                     <SliderSaturationPicker
-                        ref={view => {this.sliderSaturationPicker = view;}}
+                        ref={view => { this.sliderSaturationPicker = view; }}
                         oldColor={oldColor}
-                        trackStyle={[{height: 12, width: width - 48}]}
+                        trackStyle={[{ height: 12, width: width - 48 }]}
                         thumbStyle={styles.thumb}
                         useNativeDriver={true}
                         onColorChange={this.changeColor}
-                        style={{height: 12, borderRadius: 6, backgroundColor: tinycolor({h: tinycolor(oldColor).toHsv().h, s: 1, v: 1}).toHexString()}}
+                        style={{
+                            height: 12,
+                            borderRadius: 6,
+                            backgroundColor: tinycolor({ h: tinycolor(oldColor).toHsv().h, s: 1, v: 1 }).toHexString()
+                        }}
                     />
                 </View>
-                <View style={{marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48}}>
+                <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
                     <SliderValuePicker
-                        ref={view => {this.sliderValuePicker = view;}}
+                        ref={view => { this.sliderValuePicker = view; }}
                         oldColor={oldColor}
                         minimumValue={0.02}
                         step={0.05}
-                        trackStyle={[{height: 12, width: width - 48}]}
-                        trackImage={require('react-native-slider-color-picker/brightness_mask.png')}
+                        trackStyle={[{ height: 12, width: width - 48 }]}
+                        trackImage={require('../local_modules/react-native-slider-color-picker/brightness_mask.png')}
                         thumbStyle={styles.thumb}
                         onColorChange={this.changeColor}
-                        style={{height: 12, borderRadius: 6, backgroundColor: 'black'}}
+                        style={{ height: 12, borderRadius: 6, backgroundColor: 'black' }}
+                        minimumValueTintColor='#FF0000'
+                        maximumValueTintColor='#000000'
                     />
                 </View>
             </View>

@@ -35,7 +35,7 @@ export default SvgCanvas = () => {
   const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
 
   const exportSVG = () => {
-    console.log(returnFishBody(appData.fish[appData.currentId].color, "#fff"));
+    console.log(returnFishBody(appData.fish[appData.currentId].color1, appData.fish[appData.currentId].color2));
     /*
       TODO: Function/Switch required to get selected fish-parts (compare Fish.js)
       TODO: Filewriter?

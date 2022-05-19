@@ -1,18 +1,16 @@
-import React, { useContext, useState } from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
-import { AppContext } from "../data/AppContext";
+import React, { useContext } from "react";
+import { Button, View } from "react-native";
 import LayoutStyles from "../constants/LayoutStyles";
+import { AppContext } from "../data/AppContext";
 import Fish from "./Fish";
-import { Svg, Rect, G } from "react-native-svg";
+
 import Background from '../assets/bg'
-import ReactDOMServer from "react-dom/server";
 import Video from 'react-native';
 
-
 // ----------------- TEST ----------------
-
-import {returnFishBody} from '../components/fishPartsJSX/fishBody1';
-
+import { returnFishBody1 } from './fishParts/Body1';
+import { returnFishFins1 } from './fishParts/Fins1';
+import { returnFishTail1 } from './fishParts/Tail1';
 // ---------------------------------------
 
 
@@ -35,7 +33,21 @@ export default SvgCanvas = () => {
   const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
 
   const exportSVG = () => {
-    console.log(returnFishBody(appData.fish[appData.currentId].color1, appData.fish[appData.currentId].color2));
+    // Console includes complete SVG-Output
+    //TODO: Concatenate everything and send(?)
+    console.log(`
+    <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+      <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="${appData.fish[appData.currentId].color2}" />
+        <stop offset="100%" stop-color="${appData.fish[appData.currentId].color1}" />
+      </linearGradient>
+      </defs>
+    `);
+    console.log(returnFishBody1());
+    console.log(returnFishFins1());
+    console.log(returnFishTail1())
+    console.log(`</svg>`);
     /*
       TODO: Function/Switch required to get selected fish-parts (compare Fish.js)
       TODO: Filewriter?
@@ -44,6 +56,7 @@ export default SvgCanvas = () => {
   
   return (
     <View style={LayoutStyles.canvasContainer}>
+      {/* TODO: Video-Background? */}
       {/* <Video
         source={require("../assets/fish/bg.mp4")}
         style={LayoutStyles.backgroundVideo}
@@ -60,11 +73,3 @@ export default SvgCanvas = () => {
   )
 
 };
-
-/* <View style={LayoutStyles.canvasContainer}>
-<Text>See Fish</Text>
-<Svg>
-<Background />
-<Fish />
-</Svg>
-</View> */

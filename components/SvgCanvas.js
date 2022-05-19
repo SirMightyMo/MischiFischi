@@ -1,16 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 import { AppContext } from "../data/AppContext";
 import LayoutStyles from "../constants/LayoutStyles";
 import Fish from "./Fish";
-import { Svg, Rect } from "react-native-svg";
+import { Svg, Rect, G } from "react-native-svg";
 import Background from '../assets/bg'
 import ReactDOMServer from "react-dom/server";
 import Video from 'react-native';
 
+
+// ----------------- TEST ----------------
+
+import {returnFishBody} from '../components/fishPartsJSX/fishBody1';
+
+// ---------------------------------------
+
+
 // Canvas to SVG
 
-const isWeb = Platform.OS === "web";
 const childToWeb = child => {
   const { type, props } = child;
   const name = type && type.displayName;
@@ -21,29 +28,20 @@ const childToWeb = child => {
 
 const toWeb = children => React.Children.map(children, childToWeb);
 
-renderSvg = () => {
-  return (
-      <Fish />      
-  );
-}
-serialize = () => {
-  const element = renderSvg();
-  const webJsx = isWeb ? element : toWeb(element);
-  console.log(webJsx)
-  const svgString = ReactDOMServer.renderToStaticMarkup(webJsx);
-  console.log(svgString);
-};
-
-/* render = () => {
-  return (
-    <TouchableOpacity style={styles.container} onPress={this.serialize}>
-      {this.renderSvg()}
-    </TouchableOpacity>
-  );
-} */
 
 export default SvgCanvas = () => {
+  
   const [appData, setAppData] = useContext(AppContext);
+  const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
+
+  const exportSVG = () => {
+    console.log(returnFishBody(appData.fish[appData.currentId].color, "#fff"));
+    /*
+      TODO: Function/Switch required to get selected fish-parts (compare Fish.js)
+      TODO: Filewriter?
+    */
+  }
+  
   return (
     <View style={LayoutStyles.canvasContainer}>
       {/* <Video
@@ -57,7 +55,7 @@ export default SvgCanvas = () => {
       /> */}
       <Fish />
       {/* <Background style={{position: "absolute"}}/> */}
-      {/* <Button style={{position: "absolute"}} title="save" onPress={() => serialize()} /> */}
+      <Button style={{position: "absolute"}} title="save" onPress={() => exportSVG()} />
     </View>
   )
 

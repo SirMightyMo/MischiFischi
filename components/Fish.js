@@ -10,37 +10,20 @@ import BackFin01 from '../assets/backFin01'
 
 import Body1 from '../assets/fish/body1';
 import Body2 from '../assets/fish/body2';
-import Body3 from '../components/fishPartsJSX/fishBody1';
+import Body3, {setColorsBody3} from '../components/fishPartsJSX/fishBody1';
 import Backfins1 from '../assets/fish/backfins1';
 import Backfins2 from '../assets/fish/backfins2';
 import Tail1 from '../assets/fish/tail1';
 import Tail2 from '../assets/fish/tail2';
 
-export default Fish = (props) => {
 
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-  /* const vBox = `0 0 ${windowWidth} ${Math.floor(windowHeight/2)}`; */
-  const vBox = `0 0 1 1`;
+export function test() {
+  console.log("test");
+}
 
+export default Fish = ({childToParent}) => {
   const [appData, setAppData] = useContext(AppContext);
-  const currentFish = appData.fish.find(fish => fish.id === appData.currentId)
-
-  /* Variable wraps all fish components in one JSX-SVG-Component.
-  TODO: Check scale & positions with final fish-components */
-  const WrappedFishSvg = () => (
-    <Svg height="100%" width="100%">
-      <G scale="0.5" x="100" y="80">
-        {bodyToRender(currentFish)}
-      </G>
-      <G scale="0.35" x="0" y="140">
-        {tailToRender(currentFish)}
-      </G>
-      <G scale="0.8" x="10" y="34">
-        {backFinToRender(currentFish)}
-      </G>
-    </Svg>
-  );
+  const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
 
   //function that return the svg component corresponding to the int found in 'appData.fish[currentFishId].body' 
   const bodyToRender = (currentFish) => {
@@ -81,6 +64,23 @@ export default Fish = (props) => {
         break;
     }
   }
+
+   /* Wraps all fish components in one JSX-SVG-Component.
+  TODO: Check scale & positions with final fish-components */
+  const WrappedFishSvg = () => (
+    <Svg height="100%" width="100%">
+      <G scale="0.5" x="100" y="80">
+        {bodyToRender(currentFish)}
+      </G>
+      <G scale="0.35" x="0" y="140">
+        {tailToRender(currentFish)}
+      </G>
+      <G scale="0.8" x="10" y="34">
+        {backFinToRender(currentFish)}
+      </G>
+    </Svg>
+  );
+
 //console.log(finToRender(currentFish))
   return (
       <WrappedFishSvg />

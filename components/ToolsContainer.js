@@ -5,6 +5,8 @@ import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
+import { storeData } from '../data/AppStorage';
+import FishModel from "../models/FishModel";
 
 export default ToolsContainer = () => {
   const [appData, setAppData] = useContext(AppContext);
@@ -16,8 +18,10 @@ export default ToolsContainer = () => {
 
     setAppData(appData => ({
       currentId: appData.currentId,
+      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
     }));
+    storeData(appData);
   }
   const backColorHandler = (color) => {
     let fishToChange = appData.fish.find(fish => fish.id === currentId)
@@ -25,8 +29,10 @@ export default ToolsContainer = () => {
 
     setAppData(appData => ({
       currentId: appData.currentId,
+      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
     }));
+    storeData(appData);
   }
 
   const bodyPartHandler = (style, part) => {
@@ -37,8 +43,48 @@ export default ToolsContainer = () => {
 
     setAppData(appData => ({
       currentId: appData.currentId,
+      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
     }));
+    storeData(appData);
+  }
+
+  const newFish = () => {
+    console.log(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))
+
+    let newFishArray = appData.fish;
+    newFishArray.push(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))
+    //console.log(newFishArray);
+    setAppData(appData => ({
+      currentId: appData.idCounter + 1,
+      idCounter: appData.idCounter + 1,
+      fish: newFishArray,
+    }));
+    storeData(appData);
+
+  }
+  const nextFish = (direction) => {
+    console.log('next fish')
+    if ( direction === -1 && appData.currentId -1 >= 0) {
+      setAppData(appData => ({
+        currentId: appData.currentId + direction,
+        idCounter: appData.idCounter,
+        fish: appData.fish,
+        
+      }));
+      storeData(appData);
+      console.log('check')
+    }
+    else if(direction === 1 && appData.currentId +1  <= appData.idCounter){
+      setAppData(appData => ({
+        currentId: appData.currentId + direction,
+        idCounter: appData.idCounter,
+        fish: appData.fish,
+        
+      }));
+      storeData(appData);
+      console.log('check')
+    }
   }
 
   return (
@@ -64,11 +110,17 @@ export default ToolsContainer = () => {
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => frontColorHandler(color)} />
+          <ColorTool currentColor={appData.fish[currentId].color1} colorHandler={color => frontColorHandler(color)} />
 
         </View>
         <View style={LayoutStyles.toolRow}>
-          <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => backColorHandler(color)} />
+          <ColorTool currentColor={appData.fish[currentId].color2} colorHandler={color => backColorHandler(color)} />
+        </View>
+
+        <View style={LayoutStyles.toolRow}>
+          <ToolButton title='down' onPress={() => nextFish(-1)} />
+          <ToolButton title='new' onPress={() => newFish()} />
+          <ToolButton title='up' onPress={() => nextFish(1)} />
         </View>
 
       </ScrollView>

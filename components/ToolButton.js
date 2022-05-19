@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity, Image } from "react-native";
+import { View, TouchableOpacity, Image,Text } from "react-native";
 import LayoutStyles from "../constants/LayoutStyles";
 
 export default ToolButton = (props) => {
@@ -8,6 +8,7 @@ export default ToolButton = (props) => {
     <View style={LayoutStyles.toolButton} >
       <TouchableOpacity onPress={props.onPress}>
         <View width={50} height={60}>
+          <Text> {props.title} </Text>
           <Image
             source={props.source}
             style={{

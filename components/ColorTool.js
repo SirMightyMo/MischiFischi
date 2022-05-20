@@ -6,74 +6,57 @@ import tinycolor from 'tinycolor2';
 
 const { width, } = Dimensions.get('window');
 
-export default class SliderColorPicker extends React.Component {
+export default ColorTool = props => {
 
-    constructor(props) {
-        super(props);
-        this.state = { oldColor: props.currentColor };
-        this.colorHandler = props.colorHandler
-    }
+    const oldColor = props.oldColor;
+    const colorHandler = props.colorHandler;
 
     changeColor = (colorHsvOrRgb, resType) => {
-        this.changeColor;
-        this.colorHandler(tinycolor(colorHsvOrRgb).toHexString())
-        this.setState({
-            oldColor: tinycolor(colorHsvOrRgb).toHexString(),
-        });
-        /* without if statement more responsive! problems?
-        if (resType === 'end') {
-            this.setState({
-                oldColor: tinycolor(colorHsvOrRgb).toHexString(),
-            }); 
-        }
-        */
+        colorHandler(tinycolor(colorHsvOrRgb).toHexString());
+        //oldColor = tinycolor(colorHsvOrRgb).toHexString(); // not in use
     }
 
-    render() {
-        const { oldColor, } = this.state;
-
-        return (
-            <View style={styles.container}>
-                <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
-                    <SliderHuePicker
-                        ref={view => { this.sliderHuePicker = view; }}
-                        oldColor={oldColor}
-                        trackStyle={[{ height: 12, width: width - 48 }]}
-                        thumbStyle={styles.thumb}
-                        useNativeDriver={true}
-                        onColorChange={this.changeColor}
-                    />
-                </View>
-                <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
-                    <SliderSaturationPicker
-                        ref={view => { this.sliderSaturationPicker = view; }}
-                        oldColor={oldColor}
-                        trackStyle={[{ height: 12, width: width - 48 }]}
-                        thumbStyle={styles.thumb}
-                        useNativeDriver={true}
-                        onColorChange={this.changeColor}
-                        backgroundColor= {tinycolor({ h: tinycolor(oldColor).toHsv().h, s: 1, v: 1 }).toHexString()}
-                        style={{
-                            height: 12,
-                            borderRadius: 6,
-                        }}
-                    />
-                </View>
-                <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
-                    <SliderValuePicker
-                        ref={view => { this.sliderValuePicker = view; }}
-                        oldColor={oldColor}
-                        minimumValue={0.02}
-                        step={0.05}
-                        trackStyle={[{ height: 12, width: width - 48, }]}
-                        thumbStyle={styles.thumb}
-                        onColorChange={this.changeColor}
-                        style={{ height: 12, borderRadius: 6  }}
-                    />
-                </View>
+    return (
+        <View style={styles.container}>
+            <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
+                <SliderHuePicker
+                    ref={view => { sliderHuePicker = view; }}
+                    oldColor={props.oldColor}
+                    trackStyle={[{ height: 12, width: width - 48 }]}
+                    thumbStyle={styles.thumb}
+                    useNativeDriver={true}
+                    onColorChange={changeColor}
+                />
             </View>
-        );
-    }
+            <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
+                <SliderSaturationPicker
+                    ref={view => { sliderSaturationPicker = view; }}
+                    oldColor={props.oldColor}
+                    trackStyle={[{ height: 12, width: width - 48 }]}
+                    thumbStyle={styles.thumb}
+                    useNativeDriver={true}
+                    onColorChange={changeColor}
+                    backgroundColor= {tinycolor({ h: tinycolor(oldColor).toHsv().h, s: 1, v: 1 }).toHexString()}
+                    style={{
+                        height: 12,
+                        borderRadius: 6,
+                    }}
+                />
+            </View>
+            <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width - 48 }}>
+                <SliderValuePicker
+                    ref={view => { sliderValuePicker = view; }}
+                    oldColor={props.oldColor}
+                    minimumValue={0.02}
+                    step={0.05}
+                    trackStyle={[{ height: 12, width: width - 48, }]}
+                    thumbStyle={styles.thumb}
+                    onColorChange={changeColor}
+                    style={{ height: 12, borderRadius: 6  }}
+                />
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

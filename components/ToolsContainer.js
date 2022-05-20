@@ -12,40 +12,38 @@ import FishModel from "../models/FishModel";
 export default ToolsContainer = () => {
   const [appData, setAppData] = useContext(AppContext);
   const currentId = appData.currentId;
+  const selectedFish = appData.fish.find(fish => fish.id === currentId);
 
   const frontColorHandler = (color) => {
-    let fishToChange = appData.fish.find(fish => fish.id === currentId)
-    fishToChange.color1 = color;
+    selectedFish.color1 = color;
 
     setAppData(appData => ({
       currentId: appData.currentId,
       idCounter: appData.idCounter,
-      fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
+      fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
   }
   const backColorHandler = (color) => {
-    let fishToChange = appData.fish.find(fish => fish.id === currentId)
-    fishToChange.color2 = color;
+    selectedFish.color2 = color;
 
     setAppData(appData => ({
       currentId: appData.currentId,
       idCounter: appData.idCounter,
-      fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
+      fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
   }
 
   const bodyPartHandler = (style, part) => {
-    let fishToChange = appData.fish.find(fish => fish.id === currentId)
-    fishToChange.body = part === 'body' ? (style) : (fishToChange.body);
-    fishToChange.fin = part === 'fin' ? (style) : (fishToChange.fin);
-    fishToChange.backFin = part === 'backFin' ? (style) : (fishToChange.backFin);
+    selectedFish.body = part === 'body' ? (style) : (selectedFish.body);
+    selectedFish.fin = part === 'fin' ? (style) : (selectedFish.fin);
+    selectedFish.backFin = part === 'backFin' ? (style) : (selectedFish.backFin);
 
     setAppData(appData => ({
       currentId: appData.currentId,
       idCounter: appData.idCounter,
-      fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
+      fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
   }
@@ -54,12 +52,12 @@ export default ToolsContainer = () => {
   const renderColorSlider = () => {
     if (Platform.OS === 'ios') {
       return (<View style={LayoutStyles.toolRow}>
-        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => frontColorHandler(color)} />
+        <ColorTool currentColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
       </View>);
     } else {
       return (<View style={LayoutStyles.toolColumn}>
-        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => frontColorHandler(color)} />
-        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => backColorHandler(color)} />
+        <ColorTool currentColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
+        <ColorTool currentColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
       </View>);
     }
   }

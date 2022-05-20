@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
-import { Button, View } from "react-native";
+import { Button, View, Platform } from "react-native";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import Fish from "./Fish";
-
-import Background from '../assets/bg'
-import Video from 'react-native';
+import { Video } from 'expo-av';
 
 // ----------------- TEST ----------------
 import { returnFishBody1 } from './fishParts/Body1';
@@ -32,6 +30,9 @@ export default SvgCanvas = () => {
   const [appData, setAppData] = useContext(AppContext);
   const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
 
+  /* Second color can not be selected on iOS so color2 needs to be same as color1 */
+  const color2 = Platform.OS === 'ios' ? appData.fish[appData.currentId].color1 : appData.fish[appData.currentId].color2;
+
   const exportSVG = () => {
     // Console includes complete SVG-Output
     //TODO: Concatenate everything and send(?)
@@ -39,7 +40,7 @@ export default SvgCanvas = () => {
     <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
       <defs>
       <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="${appData.fish[appData.currentId].color2}" />
+        <stop offset="0%" stop-color="${color2}" />
         <stop offset="100%" stop-color="${appData.fish[appData.currentId].color1}" />
       </linearGradient>
       </defs>
@@ -57,15 +58,18 @@ export default SvgCanvas = () => {
   return (
     <View style={LayoutStyles.canvasContainer}>
       {/* TODO: Video-Background? */}
-      {/* <Video
-        source={require("../assets/fish/bg.mp4")}
-        style={LayoutStyles.backgroundVideo}
-        muted={true}
-        repeat={true}
-        resizeMode={"cover"}
+      <Video
+        source={ require('../assets/fish/bg.mp4') }
+        /* posterSource */
         rate={1.0}
-        ignoreSilentSwitch={"obey"}
-      /> */}
+        volume={0.0}
+        isMuted={true}
+        resizeMode="cover"
+        shouldPlay
+        isLooping={true}
+        useNativeControls={false}
+        style={{ width: "100%", height: "100%", position: "absolute" }}
+        /> 
       <Fish />
       {/* <Background style={{position: "absolute"}}/> */}
       <Button style={{position: "absolute"}} title="save" onPress={() => exportSVG()} />

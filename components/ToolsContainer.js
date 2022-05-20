@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View } from "react-native";
+import { View, Platform } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
@@ -7,6 +7,7 @@ import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
 import { storeData } from '../data/AppStorage';
 import FishModel from "../models/FishModel";
+
 
 export default ToolsContainer = () => {
   const [appData, setAppData] = useContext(AppContext);
@@ -47,6 +48,20 @@ export default ToolsContainer = () => {
       fish: appData.fish.map(fish => fish.id === currentId ? fishToChange : fish),
     }));
     storeData(appData);
+  }
+
+  /* Since gradients don't seem to work on iOS, this only shows two color sliders, when device is android */
+  const renderColorSlider = () => {
+    if (Platform.OS === 'ios') {
+      return (<View style={LayoutStyles.toolRow}>
+        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => frontColorHandler(color)} />
+      </View>);
+    } else {
+      return (<View style={LayoutStyles.toolColumn}>
+        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => frontColorHandler(color)} />
+        <ColorTool currentColor={appData.fish[currentId].color} colorHandler={color => backColorHandler(color)} />
+      </View>);
+    }
   }
 
   const newFish = () => {
@@ -109,20 +124,12 @@ export default ToolsContainer = () => {
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} />
         </View>
 
-        <View style={LayoutStyles.toolRow}>
-          <ColorTool currentColor={appData.fish[currentId].color1} colorHandler={color => frontColorHandler(color)} />
-
-        </View>
-        <View style={LayoutStyles.toolRow}>
-          <ColorTool currentColor={appData.fish[currentId].color2} colorHandler={color => backColorHandler(color)} />
-        </View>
-
+        {renderColorSlider()}
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='down' onPress={() => nextFish(-1)} />
           <ToolButton title='new' onPress={() => newFish()} />
           <ToolButton title='up' onPress={() => nextFish(1)} />
         </View>
-
       </ScrollView>
     </View>
   );

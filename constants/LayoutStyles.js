@@ -61,10 +61,15 @@ export default {
 
      borderColor: 'red',
      borderWidth: 1,
+  },
+  toolColumn:{
+    flex:1,
+    width: '100%',
+     flexDirection: 'column', 
 
-
-  }
-  ,
+     borderColor: 'red',
+     borderWidth: 1,
+  },
   shareContainer: {
     flex: 1,
     backgroundColor: Colors.background_light,

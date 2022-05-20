@@ -1,6 +1,11 @@
 import * as React from "react"
 import Svg, { Defs, G, Path, LinearGradient, Stop } from "react-native-svg"
 
+/* Gradients on iOS won't work, so these functions define wether gradient is used or not */
+function colorFill(color1) {
+  return Platform.OS === 'ios' ? color1 : "url(#grad)";
+}
+
 const Fins1 = (props) => (
   <Svg
     data-name="fins1"
@@ -17,7 +22,7 @@ const Fins1 = (props) => (
     <Path
       id="Fins"
       style={{
-        fill: "url(#grad)",
+        fill: colorFill(props.gradientCol1),
       }}
       d="m644.31 467.22-15.02.83-10.57.16-10.41-.49-3.96-.34-3.3 4.3-.17 4.79 1.32 4.13 5.62 3.3 11.56 2.15 12.38.66 11.4-.5 13.04-1.82 9.42-2.31 4.79-2.31 3.3-2.81 1.16-5.94-.17-5.78-5.12-.66-25.27 2.64zM669.41 281.11l3.97-1.16 3.8-7.26 5.12-7.6.82-12.05-2.97-11.73-7.1-6.11-12.72-3.14-12.88-2.31-8.09.83-13.87 2.31-8.75 3.96-6.77 2.81-8.26 4.79-3.96 4.95-2.65 6.77.66 8.59 3.47 8.59 2.64 4.29 1.99 2.48 6.11-2.48 10.4-1.15 10.07 1.32 8.59-.17 11.89.99 13.21 1.65 5.28.83z"
     />

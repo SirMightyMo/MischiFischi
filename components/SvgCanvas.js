@@ -28,10 +28,10 @@ const toWeb = children => React.Children.map(children, childToWeb);
 export default SvgCanvas = () => {
   
   const [appData, setAppData] = useContext(AppContext);
-  const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
+  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
 
   /* Second color can not be selected on iOS so color2 needs to be same as color1 */
-  const color2 = Platform.OS === 'ios' ? appData.fish[appData.currentId].color1 : appData.fish[appData.currentId].color2;
+  const color2 = Platform.OS === 'ios' ? selectedFish.color1 : selectedFish.color2;
 
   const exportSVG = () => {
     // Console includes complete SVG-Output
@@ -41,7 +41,7 @@ export default SvgCanvas = () => {
       <defs>
       <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="${color2}" />
-        <stop offset="100%" stop-color="${appData.fish[appData.currentId].color1}" />
+        <stop offset="100%" stop-color="${selectedFish.color1}" />
       </linearGradient>
       </defs>
     `);

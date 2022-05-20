@@ -9,43 +9,43 @@ import Tail1 from './fishParts/Tail1'; // TESTDATA
 
 export default Fish = () => {
   const [appData, setAppData] = useContext(AppContext);
-  const currentFish = appData.fish.find(fish => fish.id === appData.currentId);
+  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
 
-  //function that return the svg component corresponding to the int found in 'appData.fish[currentFishId].body' 
-  const bodyToRender = (currentFish) => {
-    switch (currentFish.body) {
+  //function that returns the svg component corresponding to the int found in 'selectedFish.body' 
+  const bodyToRender = (selectedFish) => {
+    switch (selectedFish.body) {
       case 0:
-        return <Body1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 1:
-        return <Body1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 2:
-        return <Body1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       default:
         break;
     }
   }
-  //function that return the svg component corresponding to the int found in 'appData.fish[currentFishId].fin' 
-  const tailToRender = (currentFish) => {
-    switch (currentFish.fin) {
+  //function that returns the svg component corresponding to the int found in 'selectedFish.fin' 
+  const tailToRender = (selectedFish) => {
+    switch (selectedFish.fin) {
       case 0:
-        return <Tail1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 1:
-        return <Tail1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 2:
-        return <Tail1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       default:
         break;
     }
   }
-  //function that return the svg component corresponding to the int found in 'appData.fish[currentFishId].backFin' 
-  const backFinToRender = (currentFish) => {
-    switch (currentFish.backFin) {
+  //function that returns the svg component corresponding to the int found in 'selectedFish.backFin' 
+  const backFinToRender = (selectedFish) => {
+    switch (selectedFish.backFin) {
       case 0:
-        return <Fins1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 1:
-        return <Fins1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 2:
-        return <Fins1 gradientCol1={appData.fish[appData.currentId].color1} gradientCol2={appData.fish[appData.currentId].color2} />;
+        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       default:
         break;
     }
@@ -63,13 +63,13 @@ export default Fish = () => {
   const WrappedFishSvg = () => (
     <Svg height="100%" width="100%" viewBox={viewBox}>
       <G scale="1">
-        {bodyToRender(currentFish)}
+        {bodyToRender(selectedFish)}
       </G>
       <G scale="1">
-        {tailToRender(currentFish)}
+        {tailToRender(selectedFish)}
       </G>
       <G scale="1">
-        {backFinToRender(currentFish)}
+        {backFinToRender(selectedFish)}
       </G>
     </Svg>
   );

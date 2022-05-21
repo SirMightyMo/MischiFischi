@@ -9,24 +9,13 @@ import { Video } from 'expo-av';
 import { returnFishBody1 } from './fishParts/Body1';
 import { returnFishFins1 } from './fishParts/Fins1';
 import { returnFishTail1 } from './fishParts/Tail1';
+
 // ---------------------------------------
 
-
-// Canvas to SVG
-
-const childToWeb = child => {
-  const { type, props } = child;
-  const name = type && type.displayName;
-  const webName = name && name[0].toLowerCase() + name.slice(1);
-  const Tag = webName ? webName : type;
-  return <Tag {...props}>{toWeb(props.children)}</Tag>;
-};
-
-const toWeb = children => React.Children.map(children, childToWeb);
-
-
 export default SvgCanvas = () => {
-  
+  // Websocket for sending data via TCP
+  var ws = React.useRef(new WebSocket('ws://192.168.178.69:8080/')).current;
+
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
 
@@ -34,8 +23,7 @@ export default SvgCanvas = () => {
   const color2 = Platform.OS === 'ios' ? selectedFish.color1 : selectedFish.color2;
 
   const exportSVG = () => {
-    // Console includes complete SVG-Output
-    //TODO: Concatenate everything and send(?)
+    // Console includes complete SVG-Output for debugging
     console.log(`
     <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
       <defs>
@@ -53,6 +41,26 @@ export default SvgCanvas = () => {
       TODO: Function/Switch required to get selected fish-parts (compare Fish.js)
       TODO: Filewriter?
     */
+
+    const data = `
+    <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+      <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="${color2}" />
+        <stop offset="100%" stop-color="${selectedFish.color1}" />
+      </linearGradient>
+      </defs>
+      ${returnFishBody1()}
+      ${returnFishFins1()}
+      ${returnFishTail1()}
+    </svg>
+    `
+
+    // Send data to websocket
+    ws.send(data);
+    ws.onerror = (e) => {
+      console.log(e);
+    }
   }
   
   return (

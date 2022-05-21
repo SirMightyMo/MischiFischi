@@ -3,9 +3,12 @@ import { Dimensions } from 'react-native';
 import Svg, { G } from "react-native-svg";
 import { AppContext } from "../data/AppContext";
 
-import Body1 from './fishParts/Body1'; // TESTDATA
-import Fins1 from './fishParts/Fins1'; // TESTDATA
-import Tail1 from './fishParts/Tail1'; // TESTDATA
+import Body1 from './fishParts/Body1';
+import Fins1 from './fishParts/Fins1';
+import Tail1 from './fishParts/Tail1';
+import Body2 from './fishParts/Body2';
+import Fins2 from './fishParts/Fins2';
+import Tail2 from './fishParts/Tail2';
 
 export default Fish = () => {
   const [appData, setAppData] = useContext(AppContext);
@@ -17,7 +20,7 @@ export default Fish = () => {
       case 0:
         return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 1:
-        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
+        return <Body2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 2:
         return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       default:
@@ -30,7 +33,7 @@ export default Fish = () => {
       case 0:
         return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 1:
-        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
+        return <Tail2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 2:
         return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       default:
@@ -43,7 +46,7 @@ export default Fish = () => {
       case 0:
         return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 1:
-        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
+        return <Fins2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       case 2:
         return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} />;
       default:

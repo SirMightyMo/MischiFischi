@@ -33,9 +33,9 @@ export default SvgCanvas = () => {
       </linearGradient>
       </defs>
     `);
-    console.log(returnFishBody1());
     console.log(returnFishFins1());
     console.log(returnFishTail1())
+    console.log(returnFishBody1());
     console.log(`</svg>`);
     /*
       TODO: Function/Switch required to get selected fish-parts (compare Fish.js)
@@ -43,16 +43,16 @@ export default SvgCanvas = () => {
     */
 
     const data = `
-    <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+    <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496.95 286.36">
       <defs>
       <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="${color2}" />
         <stop offset="100%" stop-color="${selectedFish.color1}" />
       </linearGradient>
       </defs>
-      ${returnFishBody1()}
       ${returnFishFins1()}
       ${returnFishTail1()}
+      ${returnFishBody1()}
     </svg>
     `
 

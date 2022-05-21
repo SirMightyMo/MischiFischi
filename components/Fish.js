@@ -63,13 +63,13 @@ export default Fish = () => {
   const WrappedFishSvg = () => (
     <Svg height="100%" width="100%" viewBox={viewBox}>
       <G scale="1">
-        {bodyToRender(selectedFish)}
-      </G>
-      <G scale="1">
         {tailToRender(selectedFish)}
       </G>
       <G scale="1">
         {backFinToRender(selectedFish)}
+      </G>
+      <G scale="1">
+        {bodyToRender(selectedFish)}
       </G>
     </Svg>
   );

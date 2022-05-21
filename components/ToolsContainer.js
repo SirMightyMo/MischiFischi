@@ -52,12 +52,12 @@ export default ToolsContainer = () => {
   const renderColorSlider = () => {
     if (Platform.OS === 'ios') {
       return (<View style={LayoutStyles.toolRow}>
-        <ColorTool currentColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
+        <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
       </View>);
     } else {
       return (<View style={LayoutStyles.toolColumn}>
-        <ColorTool currentColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
-        <ColorTool currentColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
+        <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
+        <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
       </View>);
     }
   }

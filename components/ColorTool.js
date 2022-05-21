@@ -13,7 +13,6 @@ export default ColorTool = props => {
 
     changeColor = (colorHsvOrRgb, resType) => {
         colorHandler(tinycolor(colorHsvOrRgb).toHexString());
-        //oldColor = tinycolor(colorHsvOrRgb).toHexString(); // not in use
     }
 
     return (

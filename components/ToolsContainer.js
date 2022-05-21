@@ -105,21 +105,21 @@ export default ToolsContainer = () => {
       <ScrollView style={{ width: '100%' }}>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} />
-          <ToolButton title='2' source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'body')} />
+          <ToolButton title='1' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={appData.fish[currentId].body === 0 ? true : false} />
+          <ToolButton title='2' source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={appData.fish[currentId].body === 1 ? true : false}/>
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={appData.fish[currentId].body === 2 ? true : false}/>
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'fin')} />
-          <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'fin')} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'fin')} />
+          <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'backFin')} isActive={appData.fish[currentId].backFin === 0 ? true : false}  />
+          <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'backFin')} isActive={appData.fish[currentId].backFin === 1 ? true : false}/>
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} isActive={appData.fish[currentId].backFin === 2 ? true : false}/>
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source={require('../assets/fish/backfins1.png')} onPress={() => bodyPartHandler(0, 'backFin')} />
-          <ToolButton title='2' source={require('../assets/fish/backfins2.png')} onPress={() => bodyPartHandler(1, 'backFin')} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} />
+          <ToolButton title='1' source={require('../assets/fish/backfins1.png')} onPress={() => bodyPartHandler(0, 'fin')} isActive={appData.fish[currentId].fin === 0 ? true : false} />
+          <ToolButton title='2' source={require('../assets/fish/backfins2.png')} onPress={() => bodyPartHandler(1, 'fin')} isActive={appData.fish[currentId].fin === 1 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'fin')} isActive={appData.fish[currentId].fin === 2 ? true : false} />
         </View>
 
         {renderColorSlider()}

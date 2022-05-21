@@ -4,10 +4,18 @@ import LayoutStyles from "../constants/LayoutStyles";
 
 export default ToolButton = (props) => {
 
+  const isActiveHandler = () => {
+  if(props.isActive === true){
+    return 'blue'
+  }
+  else return 'transparent'
+
+}
+
   return (
-    <View style={LayoutStyles.toolButton} >
+    <View style={LayoutStyles.toolButton} backgroundColor={isActiveHandler()} >
       <TouchableOpacity onPress={props.onPress}>
-        <View width={50} height={60}>
+        <View width={50} height={60} >
           <Text> {props.title} </Text>
           <Image
             source={props.source}

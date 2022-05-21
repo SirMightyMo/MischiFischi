@@ -47,6 +47,7 @@ export default {
   },
   toolButton:{
     flex:1,
+    width:'100%',
     backgroundColor: 'transparent',
     alignItems: 'center',
     borderRadius: 5,

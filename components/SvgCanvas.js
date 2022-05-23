@@ -12,7 +12,6 @@ import { returnFishTail1 } from './fishParts/Tail1';
 import { returnFishBody2 } from './fishParts/Body2';
 import { returnFishFins2 } from './fishParts/Fins2';
 import { returnFishTail2 } from './fishParts/Tail2';
-import Svg from "react-native-svg";
 
 export default SvgCanvas = () => {
   // Saves dimensions of canvas-component

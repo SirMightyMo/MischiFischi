@@ -8,7 +8,7 @@ export default ColletionTile = (props) => {
 
   const isActiveHandler = () => {
     if (props.isActive === true) {
-      return 'blue'
+      return 'lightgray'
     }
     else return 'transparent'
   }

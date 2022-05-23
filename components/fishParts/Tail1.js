@@ -1,33 +1,12 @@
-import * as React from "react"
-import Svg, { Defs, G, Path, LinearGradient, Stop } from "react-native-svg"
-
-/* Gradients on iOS won't work, so these functions define wether gradient is used or not */
-function colorFillApp(color) {
-  return Platform.OS === 'ios' ? color : "url(#grad)";
-}
-
-function colorFillExport(color) {
-  return Platform.OS === 'ios' ? color : "url('#grad')";
-}
+import * as React from "react";
+import Svg, { Defs, G, Path, LinearGradient, Stop } from "react-native-svg";
 
 const Tail1 = (props) => (
-  <Svg
-    data-name="tail1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 640 360"
-    {...props}
-  >
-    <Defs>
-      <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-        <Stop offset="0" stopColor={props.gradientCol2} stopOpacity="1" />
-        <Stop offset="1" stopColor={props.gradientCol1} stopOpacity="1" />
-      </LinearGradient>
-    </Defs>
     <G id="tailfin">
       <Path
         id="tailfinfill"
         style={{
-          fill: colorFillApp(props.gradientCol2),
+          fill: "url(#grad)",
         }}
         d="m175.81 169.94-15.25-9.25-15.5-8.5-14.75-1.25-12 4-4 5.5v3.75l-1.75 6.62-2.37 7.5-.88 8.13-1.87 13.82-1.63 16.05 1.38 17.63 2.5 14.37 4.75 11.38 5.62 3.87 7.88 1 11.37-3.5 11.88-7.87 12.87-9.88 7.75-5.87 8.63-3.75 10.75-7.25-7.5-40.88-7.88-15.62z"
       />
@@ -44,7 +23,6 @@ const Tail1 = (props) => (
         />
       </G>
     </G>
-  </Svg>
 )
 
 export default Tail1;
@@ -55,7 +33,7 @@ export function returnFishTail1(color) {
   <defs>
     <style>
       .tail1-1, #tailfinfill {
-        fill: ${colorFillExport(color)};
+        fill: url('#grad');
       }
 
       .tail1-2 {

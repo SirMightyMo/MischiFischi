@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
-import { Dimensions } from 'react-native';
-import Svg, { G } from "react-native-svg";
+import { G } from "react-native-svg";
 import { AppContext } from "../data/AppContext";
-
 import Body1 from './fishParts/Body1';
-import Fins1 from './fishParts/Fins1';
-import Tail1 from './fishParts/Tail1';
 import Body2 from './fishParts/Body2';
+import Fins1 from './fishParts/Fins1';
 import Fins2 from './fishParts/Fins2';
+import Tail1 from './fishParts/Tail1';
 import Tail2 from './fishParts/Tail2';
 
 export default Fish = (props) => {
@@ -58,30 +56,11 @@ export default Fish = (props) => {
     }
   }
 
-   /* 
-   Wraps all fish components in one JSX-SVG-Component.
-   TODO: Check scale & positions with final fish-components 
-   TODO: Calculate Scale
-  */
-
-   const windowWidth = Dimensions.get('window').width;
-   const viewBox = "0 0 " + Math.floor(windowWidth) + " " + Math.floor(windowWidth/1.7777777777);
-
-  const WrappedFishSvg = () => (
-    <G>
-      <G scale="1">
-        {tailToRender(selectedFish)}
-      </G>
-      <G scale="1">
-        {backFinToRender(selectedFish)}
-      </G>
-      <G scale="1">
-        {bodyToRender(selectedFish)}
-      </G>
-    </G>
-  );
-
   return (
-      <WrappedFishSvg />
+    <G>
+      {tailToRender(selectedFish)}
+      {backFinToRender(selectedFish)}
+      {bodyToRender(selectedFish)}
+    </G>
   );
 };

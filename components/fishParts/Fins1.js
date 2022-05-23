@@ -1,33 +1,12 @@
 import * as React from "react"
 import Svg, { Defs, G, Path, LinearGradient, Stop } from "react-native-svg"
 
-/* Gradients on iOS won't work, so these functions define wether gradient is used or not */
-function colorFillApp(color) {
-  return Platform.OS === 'ios' ? color : "url(#grad)";
-}
-
-function colorFillExport(color) {
-  return Platform.OS === 'ios' ? color : "url('#grad')";
-}
-
 const Fins1 = (props) => (
-  <Svg
-    data-name="fins1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 640 360"
-    {...props}
-  >
-    <Defs>
-      <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-        <Stop offset="0" stopColor={props.gradientCol2} stopOpacity="1" />
-        <Stop offset="1" stopColor={props.gradientCol1} stopOpacity="1" />
-      </LinearGradient>
-    </Defs>
     <G id="fins">
       <Path
         id="finsfill"
         style={{
-          fill: colorFillApp(props.gradientCol2),
+          fill: "url(#grad)",
         }}
         d="m296.06 109.69-5.25-12.25-1.25-7.5 3.25-8.25 6-5 11.5-6.5 13.5-3.75 11-2h19l5.19 2 6.06 1.75 5 2.75 4 5 2.5 7v10.25l-1.5 7-3.5 5.75-4.25 184.75 2 9-1.75 7.75-6.75 5-11.47 2.25-16.28 2.39-8.14-.24h-9.61l-7.54-1.26-6.8-2.07-4.73-3.18-.85-6.05 1.36-3 2.06-2.39 1.69-3.7.75-3.75-5.19-181.75z"
       />
@@ -44,7 +23,6 @@ const Fins1 = (props) => (
         />
       </G>
     </G>
-  </Svg>
 )
 
 export default Fins1;
@@ -55,7 +33,7 @@ export function returnFishFins1(color) {
   <defs>
     <style>
       .fins1-1, #finsfill {
-        fill: ${colorFillExport(color)};
+        fill: url('#grad');
       }
 
       .fins1-2 {

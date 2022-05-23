@@ -1,34 +1,13 @@
 import * as React from "react";
 import Svg, { Defs, LinearGradient, Path, Stop, G } from "react-native-svg";
 
-/* Gradients on iOS won't work, so these functions define wether gradient is used or not */
-function colorFillApp(color) {
-  return Platform.OS === 'ios' ? color : "url(#grad)";
-}
-
-function colorFillExport(color) {
-  return Platform.OS === 'ios' ? color : "url('#grad')";
-}
-
 const Body2 = (props) => (
-  <Svg
-    data-name="body2"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 640 360"
-    {...props}
-  >
-    <Defs>
-      <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-        <Stop offset="0" stopColor={props.gradientCol2} stopOpacity="1" />
-        <Stop offset="1" stopColor={props.gradientCol1} stopOpacity="1" />
-      </LinearGradient>
-    </Defs>
     <G id="body">
       <Path
         id="bodyfill"
         d="m171.39 168.3-2.46 4.44a50.67 50.67 0 0 0-.81 47.55l7 13.76 21.42 11.5 40.83 17.75 54 20.5 44 10h32.25l31.5-2 25.25-6.25 26.25-12 16-12.25 12.5-10.5 14.25-11.25 9-8.5 7.75-6.5 9.5-2-5.75-11.25-3.25-14 1.5-16.5-16-6.25-17.73-14.25-14.5-13-26-19.25-21.5-12.63-27.5-8.87-23.75-1.75-23.5 1.75-21 3.5-25.25 8-23.25 8.75-22.5 8.5-14.25 7.5-12.75 5.75-17.75 7.25-18 8.25-10.5 3.5Z"
         style={{
-          fill: colorFillApp(props.gradientCol1),
+          fill: "url(#grad)",
         }}
       />
       <Path
@@ -64,7 +43,6 @@ const Body2 = (props) => (
         />
       </G>
     </G>
-  </Svg>
 )
 
 export default Body2;
@@ -75,7 +53,7 @@ export function returnFishBody2(color) {
   <defs>
     <style>
       .body2-1 {
-        fill: ${colorFillExport(color)};
+        fill: url('#grad');
       }
 
       .body2-2 {

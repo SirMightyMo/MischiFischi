@@ -48,20 +48,6 @@ export default ToolsContainer = () => {
     storeData(appData);
   }
 
-  /* Since gradients don't seem to work on iOS, this only shows two color sliders, when device is android */
-  const renderColorSlider = () => {
-    if (Platform.OS === 'ios') {
-      return (<View style={LayoutStyles.toolRow}>
-        <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
-      </View>);
-    } else {
-      return (<View style={LayoutStyles.toolColumn}>
-        <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
-        <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
-      </View>);
-    }
-  }
-
   const newFish = () => {
     console.log(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))
 
@@ -122,7 +108,11 @@ export default ToolsContainer = () => {
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'fin')} isActive={appData.fish[currentId].fin === 2 ? true : false} />
         </View>
 
-        {renderColorSlider()}
+        <View style={LayoutStyles.toolColumn}>
+          <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
+          <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
+        </View>
+        
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='down' onPress={() => nextFish(-1)} />
           <ToolButton title='new' onPress={() => newFish()} />

@@ -17,7 +17,12 @@ import { returnFishTail2 } from './fishParts/Tail2';
 
 export default SvgCanvas = () => {
   // Websocket for sending data via TCP
-  var ws = React.useRef(new WebSocket('ws://192.168.178.69:8080/')).current;
+  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;
+  ws.onopen = () => {
+    // connection opened
+    console.log("Connection open");
+    ws.send("App connected...");
+  };
 
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
@@ -25,11 +30,11 @@ export default SvgCanvas = () => {
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
       case 0:
-        return returnFishBody1();
+        return returnFishBody1(selectedFish.color1);
       case 1:
-        return returnFishBody2();
+        return returnFishBody2(selectedFish.color1);
       case 2:
-        return returnFishBody3();
+        return returnFishBody3(selectedFish.color1);
       default:
         break;
     }
@@ -38,11 +43,11 @@ export default SvgCanvas = () => {
   const finsToRender = (selectedFish) => {
     switch (selectedFish.fin) {
       case 0:
-        return returnFishFins1();
+        return returnFishFins1(selectedFish.color2);
       case 1:
-        return returnFishFins2();
+        return returnFishFins2(selectedFish.color2);
       case 2:
-        return returnFishFins3();
+        return returnFishFins3(selectedFish.color2);
       default:
         break;
     }
@@ -51,11 +56,11 @@ export default SvgCanvas = () => {
   const tailToRender = (selectedFish) => {
     switch (selectedFish.backFin) {
       case 0:
-        return returnFishTail1();
+        return returnFishTail1(selectedFish.color2);
       case 1:
-        return returnFishTail2();
+        return returnFishTail2(selectedFish.color2);
       case 2:
-        return returnFishTail3();
+        return returnFishTail3(selectedFish.color2);
       default:
         break;
     }
@@ -65,25 +70,7 @@ export default SvgCanvas = () => {
   const color2 = Platform.OS === 'ios' ? selectedFish.color1 : selectedFish.color2;
 
   const exportSVG = () => {
-    // Console includes complete SVG-Output for debugging
-    console.log(`
-<svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
-  <defs>
-  <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="${color2}" />
-    <stop offset="100%" stop-color="${selectedFish.color1}" />
-  </linearGradient>
-  </defs>
-    `);
-    console.log(finsToRender(selectedFish));
-    console.log(tailToRender(selectedFish));
-    console.log(bodyToRender(selectedFish));
-    console.log(`</svg>`);
-    /*
-      TODO: Function/Switch required to get selected fish-parts (compare Fish.js)
-      TODO: Filewriter?
-    */
-
+    
     const data = `
 <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <defs>

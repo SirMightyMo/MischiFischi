@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
-import Svg from "react-native-svg";
+import Svg, {Defs, G, LinearGradient, Stop} from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 
@@ -18,9 +18,16 @@ export default ColletionTile = (props) => {
   return (
     <View style={LayoutStyles.collectionTile} backgroundColor={isActiveHandler()} >
       <TouchableOpacity onPress={props.onPress}>
-        <Text> {props.title} </Text>
+        <Text style={{position: "absolute"}}> {props.title} </Text>
         
-        <Svg height="150" width="150" viewBox="0 40 150 150">
+        <Svg height="100" width="100" viewBox="0 0 640 360">
+          <Defs>
+            <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+              <Stop offset="0" stopColor={selectedFish.color2} stopOpacity="1" />
+              <Stop offset="1" stopColor={selectedFish.color1} stopOpacity="1" />
+            </LinearGradient>
+            {/* {getPattern(selectedFish.pattern)} */}
+          </Defs>
           <Fish fishId={props.id} />
         </Svg>
         

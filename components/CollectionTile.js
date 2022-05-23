@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
-import Svg, { G, Ellipse } from "react-native-svg";
+import Svg from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 

@@ -13,10 +13,10 @@ import Tail2 from './fishParts/Tail2';
 export default Fish = (props) => {
   const [appData, setAppData] = useContext(AppContext);
 
+  // checks if props has 'fishId' value set. If Value is set it gets used to finde fish to render. 
   const selectedFish = props.fishId === undefined ? 
   appData.fish.find(fish => fish.id === appData.currentId) : 
   appData.fish.find(fish => fish.id === props.fishId)
-  //const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
 
   //function that returns the svg component corresponding to the int found in 'selectedFish.body' 
   const bodyToRender = (selectedFish) => {

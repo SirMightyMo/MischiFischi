@@ -8,7 +8,6 @@ export default CollectionScreen = () => {
     <View style={LayoutStyles.collectionScreen}>
       <Text>your collection</Text>
       <CollectionContainer />
-      
     </View>
   );
 };

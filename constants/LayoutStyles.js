@@ -91,7 +91,7 @@ export default {
   },
   collectionTile:{
     flex:1,
-    width:'100%',
+    maxWidth:'45%',
     height:100,
     backgroundColor: 'transparent',
     alignItems: 'center',

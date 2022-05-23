@@ -42,7 +42,7 @@ export default SvgCanvas = () => {
   };
 
   const finsToRender = (selectedFish) => {
-    switch (selectedFish.fin) {
+    switch (selectedFish.backFin) {
       case 0:
         return returnFishFins1(selectedFish.color2);
       case 1:
@@ -55,7 +55,7 @@ export default SvgCanvas = () => {
   };
 
   const tailToRender = (selectedFish) => {
-    switch (selectedFish.backFin) {
+    switch (selectedFish.fin) {
       case 0:
         return returnFishTail1(selectedFish.color2);
       case 1:

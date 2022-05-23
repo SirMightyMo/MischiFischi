@@ -73,15 +73,32 @@ export default {
   },
   collectionScreen: {
     flex: 1,
+    width:'100%',
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: 'red',
+    borderWidth: 1,
   },
   collectionContainer: {
     flex: 1,
+    width:'90%',
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: 'blue',
+    borderWidth: 1,
+  },
+  collectionTile:{
+    flex:1,
+    width:'100%',
+    height:100,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderColor: 'black',
+    borderWidth: 3,
+    margin:10
   },
   text: {
     margin: 10,

@@ -10,9 +10,13 @@ import Body2 from './fishParts/Body2';
 import Fins2 from './fishParts/Fins2';
 import Tail2 from './fishParts/Tail2';
 
-export default Fish = () => {
+export default Fish = (props) => {
   const [appData, setAppData] = useContext(AppContext);
-  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
+
+  const selectedFish = props.fishId === undefined ? 
+  appData.fish.find(fish => fish.id === appData.currentId) : 
+  appData.fish.find(fish => fish.id === props.fishId)
+  //const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
 
   //function that returns the svg component corresponding to the int found in 'selectedFish.body' 
   const bodyToRender = (selectedFish) => {
@@ -64,7 +68,7 @@ export default Fish = () => {
    const viewBox = "0 0 " + Math.floor(windowWidth) + " " + Math.floor(windowWidth/1.7777777777);
 
   const WrappedFishSvg = () => (
-    <Svg height="100%" width="100%" viewBox={viewBox}>
+    <G>
       <G scale="1">
         {tailToRender(selectedFish)}
       </G>
@@ -74,7 +78,7 @@ export default Fish = () => {
       <G scale="1">
         {bodyToRender(selectedFish)}
       </G>
-    </Svg>
+    </G>
   );
 
   return (

@@ -25,7 +25,7 @@ export default SvgCanvas = () => {
   };
 
   const [appData, setAppData] = useContext(AppContext);
-  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
+  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId) ;
 
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
@@ -70,7 +70,7 @@ export default SvgCanvas = () => {
   const color2 = Platform.OS === 'ios' ? selectedFish.color1 : selectedFish.color2;
 
   const exportSVG = () => {
-    
+
     const data = `
 <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <defs>
@@ -91,12 +91,12 @@ export default SvgCanvas = () => {
       console.log(e);
     }
   }
-  
+
   return (
     <View style={LayoutStyles.canvasContainer}>
       {/* TODO: Video-Background? */}
       <Video
-        source={ require('../assets/fish/bg.mp4') }
+        source={require('../assets/fish/bg.mp4')}
         /* posterSource */
         rate={1.0}
         volume={0.0}
@@ -106,9 +106,9 @@ export default SvgCanvas = () => {
         isLooping={true}
         useNativeControls={false}
         style={{ width: "100%", height: "100%", position: "absolute" }}
-        /> 
+      />
       <Fish />
-      <Button style={{position: "absolute"}} title="save" onPress={() => exportSVG()} />
+      <Button style={{ position: "absolute" }} title="save" onPress={() => exportSVG()} />
     </View>
   )
 

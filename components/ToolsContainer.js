@@ -49,7 +49,7 @@ export default ToolsContainer = () => {
   }
 
   const newFish = () => {
-    console.log(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))
+    //console.log(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))
 
     let newFishArray = appData.fish;
     newFishArray.push(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))

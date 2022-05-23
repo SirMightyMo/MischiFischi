@@ -71,7 +71,13 @@ export default {
      borderColor: 'red',
      borderWidth: 1,
   },
-  shareContainer: {
+  collectionScreen: {
+    flex: 1,
+    backgroundColor: Colors.background_light,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  collectionContainer: {
     flex: 1,
     backgroundColor: Colors.background_light,
     alignItems: 'center',

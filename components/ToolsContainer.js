@@ -73,28 +73,31 @@ export default ToolsContainer = () => {
 
   }
   const nextFish = (direction) => {
-    console.log('next fish')
-    if ( direction === -1 && appData.fish.indexOf(selectedFish) > 0) {
-      console.log(appData.fish.indexOf(selectedFish))
-      setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id ,
-        idCounter: appData.idCounter,
-        fish: appData.fish,
-        
-      }));
-      storeData(appData);
-      console.log('check')
-    }
-    else if(direction === 1 && appData.fish.indexOf(selectedFish) < appData.fish.length -1){
-      console.log(appData.fish.indexOf(selectedFish))
+    if (direction === -1 && appData.fish.indexOf(selectedFish) > 0) {
       setAppData(appData => ({
         currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
         idCounter: appData.idCounter,
         fish: appData.fish,
-        
       }));
       storeData(appData);
-      console.log('check')
+    }
+    else if (direction === 1 && appData.fish.indexOf(selectedFish) < appData.fish.length - 1) {
+      setAppData(appData => ({
+        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
+        idCounter: appData.idCounter,
+        fish: appData.fish,
+      }));
+      storeData(appData);
+    }
+  }
+  const deleteFish = () => {
+    if (appData.fish.indexOf(selectedFish) > 0) {
+      setAppData(appData => ({
+        currentId: appData.fish[appData.fish.indexOf(selectedFish) - 1].id,
+        idCounter: appData.idCounter,
+        fish: appData.fish.filter(fish => fish.id !== selectedFish.id),
+      }));
+      storeData(appData)
     }
   }
 
@@ -104,14 +107,14 @@ export default ToolsContainer = () => {
 
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='1' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
-          <ToolButton title='2' source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false}/>
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false}/>
+          <ToolButton title='2' source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'backFin')} isActive={selectedFish.backFin === 0 ? true : false}  />
-          <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'backFin')} isActive={selectedFish.backFin === 1 ? true : false}/>
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} isActive={selectedFish.backFin === 2 ? true : false}/>
+          <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'backFin')} isActive={selectedFish.backFin === 0 ? true : false} />
+          <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'backFin')} isActive={selectedFish.backFin === 1 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} isActive={selectedFish.backFin === 2 ? true : false} />
         </View>
 
         <View style={LayoutStyles.toolRow}>
@@ -130,10 +133,11 @@ export default ToolsContainer = () => {
           <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
           <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
         </View>
-        
+
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='down' onPress={() => nextFish(-1)} />
           <ToolButton title='new' onPress={() => newFish()} />
+          <ToolButton title='delete' onPress={() => deleteFish()} />
           <ToolButton title='up' onPress={() => nextFish(1)} />
         </View>
       </ScrollView>

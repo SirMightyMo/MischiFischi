@@ -4,10 +4,16 @@ import { AppContext } from "../data/AppContext";
 import {getPatternURL} from './fishParts/Patterns';
 import Body1 from './fishParts/Body1';
 import Body2 from './fishParts/Body2';
+import Body3 from './fishParts/Body3';
+import Body4 from './fishParts/Body4';
 import Fins1 from './fishParts/Fins1';
 import Fins2 from './fishParts/Fins2';
+import Fins3 from './fishParts/Fins3';
+import Fins4 from './fishParts/Fins4';
 import Tail1 from './fishParts/Tail1';
 import Tail2 from './fishParts/Tail2';
+import Tail3 from './fishParts/Tail3';
+import Tail4 from './fishParts/Tail4';
 
 export default Fish = (props) => {
   const [appData, setAppData] = useContext(AppContext);
@@ -25,7 +31,9 @@ export default Fish = (props) => {
       case 1:
         return <Body2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <Body3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 3:
+        return <Body4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
@@ -38,7 +46,9 @@ export default Fish = (props) => {
       case 1:
         return <Tail2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <Tail3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 3:
+        return <Tail4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
@@ -51,7 +61,9 @@ export default Fish = (props) => {
       case 1:
         return <Fins2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <Fins3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 3:
+        return <Fins4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }

@@ -4,8 +4,9 @@ import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import { Video } from 'expo-av';
 
-import Svg, {Defs, LinearGradient, Stop} from "react-native-svg";
+import Svg, {Defs, LinearGradient, Stop, Pattern, Path} from "react-native-svg";
 import Fish from "./Fish";
+import { getPatternJSX } from './fishParts/Patterns';
 import { returnFishBody1 } from './fishParts/Body1';
 import { returnFishFins1 } from './fishParts/Fins1';
 import { returnFishTail1 } from './fishParts/Tail1';
@@ -67,6 +68,10 @@ export default SvgCanvas = () => {
     }
   };
 
+/*   const patternJSX = (pattern) => {
+    return <ZebraPattern/>;
+  } */
+
   /* Second color can not be selected on iOS so color2 needs to be same as color1 */
   const color2 = Platform.OS === 'ios' ? selectedFish.color1 : selectedFish.color2;
 
@@ -99,7 +104,7 @@ export default SvgCanvas = () => {
       onLayout={(event) => {
         const { x, y, width, height } = event.nativeEvent.layout;
         setDims({ x, y, width, height });
-        console.log(JSON.stringify(dims));
+        //console.log(JSON.stringify(dims));
       }}
     >
       <Video
@@ -120,6 +125,9 @@ export default SvgCanvas = () => {
             <Stop offset="0" stopColor={selectedFish.color2} stopOpacity="1" />
             <Stop offset="1" stopColor={selectedFish.color1} stopOpacity="1" />
           </LinearGradient>
+          
+          {getPatternJSX(selectedFish.pattern)}
+
         </Defs>
         <Fish />
       </Svg>
@@ -127,5 +135,4 @@ export default SvgCanvas = () => {
       <Button style={{position: "absolute"}} title="save" onPress={() => exportSVG()} />
     </View>
   )
-
 };

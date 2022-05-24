@@ -1,18 +1,19 @@
+import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { Button, View, Platform, Dimensions } from "react-native";
+import { Button, Platform, View } from "react-native";
+import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
-import { Video } from 'expo-av';
 
-import Svg, {Defs, LinearGradient, Stop, Pattern, Path} from "react-native-svg";
 import Fish from "./Fish";
-import { getPatternJSX } from './fishParts/Patterns';
+import { getPatternJSX, getPatternSVG, getPatternURL } from './fishParts/Patterns';
 import { returnFishBody1 } from './fishParts/Body1';
-import { returnFishFins1 } from './fishParts/Fins1';
-import { returnFishTail1 } from './fishParts/Tail1';
 import { returnFishBody2 } from './fishParts/Body2';
+import { returnFishFins1 } from './fishParts/Fins1';
 import { returnFishFins2 } from './fishParts/Fins2';
+import { returnFishTail1 } from './fishParts/Tail1';
 import { returnFishTail2 } from './fishParts/Tail2';
+
 
 export default SvgCanvas = () => {
   // Saves dimensions of canvas-component
@@ -32,11 +33,11 @@ export default SvgCanvas = () => {
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
       case 0:
-        return returnFishBody1(selectedFish.color1);
+        return returnFishBody1(getPatternURL(selectedFish.pattern));
       case 1:
-        return returnFishBody2(selectedFish.color1);
+        return returnFishBody2(getPatternURL(selectedFish.pattern));
       case 2:
-        return returnFishBody3(selectedFish.color1);
+        return returnFishBody3(getPatternURL(selectedFish.pattern));
       default:
         break;
     }
@@ -45,11 +46,11 @@ export default SvgCanvas = () => {
   const finsToRender = (selectedFish) => {
     switch (selectedFish.backFin) {
       case 0:
-        return returnFishFins1(selectedFish.color2);
+        return returnFishFins1();
       case 1:
-        return returnFishFins2(selectedFish.color2);
+        return returnFishFins2();
       case 2:
-        return returnFishFins3(selectedFish.color2);
+        return returnFishFins3();
       default:
         break;
     }
@@ -58,11 +59,11 @@ export default SvgCanvas = () => {
   const tailToRender = (selectedFish) => {
     switch (selectedFish.fin) {
       case 0:
-        return returnFishTail1(selectedFish.color2);
+        return returnFishTail1();
       case 1:
-        return returnFishTail2(selectedFish.color2);
+        return returnFishTail2();
       case 2:
-        return returnFishTail3(selectedFish.color2);
+        return returnFishTail3();
       default:
         break;
     }
@@ -84,6 +85,7 @@ export default SvgCanvas = () => {
     <stop offset="0%" stop-color="${selectedFish.color2}" />
     <stop offset="100%" stop-color="${selectedFish.color1}" />
   </linearGradient>
+  ${getPatternSVG(selectedFish.pattern)}
   </defs>
   ${finsToRender(selectedFish)}
   ${tailToRender(selectedFish)}

@@ -1,6 +1,7 @@
-import * as React from "react"
-import Svg, { Defs, G, Path, LinearGradient, Stop } from "react-native-svg"
+import * as React from "react";
+import { G, Path } from "react-native-svg";
 
+// props.pattern instead of fill="none" for using pattern
 const Tail2 = (props) => (
     <G id="tailfin">
       <Path
@@ -13,7 +14,7 @@ const Tail2 = (props) => (
       <Path
         id="tailfinfill"
         style={{
-          fill: props.pattern,
+          fill: "none",
         }}
         d="m174.64 171.73-7.88-4.5-14.25-13.12-7.68-5.81-12.38-7.32-18.19-8.25-13.87-2.81-15.75-1.12H66.83l10.68 3.93 3.57 4.13v3.75l-3.94 2.62 3.19 1.32 1.68 4.68-1.87 4.88 4.12 2.81-.18 3.75-1.5 3.38.18 1.68 3.19 2.07 1.13 3.93-1.13 5.44 4.13 2.81.75 7.88-1.5 4.31 2.06 4.13 1.31 3.75-1.69 3.93-1.87 2.07 3.75 3.37.09 3.56-1.31 4.5-2.16 1.13 3.94 4.31.66 3.66-1.88 3.18-.75 2.35.28 4.97-1.22 5.06.57 2.91.84 3.46-1.03 4.41 1.12 5.06-1.96 4.6-1.6 2.53 1.6 3.47-.85 3.28-2.34 2.34-.38 4.41-.65 4.5-1.88 3.56 2.44 1.59h10.31l8.81-1.96 13.79-5.07 11.62-6.56 11.53-9.28 12.47-10.59 10.22-10.6 5.53-6.75 3.94-2.53 5.62-12.09v-37.22l-5.62-13.88z"
       />
@@ -40,7 +41,7 @@ const Tail2 = (props) => (
 
 export default Tail2;
 
-export function returnFishTail2(color) {
+export function returnFishTail2() {
     return (
       `
   <defs>

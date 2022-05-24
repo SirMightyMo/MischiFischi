@@ -1,6 +1,7 @@
 import * as React from "react";
-import Svg, { Defs, LinearGradient, Path, Stop, G } from "react-native-svg";
+import { G, Path } from "react-native-svg";
 
+// props.pattern instead of fill="none" for using pattern
 const Body1 = (props) => (
   
     <G id="body">
@@ -58,7 +59,7 @@ const Body1 = (props) => (
 
 export default Body1;
 
-export function returnFishBody1(color) {
+export function returnFishBody1(patternURL) {
   return (
     `
   <defs>
@@ -83,6 +84,7 @@ export function returnFishBody1(color) {
   <g id="fish1">
     <g id="body">
       <path id="bodyfill" class="body1-1" d="M172.27,166.65l-2.05,5a69.08,69.08,0,0,0-1.31,45l5.78,20.23,24.62,16.55,31,15.5,38.5,15,43,7.5h47.5l27.5-2.5,28-5.5,24.5-7,27.5-12,19-11.5,23-23.5,20.5-22.5,10-10.5-2.5-9,1.25-3.13,18.13-17.75-14.13-8.37-22-10-24-9.75-22.5-7.5-25.75-8.5-23.75-7-28.25-6.25-33.25-4.75-30.5-1.75L317,104.44l-19.39,5.25-18.83,7.25-18.17,7-20,8.5-28,12.75Z"/>
+      <path id="bodyfill" class="body1-1" style="fill: ${patternURL}" d="M172.27,166.65l-2.05,5a69.08,69.08,0,0,0-1.31,45l5.78,20.23,24.62,16.55,31,15.5,38.5,15,43,7.5h47.5l27.5-2.5,28-5.5,24.5-7,27.5-12,19-11.5,23-23.5,20.5-22.5,10-10.5-2.5-9,1.25-3.13,18.13-17.75-14.13-8.37-22-10-24-9.75-22.5-7.5-25.75-8.5-23.75-7-28.25-6.25-33.25-4.75-30.5-1.75L317,104.44l-19.39,5.25-18.83,7.25-18.17,7-20,8.5-28,12.75Z"/>
       <polygon id="eye" class="body1-2" points="446.81 154.44 440.81 164.19 443.81 176.19 449.56 184.69 456.31 189.94 468.56 194.19 484.31 188.44 493.81 179.94 497.31 166.69 495.56 154.44 486.06 145.94 474.56 142.69 464.56 142.69 452.56 148.44 446.81 154.44"/>
       <g id="body-2" data-name="body">
         <g>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { G } from "react-native-svg";
 import { AppContext } from "../data/AppContext";
-import * as Pattern from './fishParts/Patterns';
+import {getPatternURL} from './fishParts/Patterns';
 import Body1 from './fishParts/Body1';
 import Body2 from './fishParts/Body2';
 import Fins1 from './fishParts/Fins1';
@@ -21,11 +21,11 @@ export default Fish = (props) => {
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
       case 0:
-        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 1:
-        return <Body2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Body2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
@@ -34,11 +34,11 @@ export default Fish = (props) => {
   const tailToRender = (selectedFish) => {
     switch (selectedFish.fin) {
       case 0:
-        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 1:
-        return <Tail2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Tail2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
@@ -47,11 +47,11 @@ export default Fish = (props) => {
   const backFinToRender = (selectedFish) => {
     switch (selectedFish.backFin) {
       case 0:
-        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 1:
-        return <Fins2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Fins2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={Pattern.getPatternURL(selectedFish.pattern)} />;
+        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }

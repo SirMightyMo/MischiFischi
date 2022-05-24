@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { View, Platform } from "react-native";
+import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
-import ColorTool from "./ColorTool";
-import ToolButton from "./ToolButton";
 import { storeData } from '../data/AppStorage';
 import FishModel from "../models/FishModel";
+import ColorTool from "./ColorTool";
+import ToolButton from "./ToolButton";
 
 
 export default ToolsContainer = () => {

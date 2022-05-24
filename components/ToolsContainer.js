@@ -74,9 +74,10 @@ export default ToolsContainer = () => {
   }
   const nextFish = (direction) => {
     console.log('next fish')
-    if ( direction === -1 && appData.currentId -1 >= 0) {
+    if ( direction === -1 && appData.fish.indexOf(selectedFish) > 0) {
+      console.log(appData.fish.indexOf(selectedFish))
       setAppData(appData => ({
-        currentId: appData.currentId + direction,
+        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id ,
         idCounter: appData.idCounter,
         fish: appData.fish,
         
@@ -84,9 +85,10 @@ export default ToolsContainer = () => {
       storeData(appData);
       console.log('check')
     }
-    else if(direction === 1 && appData.currentId +1  <= appData.idCounter){
+    else if(direction === 1 && appData.fish.indexOf(selectedFish) < appData.fish.length -1){
+      console.log(appData.fish.indexOf(selectedFish))
       setAppData(appData => ({
-        currentId: appData.currentId + direction,
+        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
         idCounter: appData.idCounter,
         fish: appData.fish,
         

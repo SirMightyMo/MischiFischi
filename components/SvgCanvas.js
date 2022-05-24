@@ -1,6 +1,6 @@
 import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { Button, Platform, View } from "react-native";
+import { Button, Platform, View, Alert } from "react-native";
 import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
@@ -94,9 +94,19 @@ export default SvgCanvas = () => {
     `
 
     // Send data to websocket
-    ws.send(data);
-    ws.onerror = (e) => {
-      console.log(e);
+    try {
+      ws.send(data);
+    } catch {
+      Alert.alert(
+        "Verbindungsfehler",
+        "Es konnte keine Verbindung zum Server aufgebaut werden.",
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+      ws.onerror = (e) => {
+        console.log(e);
+      }
     }
   }
 

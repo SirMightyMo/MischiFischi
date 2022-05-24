@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { View, TouchableOpacity, Image, Text } from "react-native";
-import Svg, {Defs, G, LinearGradient, Stop} from "react-native-svg";
+import { Text, TouchableOpacity, View } from "react-native";
+import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
+import { getPatternJSX } from './fishParts/Patterns';
 
 export default ColletionTile = (props) => {
 
@@ -26,7 +27,7 @@ export default ColletionTile = (props) => {
               <Stop offset="0" stopColor={selectedFish.color2} stopOpacity="1" />
               <Stop offset="1" stopColor={selectedFish.color1} stopOpacity="1" />
             </LinearGradient>
-            {/* {getPattern(selectedFish.pattern)} */}
+            {getPatternJSX(selectedFish.pattern)}
           </Defs>
           <Fish fishId={props.id} />
         </Svg>

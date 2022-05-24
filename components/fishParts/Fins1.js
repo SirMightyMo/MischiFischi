@@ -1,12 +1,20 @@
-import * as React from "react"
-import Svg, { Defs, G, Path, LinearGradient, Stop } from "react-native-svg"
+import * as React from "react";
+import { G, Path } from "react-native-svg";
 
+// props.pattern instead of fill="none" for using pattern
 const Fins1 = (props) => (
     <G id="fins">
       <Path
         id="finsfill"
         style={{
           fill: "url(#grad)",
+        }}
+        d="m296.06 109.69-5.25-12.25-1.25-7.5 3.25-8.25 6-5 11.5-6.5 13.5-3.75 11-2h19l5.19 2 6.06 1.75 5 2.75 4 5 2.5 7v10.25l-1.5 7-3.5 5.75-4.25 184.75 2 9-1.75 7.75-6.75 5-11.47 2.25-16.28 2.39-8.14-.24h-9.61l-7.54-1.26-6.8-2.07-4.73-3.18-.85-6.05 1.36-3 2.06-2.39 1.69-3.7.75-3.75-5.19-181.75z"
+      />
+      <Path
+        id="finsfill"
+        style={{
+          fill: "none",
         }}
         d="m296.06 109.69-5.25-12.25-1.25-7.5 3.25-8.25 6-5 11.5-6.5 13.5-3.75 11-2h19l5.19 2 6.06 1.75 5 2.75 4 5 2.5 7v10.25l-1.5 7-3.5 5.75-4.25 184.75 2 9-1.75 7.75-6.75 5-11.47 2.25-16.28 2.39-8.14-.24h-9.61l-7.54-1.26-6.8-2.07-4.73-3.18-.85-6.05 1.36-3 2.06-2.39 1.69-3.7.75-3.75-5.19-181.75z"
       />
@@ -27,7 +35,7 @@ const Fins1 = (props) => (
 
 export default Fins1;
 
-export function returnFishFins1(color) {
+export function returnFishFins1() {
     return (
       `
   <defs>

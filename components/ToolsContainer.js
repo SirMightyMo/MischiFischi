@@ -7,6 +7,7 @@ import { storeData } from '../data/AppStorage';
 import FishModel from "../models/FishModel";
 import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
+import uuid from 'react-native-uuid'
 
 
 export default ToolsContainer = () => {
@@ -57,20 +58,16 @@ export default ToolsContainer = () => {
     }));
     storeData(appData);
   }
-
   const newFish = () => {
-    //console.log(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44'))
-
     let newFishArray = appData.fish;
-    newFishArray.push(new FishModel(appData.idCounter + 1, 0, 0, 0, '#44FF44', '#44FF44', 0))
-    //console.log(newFishArray);
+    let UUID = uuid.v4();
+    newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0))
     setAppData(appData => ({
-      currentId: appData.idCounter + 1,
+      currentId: UUID,
       idCounter: appData.idCounter + 1,
       fish: newFishArray,
     }));
     storeData(appData);
-
   }
   const nextFish = (direction) => {
     if (direction === -1 && appData.fish.indexOf(selectedFish) > 0) {

@@ -136,7 +136,7 @@ export class SliderHuePicker extends React.Component {
 
         return (
             <View style={styles.container}>
-                <ImageBackground source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
+                <ImageBackground source={trackImage} resizeMode='contain' style={{ flex: 1, justifyContent: "center" }} >
                     <Slider
                         maximumTrackTintColor='transparent'
                         minimumTrackTintColor='trasparent'

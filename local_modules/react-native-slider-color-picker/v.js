@@ -154,7 +154,7 @@ export class SliderValuePicker extends React.Component {
 
         return (
             <View style={styles.container}>
-                <ImageBackground backgroundColor='black' source={trackImage} resizeMode='cover' style={{ flex: 1, justifyContent: "center" }} >
+                <ImageBackground backgroundColor='black' source={trackImage} resizeMode='contain' style={{ flex: 1, justifyContent: "center" }} >
                     <Slider
                         style={style || styles.style}
                         trackStyle={[{ backgroundColor: 'transparent' }, trackStyle, { borderRadius }]}

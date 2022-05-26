@@ -8,6 +8,7 @@ import FishModel from "../models/FishModel";
 import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
 import uuid from 'react-native-uuid'
+import { Ionicons } from '@expo/vector-icons'
 
 
 export default ToolsContainer = () => {
@@ -102,16 +103,16 @@ export default ToolsContainer = () => {
     var makeColorCode = '0123456789ABCDEF';
     var color = '#';
     for (var count = 0; count < 6; count++) {
-       color =color+ makeColorCode[Math.floor(Math.random() * 16)];
+      color = color + makeColorCode[Math.floor(Math.random() * 16)];
     }
     return color;
- }
-  const randomFish = () =>{
+  }
+  const randomFish = () => {
     frontColorHandler(getHexColor());
     backColorHandler(getHexColor());
-    bodyPartHandler(Math.floor(Math.random() * 4),'body')
-    bodyPartHandler(Math.floor(Math.random() * 4),'fin')
-    bodyPartHandler(Math.floor(Math.random() * 4),'tail')
+    bodyPartHandler(Math.floor(Math.random() * 4), 'body')
+    bodyPartHandler(Math.floor(Math.random() * 4), 'fin')
+    bodyPartHandler(Math.floor(Math.random() * 4), 'tail')
     patternHandler(Math.floor(Math.random() * 4))
 
   }
@@ -119,15 +120,22 @@ export default ToolsContainer = () => {
   return (
     <View style={LayoutStyles.toolsContainer}>
       <ScrollView style={{ width: '100%' }}>
-
-        <View style={LayoutStyles.toolRow}>
-          <ToolButton source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
-          <ToolButton source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
-          <ToolButton source={require('../assets/fish/body3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
-          <ToolButton source={require('../assets/fish/body4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
+        
+        <View style={{flex:1, flexDirection:'row', justifyContent:'center',alignItems:'center' , borderColor:'transparent' , borderWidth:2 }}>
+        <Ionicons name='chevron-back-outline' size={36} color='#111111' />
+          <ScrollView
+            style={LayoutStyles.toolRow}
+            horizontal={true}
+            contentContainerStyle={LayoutStyles.toolRowCointainer}
+          >
+            <ToolButton source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
+            <ToolButton source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
+            <ToolButton source={require('../assets/fish/body3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
+            <ToolButton source={require('../assets/fish/body4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
+          </ScrollView>
+          <Ionicons name='chevron-forward-outline' size={36} color='#111111' />
         </View>
-
-        <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={{width: 500, }}>
+        <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer}>
           <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.backFin === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'tail')} isActive={selectedFish.backFin === 1 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'tail')} isActive={selectedFish.backFin === 2 ? true : false} />
@@ -136,19 +144,19 @@ export default ToolsContainer = () => {
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'tail')} isActive={selectedFish.backFin === 3 ? true : false} />
         </ScrollView>
 
-        <View style={LayoutStyles.toolRow}>
+        <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer}>
           <ToolButton title='1' source={require('../assets/fish/backfins1.png')} onPress={() => bodyPartHandler(0, 'fin')} isActive={selectedFish.fin === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/backfins2.png')} onPress={() => bodyPartHandler(1, 'fin')} isActive={selectedFish.fin === 1 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'fin')} isActive={selectedFish.fin === 2 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'fin')} isActive={selectedFish.fin === 3 ? true : false} />
-        </View>
+        </ScrollView>
 
-        <View style={LayoutStyles.toolRow}>
+        <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer} >
           <ToolButton title='1' source={require('../assets/fish/none.png')} onPress={() => patternHandler(0)} isActive={selectedFish.pattern === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(1)} isActive={selectedFish.pattern === 1 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(2)} isActive={selectedFish.pattern === 2 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(3)} isActive={selectedFish.pattern === 3 ? true : false} />
-        </View>
+        </ScrollView>
 
         <View style={LayoutStyles.toolColumn}>
           <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />

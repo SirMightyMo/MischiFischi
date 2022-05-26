@@ -45,12 +45,14 @@ export default {
     justifyContent: 'center',
     borderTopLeftRadius: 60,
     borderWidth:1,
-    padding:30
+    paddingTop:20,
+    paddingLeft:20,
+    paddingRight:20,
   },
   toolButton:{
     flex:1,
     width:'100%',
-    height:'100%',
+    height: '100%',
     backgroundColor: Colors.buttonBackground ,
     alignItems: 'center',
     borderRadius: 5,
@@ -59,12 +61,17 @@ export default {
     marginRight:10
     
   },
+  toolRowCointainer:{
+    height: '100%',
+  },
   toolRow:{
     flex:1,
     width: '100%',
      flexDirection: 'row',
      borderColor: 'red',
      borderWidth: 1,
+     marginTop:5,
+     marginBottom:5,
   },
   toolColumn:{
     flex:1,

@@ -16,13 +16,13 @@ export default {
   mainContainerHorizonatal: { // unused
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: Colors.background_light,
+    backgroundColor: Colors.background_dark,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buildContainer: {
     flex: 1,
-    backgroundColor: Colors.background_light,
+    backgroundColor: Colors.background_dark,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -30,7 +30,7 @@ export default {
   {
     flex: 1,
     width: windowWidth,
-    backgroundColor: Colors.background_light,
+    backgroundColor: Colors.background_dark,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
@@ -43,23 +43,26 @@ export default {
     backgroundColor: Colors.background_light,
     alignItems: 'center',
     justifyContent: 'center',
-    padding:10
+    borderTopLeftRadius: 60,
+    borderWidth:1,
+    padding:30
   },
   toolButton:{
     flex:1,
     width:'100%',
-    backgroundColor: 'transparent',
+    height:'100%',
+    backgroundColor: Colors.buttonBackground ,
     alignItems: 'center',
     borderRadius: 5,
     borderColor: 'black',
     borderWidth: 3,
-    marginTop:10
+    marginRight:10
+    
   },
   toolRow:{
     flex:1,
     width: '100%',
-     flexDirection: 'row', 
-
+     flexDirection: 'row',
      borderColor: 'red',
      borderWidth: 1,
   },

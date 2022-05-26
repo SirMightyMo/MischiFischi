@@ -98,19 +98,17 @@ export default ToolsContainer = () => {
       storeData(appData)
     }
   }
-  const getColorCode = () => {
+  const getHexColor = () => {
     var makeColorCode = '0123456789ABCDEF';
-    var code = '#';
+    var color = '#';
     for (var count = 0; count < 6; count++) {
-       code =code+ makeColorCode[Math.floor(Math.random() * 16)];
+       color =color+ makeColorCode[Math.floor(Math.random() * 16)];
     }
-    console.log(code)
-    return code;
+    return color;
  }
   const randomFish = () =>{
-    frontColorHandler(getColorCode());
-    backColorHandler(getColorCode());
-    console.log(Math.floor(Math.random() * 4))
+    frontColorHandler(getHexColor());
+    backColorHandler(getHexColor());
     bodyPartHandler(Math.floor(Math.random() * 4),'body')
     bodyPartHandler(Math.floor(Math.random() * 4),'fin')
     bodyPartHandler(Math.floor(Math.random() * 4),'tail')
@@ -123,18 +121,20 @@ export default ToolsContainer = () => {
       <ScrollView style={{ width: '100%' }}>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
-          <ToolButton title='2' source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
+          <ToolButton source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
+          <ToolButton source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
+          <ToolButton source={require('../assets/fish/body3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
+          <ToolButton source={require('../assets/fish/body4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
         </View>
 
-        <View style={LayoutStyles.toolRow}>
+        <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={{width: 500, }}>
           <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.backFin === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'tail')} isActive={selectedFish.backFin === 1 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'tail')} isActive={selectedFish.backFin === 2 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'tail')} isActive={selectedFish.backFin === 3 ? true : false} />
-        </View>
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'tail')} isActive={selectedFish.backFin === 3 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'tail')} isActive={selectedFish.backFin === 3 ? true : false} />
+        </ScrollView>
 
         <View style={LayoutStyles.toolRow}>
           <ToolButton title='1' source={require('../assets/fish/backfins1.png')} onPress={() => bodyPartHandler(0, 'fin')} isActive={selectedFish.fin === 0 ? true : false} />
@@ -160,7 +160,7 @@ export default ToolsContainer = () => {
           <ToolButton title='new' onPress={() => newFish()} />
           <ToolButton title='delete' onPress={() => deleteFish()} />
           <ToolButton title='up' onPress={() => nextFish(1)} />
-          <ToolButton title='random ' onPress={() => randomFish()} />
+          <ToolButton title='random' onPress={() => randomFish()} />
         </View>
       </ScrollView>
     </View>

@@ -1,11 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-AsyncStorage.clear(); 
+//AsyncStorage.clear(); 
 
 export const storeData = (data) => {
   try {
     AsyncStorage.setItem('APPDATA', JSON.stringify(data));
-    //console.log('AppStorage' ,JSON.stringify(data))
+    console.log('AppStorage' ,JSON.stringify(data))
   }
   catch (e) {
     throw e;

@@ -26,12 +26,16 @@ export default SvgCanvas = () => {
   const [dims, setDims] = useState({});
   
   // Websocket for sending data via TCP
-  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;
-  ws.onopen = () => {
+ /*  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;  */
+   var ws = React.useRef(new WebSocket('ws://192.168.0.108:7000')).current;
+   ws.onopen = () => {
     // connection opened
     console.log("Connection open");
-    ws.send("App connected...");
+    ws.send("############");
   };
+  ws.onerror = () => {
+    console.log("error")
+  }
 
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId) ;

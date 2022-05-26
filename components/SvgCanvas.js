@@ -27,7 +27,7 @@ export default SvgCanvas = () => {
   
   // Websocket for sending data via TCP
  /*  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;  */
-   var ws = React.useRef(new WebSocket('ws://192.168.0.108:7000')).current;
+   var ws = React.useRef(new WebSocket('ws://192.168.178.42:7000')).current;
    ws.onopen = () => {
     // connection opened
     console.log("Connection open");

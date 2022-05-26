@@ -39,7 +39,7 @@ export default ToolsContainer = () => {
   const bodyPartHandler = (style, part) => {
     selectedFish.body = part === 'body' ? (style) : (selectedFish.body);
     selectedFish.fin = part === 'fin' ? (style) : (selectedFish.fin);
-    selectedFish.backFin = part === 'backFin' ? (style) : (selectedFish.backFin);
+    selectedFish.backFin = part === 'tail' ? (style) : (selectedFish.backFin);
 
     setAppData(appData => ({
       currentId: appData.currentId,
@@ -98,6 +98,25 @@ export default ToolsContainer = () => {
       storeData(appData)
     }
   }
+  const getColorCode = () => {
+    var makeColorCode = '0123456789ABCDEF';
+    var code = '#';
+    for (var count = 0; count < 6; count++) {
+       code =code+ makeColorCode[Math.floor(Math.random() * 16)];
+    }
+    console.log(code)
+    return code;
+ }
+  const randomFish = () =>{
+    frontColorHandler(getColorCode());
+    backColorHandler(getColorCode());
+    console.log(Math.floor(Math.random() * 4))
+    bodyPartHandler(Math.floor(Math.random() * 4),'body')
+    bodyPartHandler(Math.floor(Math.random() * 4),'fin')
+    bodyPartHandler(Math.floor(Math.random() * 4),'tail')
+    patternHandler(Math.floor(Math.random() * 4))
+
+  }
 
   return (
     <View style={LayoutStyles.toolsContainer}>
@@ -111,10 +130,10 @@ export default ToolsContainer = () => {
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'backFin')} isActive={selectedFish.backFin === 0 ? true : false} />
-          <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'backFin')} isActive={selectedFish.backFin === 1 ? true : false} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'backFin')} isActive={selectedFish.backFin === 2 ? true : false} />
-          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'backFin')} isActive={selectedFish.backFin === 3 ? true : false} />
+          <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.backFin === 0 ? true : false} />
+          <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'tail')} isActive={selectedFish.backFin === 1 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(2, 'tail')} isActive={selectedFish.backFin === 2 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(3, 'tail')} isActive={selectedFish.backFin === 3 ? true : false} />
         </View>
 
         <View style={LayoutStyles.toolRow}>
@@ -141,6 +160,7 @@ export default ToolsContainer = () => {
           <ToolButton title='new' onPress={() => newFish()} />
           <ToolButton title='delete' onPress={() => deleteFish()} />
           <ToolButton title='up' onPress={() => nextFish(1)} />
+          <ToolButton title='random ' onPress={() => randomFish()} />
         </View>
       </ScrollView>
     </View>

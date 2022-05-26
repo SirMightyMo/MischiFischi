@@ -7,6 +7,7 @@ class FishModel {
     this.color1 = color1;
     this.color2 = color2;
     this.pattern = pattern;
+    /* flag for 'sent' true/false ? */
   }
 }
 

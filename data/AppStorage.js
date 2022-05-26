@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-/* AsyncStorage.clear(); */
+AsyncStorage.clear(); 
 
 export const storeData = (data) => {
   try {

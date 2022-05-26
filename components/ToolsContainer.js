@@ -58,6 +58,7 @@ export default ToolsContainer = () => {
     }));
     storeData(appData);
   }
+  // funktion creates a new Fish with UUID and default colors and default parts
   const newFish = () => {
     let newFishArray = appData.fish;
     let UUID = uuid.v4();

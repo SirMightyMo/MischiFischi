@@ -5,7 +5,7 @@ import {Pattern, Path} from "react-native-svg";
 export const getPatternURL = (pattern) => {
     switch (pattern) {
         case 0:
-            break;  // No pattern
+            return "none";  // No pattern
         case 1:
             return "url(#zebra)";
         default:

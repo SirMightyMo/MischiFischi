@@ -2,18 +2,7 @@ import React, { useContext } from "react";
 import { G } from "react-native-svg";
 import { AppContext } from "../data/AppContext";
 import {getPatternURL} from './fishParts/Patterns';
-import Body1 from './fishParts/Body1';
-import Body2 from './fishParts/Body2';
-import Body3 from './fishParts/Body3';
-import Body4 from './fishParts/Body4';
-import Fins1 from './fishParts/Fins1';
-import Fins2 from './fishParts/Fins2';
-import Fins3 from './fishParts/Fins3';
-import Fins4 from './fishParts/Fins4';
-import Tail1 from './fishParts/Tail1';
-import Tail2 from './fishParts/Tail2';
-import Tail3 from './fishParts/Tail3';
-import Tail4 from './fishParts/Tail4';
+import * as FPart from './fishParts/FishParts';
 
 export default Fish = (props) => {
   const [appData, setAppData] = useContext(AppContext);
@@ -27,43 +16,61 @@ export default Fish = (props) => {
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
       case 0:
-        return <Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Body1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 1:
-        return <Body2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Body2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Body3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Body3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 3:
-        return <Body4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Body4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 4:
+        return <FPart.Body5 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 5:
+        return <FPart.Body6 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 6:
+        return <FPart.Body7 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
   }
   //function that returns the svg component corresponding to the int found in 'selectedFish.fin' 
   const tailToRender = (selectedFish) => {
-    switch (selectedFish.fin) {
+    switch (selectedFish.tail) {
       case 0:
-        return <Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Tail1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 1:
-        return <Tail2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Tail2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Tail3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Tail3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 3:
-        return <Tail4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Tail4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 4:
+        return <FPart.Tail5 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 5:
+        return <FPart.Tail6 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 6:
+        return <FPart.Tail7 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
   }
-  //function that returns the svg component corresponding to the int found in 'selectedFish.backFin' 
-  const backFinToRender = (selectedFish) => {
-    switch (selectedFish.backFin) {
+  //function that returns the svg component corresponding to the int found in 'selectedFish.fin' 
+  const finToRender = (selectedFish) => {
+    switch (selectedFish.fin) {
       case 0:
-        return <Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Fins1 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 1:
-        return <Fins2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Fins2 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 2:
-        return <Fins3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Fins3 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       case 3:
-        return <Fins4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+        return <FPart.Fins4 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 4:
+        return <FPart.Fins5 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 5:
+        return <FPart.Fins6 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
+      case 6:
+        return <FPart.Fins7 gradientCol1={selectedFish.color1} gradientCol2={selectedFish.color2} pattern={getPatternURL(selectedFish.pattern)} />;
       default:
         break;
     }
@@ -72,7 +79,7 @@ export default Fish = (props) => {
   return (
     <G>
       {tailToRender(selectedFish)}
-      {backFinToRender(selectedFish)}
+      {finToRender(selectedFish)}
       {bodyToRender(selectedFish)}
     </G>
   );

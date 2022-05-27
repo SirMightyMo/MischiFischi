@@ -1,37 +1,25 @@
 import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { Button, Platform, View, Alert } from "react-native";
+import { Button, View, Alert } from "react-native";
 import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 
 import Fish from "./Fish";
+import * as FPart from './fishParts/FishParts';
 import { getPatternJSX, getPatternSVG, getPatternURL } from './fishParts/Patterns';
-import { returnFishBody1 } from './fishParts/Body1';
-import { returnFishBody2 } from './fishParts/Body2';
-import { returnFishBody3 } from './fishParts/Body3';
-import { returnFishBody4 } from './fishParts/Body4';
-import { returnFishFins1 } from './fishParts/Fins1';
-import { returnFishFins2 } from './fishParts/Fins2';
-import { returnFishFins3 } from './fishParts/Fins3';
-import { returnFishFins4 } from './fishParts/Fins4';
-import { returnFishTail1 } from './fishParts/Tail1';
-import { returnFishTail2 } from './fishParts/Tail2';
-import { returnFishTail3 } from './fishParts/Tail3';
-import { returnFishTail4 } from './fishParts/Tail4';
-
 
 export default SvgCanvas = () => {
   // Saves dimensions of canvas-component
   const [dims, setDims] = useState({});
   
   // Websocket for sending data via TCP
- /*  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;  */
-   var ws = React.useRef(new WebSocket('ws://192.168.178.42:7000')).current;
+  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current; 
+   /* var ws = React.useRef(new WebSocket('ws://192.168.178.42:7000')).current; */
    ws.onopen = () => {
     // connection opened
-    console.log("Connection open");
-    ws.send("############");
+    console.log("Connected to Server...");
+    ws.send("App connected to server...");
   };
   ws.onerror = () => {
     console.log("error")
@@ -43,65 +31,77 @@ export default SvgCanvas = () => {
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
       case 0:
-        return returnFishBody1(getPatternURL(selectedFish.pattern));
+        return FPart.returnSvgPart(FPart.SVG_BODY1);
       case 1:
-        return returnFishBody2(getPatternURL(selectedFish.pattern));
+        return FPart.returnSvgPart(FPart.SVG_BODY2);
       case 2:
-        return returnFishBody3(getPatternURL(selectedFish.pattern));
+        return FPart.returnSvgPart(FPart.SVG_BODY3);
       case 3:
-        return returnFishBody4(getPatternURL(selectedFish.pattern));
+        return FPart.returnSvgPart(FPart.SVG_BODY4);
+      case 4:
+        return FPart.returnSvgPart(FPart.SVG_BODY5);
+      case 5:
+        return FPart.returnSvgPart(FPart.SVG_BODY6);
+      case 6:
+        return FPart.returnSvgPart(FPart.SVG_BODY7);
       default:
         break;
     }
   };
 
   const finsToRender = (selectedFish) => {
-    switch (selectedFish.backFin) {
+    switch (selectedFish.fin) {
       case 0:
-        return returnFishFins1();
+        return FPart.returnSvgPart(FPart.SVG_FINS1);
       case 1:
-        return returnFishFins2();
+        return FPart.returnSvgPart(FPart.SVG_FINS2);
       case 2:
-        return returnFishFins3();
+        return FPart.returnSvgPart(FPart.SVG_FINS3);
       case 3:
-        return returnFishFins4();
+        return FPart.returnSvgPart(FPart.SVG_FINS4);
+      case 4:
+        return FPart.returnSvgPart(FPart.SVG_FINS5);
+      case 5:
+        return FPart.returnSvgPart(FPart.SVG_FINS6);
+      case 6:
+        return FPart.returnSvgPart(FPart.SVG_FINS7);
       default:
         break;
     }
   };
 
   const tailToRender = (selectedFish) => {
-    switch (selectedFish.fin) {
+    switch (selectedFish.tail) {
       case 0:
-        return returnFishTail1();
+        return FPart.returnSvgPart(FPart.SVG_TAIL1);
       case 1:
-        return returnFishTail2();
+        return FPart.returnSvgPart(FPart.SVG_TAIL2);
       case 2:
-        return returnFishTail3();
+        return FPart.returnSvgPart(FPart.SVG_TAIL3);
       case 3:
-        return returnFishTail4();
+        return FPart.returnSvgPart(FPart.SVG_TAIL4);
+      case 4:
+        return FPart.returnSvgPart(FPart.SVG_TAIL5);
+      case 5:
+        return FPart.returnSvgPart(FPart.SVG_TAIL6);
+      case 6:
+        return FPart.returnSvgPart(FPart.SVG_TAIL7);
       default:
         break;
     }
   };
-
-/*   const patternJSX = (pattern) => {
-    return <ZebraPattern/>;
-  } */
-
-  /* Second color can not be selected on iOS so color2 needs to be same as color1 */
-  const color2 = Platform.OS === 'ios' ? selectedFish.color1 : selectedFish.color2;
 
   const exportSVG = () => {
 
     const data = `
 <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <defs>
-  <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="${selectedFish.color2}" />
-    <stop offset="100%" stop-color="${selectedFish.color1}" />
-  </linearGradient>
-  ${getPatternSVG(selectedFish.pattern)}
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="${selectedFish.color2}" />
+      <stop offset="100%" stop-color="${selectedFish.color1}" />
+    </linearGradient>
+    ${getPatternSVG(selectedFish.pattern)}
+    ${FPart.returnSvgStyle(getPatternURL(selectedFish.pattern))}
   </defs>
   ${finsToRender(selectedFish)}
   ${tailToRender(selectedFish)}
@@ -128,13 +128,7 @@ export default SvgCanvas = () => {
 
   return (
     /* View onLayout not necessarily in use; calculates dimensions of component */
-    <View style={LayoutStyles.canvasContainer} 
-      onLayout={(event) => {
-        const { x, y, width, height } = event.nativeEvent.layout;
-        setDims({ x, y, width, height });
-        //console.log(JSON.stringify(dims));
-      }}
-    >
+    <View style={LayoutStyles.canvasContainer} >
       <Video
         source={require('../assets/fish/bg.mp4')}
         /* posterSource */

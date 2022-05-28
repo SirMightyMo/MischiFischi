@@ -57,8 +57,13 @@ export default {
     alignItems: 'center',
     borderRadius: 5,
     borderColor: 'black',
-    borderWidth: 3,
-    marginRight:10
+    borderWidth: 2,
+    marginRight:10,
+    elevation: 6,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
     
   },
   toolRowCointainer:{
@@ -68,7 +73,7 @@ export default {
     flex:1,
     width: '100%',
      flexDirection: 'row',
-     borderColor: 'red',
+     borderColor: 'transparent',
      borderWidth: 1,
      marginTop:5,
      marginBottom:5,
@@ -77,8 +82,7 @@ export default {
     flex:1,
     width: '100%',
      flexDirection: 'column', 
-
-     borderColor: 'red',
+     borderColor: 'transparent',
      borderWidth: 1,
   },
   collectionScreen: {

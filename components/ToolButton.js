@@ -21,7 +21,7 @@ export default ToolButton = (props) => {
           resizeMode: 'contain',
           width: '100%',
           height: '100%',
-          borderColor: 'green',
+          borderColor: 'transparent',
           borderWidth: 2,
         }}
       />)

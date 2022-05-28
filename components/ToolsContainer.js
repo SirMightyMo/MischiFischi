@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { View } from "react-native";
+import React, { useContext, useState } from "react";
+import { View,Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
@@ -22,7 +22,6 @@ export default ToolsContainer = () => {
 
     setAppData(appData => ({
       currentId: appData.currentId,
-      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
@@ -32,7 +31,6 @@ export default ToolsContainer = () => {
 
     setAppData(appData => ({
       currentId: appData.currentId,
-      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
@@ -45,7 +43,6 @@ export default ToolsContainer = () => {
 
     setAppData(appData => ({
       currentId: appData.currentId,
-      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
@@ -55,7 +52,6 @@ export default ToolsContainer = () => {
     selectedFish.pattern = patternId;
     setAppData(appData => ({
       currentId: appData.currentId,
-      idCounter: appData.idCounter,
       fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
@@ -67,7 +63,6 @@ export default ToolsContainer = () => {
     newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0))
     setAppData(appData => ({
       currentId: UUID,
-      idCounter: appData.idCounter + 1,
       fish: newFishArray,
     }));
     storeData(appData);
@@ -76,7 +71,6 @@ export default ToolsContainer = () => {
     if (direction === -1 && appData.fish.indexOf(selectedFish) > 0) {
       setAppData(appData => ({
         currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
-        idCounter: appData.idCounter,
         fish: appData.fish,
       }));
       storeData(appData);
@@ -84,7 +78,6 @@ export default ToolsContainer = () => {
     else if (direction === 1 && appData.fish.indexOf(selectedFish) < appData.fish.length - 1) {
       setAppData(appData => ({
         currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
-        idCounter: appData.idCounter,
         fish: appData.fish,
       }));
       storeData(appData);
@@ -94,7 +87,6 @@ export default ToolsContainer = () => {
     if (appData.fish.indexOf(selectedFish) > 0) {
       setAppData(appData => ({
         currentId: appData.fish[appData.fish.indexOf(selectedFish) - 1].id,
-        idCounter: appData.idCounter,
         fish: appData.fish.filter(fish => fish.id !== selectedFish.id),
       }));
       storeData(appData)
@@ -115,24 +107,38 @@ export default ToolsContainer = () => {
     bodyPartHandler(Math.floor(Math.random() * 7), 'fin')
     bodyPartHandler(Math.floor(Math.random() * 7), 'tail')
     patternHandler(Math.floor(Math.random() * 2))
-
   }
+  const [bodyToolPos, setbodyToolPos] = useState(0);
 
+  const bodyToolPosHandler = (direction) => {
+    if (direction = 'back' && selectedFish.body > 0) {
+      bodyPartHandler(selectedFish.body - 1, 'body')
+      setbodyToolPos(bodyToolPos - 10)
+    } else if (direction = 'forward' && selectedFish.body < 5) {
+      bodyPartHandler(selectedFish.body + 1, 'body')
+      setbodyToolPos(bodyToolPos + 10)
+    }
+    else {
+      console.log('no move')
+    }
+    console.log(bodyToolPos)
+  }
   return (
     <View style={LayoutStyles.toolsContainer}>
       <ScrollView style={{ width: '100%' }}>
 
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderColor: 'transparent', borderWidth: 2 }}>
           <Button
-            buttonStyle={{ backgroundColor: 'gray', width: 40 }}
+            buttonStyle={{ backgroundColor: 'transparent', width: 40 }}
             icon={<Ionicons name='chevron-back-outline' size={36}
               color='#111111'
-              onPress={selectedFish.body > 0 ? () => bodyPartHandler(selectedFish.body - 1, 'body') : console.log('end of array')} />}
+              onPress={() => bodyToolPosHandler('back')} />}
           />
           <ScrollView
             style={LayoutStyles.toolRow}
             horizontal={true}
             contentContainerStyle={LayoutStyles.toolRowCointainer}
+            contentOffset={{ x: bodyToolPos, y: 0 }}
           >
             <ToolButton source={require('../assets/fish/body1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
             <ToolButton source={require('../assets/fish/body2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
@@ -143,12 +149,14 @@ export default ToolsContainer = () => {
             <ToolButton source={require('../assets/fish/body3.png')} onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
           </ScrollView>
           <Button
-            buttonStyle={{ backgroundColor: 'gray', width: 40 }}
+            buttonStyle={{ backgroundColor: 'transparent', width: 40 }}
             icon={<Ionicons name='chevron-forward-outline' size={36}
               color='#111111'
-              onPress={selectedFish.body < 3 ? () => bodyPartHandler(selectedFish.body + 1, 'body') : console.log('end of array')} />}
+              onPress={() => bodyToolPosHandler('forward')} />}
           />
         </View>
+
+
         <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer}>
           <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.tail === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'tail')} isActive={selectedFish.tail === 1 ? true : false} />
@@ -177,7 +185,9 @@ export default ToolsContainer = () => {
         </ScrollView>
 
         <View style={LayoutStyles.toolColumn}>
+          <Text> Verlauf Farbe 1</Text>
           <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
+          <Text> Verlauf Farbe 2</Text>
           <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
         </View>
 

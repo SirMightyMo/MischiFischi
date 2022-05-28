@@ -17,7 +17,7 @@ export default ColorTool = props => {
 
     return (
         <View style={styles.container}>
-            <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width  }}>
+            <View style={{ marginHorizontal: 24, marginTop: 10, height: 12, width: width  }}>
                 <SliderHuePicker
                     ref={view => { sliderHuePicker = view; }}
                     oldColor={props.oldColor}
@@ -27,7 +27,7 @@ export default ColorTool = props => {
                     onColorChange={changeColor}
                 />
             </View>
-            <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width  }}>
+            <View style={{ marginHorizontal: 24, marginTop: 10, height: 12, width: width  }}>
                 <SliderSaturationPicker
                     ref={view => { sliderSaturationPicker = view; }}
                     oldColor={props.oldColor}
@@ -42,7 +42,7 @@ export default ColorTool = props => {
                     }}
                 />
             </View>
-            <View style={{ marginHorizontal: 24, marginTop: 20, height: 12, width: width }}>
+            <View style={{ marginHorizontal: 24, marginTop: 10, marginBottom: 10, height: 12, width: width }}>
                 <SliderValuePicker
                     ref={view => { sliderValuePicker = view; }}
                     oldColor={props.oldColor}
@@ -62,6 +62,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
+        borderColor:'black',
+        borderWidth:2,
+        borderRadius :10,
+        justifyContent:'center',
+        height:'100%'
+
     },
     thumb: {
         width: 20,

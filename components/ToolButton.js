@@ -26,6 +26,11 @@ export default ToolButton = (props) => {
         }}
       />)
     }
+    else if(props.icon !== undefined ){
+      return (
+        props.icon
+      )
+    }
   }
 
   return (

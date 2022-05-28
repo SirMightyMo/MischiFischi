@@ -9,6 +9,7 @@ import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
 import uuid from 'react-native-uuid'
 import { Ionicons } from '@expo/vector-icons'
+import { Button } from "react-native-elements";
 
 
 export default ToolsContainer = () => {
@@ -120,9 +121,14 @@ export default ToolsContainer = () => {
   return (
     <View style={LayoutStyles.toolsContainer}>
       <ScrollView style={{ width: '100%' }}>
-        
-        <View style={{flex:1, flexDirection:'row', justifyContent:'center',alignItems:'center' , borderColor:'transparent' , borderWidth:2 }}>
-        <Ionicons name='chevron-back-outline' size={36} color='#111111' />
+
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderColor: 'transparent', borderWidth: 2 }}>
+          <Button
+            buttonStyle={{ backgroundColor: 'gray', width: 40 }}
+            icon={<Ionicons name='chevron-back-outline' size={36}
+              color='#111111'
+              onPress={selectedFish.body > 0 ? () => bodyPartHandler(selectedFish.body - 1, 'body') : console.log('end of array')} />}
+          />
           <ScrollView
             style={LayoutStyles.toolRow}
             horizontal={true}
@@ -133,7 +139,12 @@ export default ToolsContainer = () => {
             <ToolButton source={require('../assets/fish/body3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
             <ToolButton source={require('../assets/fish/body4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
           </ScrollView>
-          <Ionicons name='chevron-forward-outline' size={36} color='#111111' />
+          <Button
+            buttonStyle={{ backgroundColor: 'gray', width: 40 }}
+            icon={<Ionicons name='chevron-forward-outline' size={36}
+              color='#111111'
+              onPress={selectedFish.body < 3 ? () => bodyPartHandler(selectedFish.body + 1, 'body') : console.log('end of array')} />}
+          />
         </View>
         <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer}>
           <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.backFin === 0 ? true : false} />

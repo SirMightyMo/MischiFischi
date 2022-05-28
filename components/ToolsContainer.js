@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { View, Text } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from 'react-native-gesture-handler'
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import { storeData } from '../data/AppStorage';
@@ -11,6 +11,7 @@ import uuid from 'react-native-uuid'
 import { Ionicons } from '@expo/vector-icons'
 import { Button } from "react-native-elements";
 import { FontAwesome5 } from '@expo/vector-icons';
+import RNFadedScrollView from 'expo-faded-scrollview'
 
 
 export default ToolsContainer = () => {
@@ -126,6 +127,7 @@ export default ToolsContainer = () => {
   }
   return (
     <View style={LayoutStyles.toolsContainer}>
+      
       <ScrollView style={{ width: '100%' }}>
 
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderColor: 'transparent', borderWidth: 2 }}>
@@ -157,7 +159,14 @@ export default ToolsContainer = () => {
         </View>
 
 
-        <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer}>
+        <RNFadedScrollView 
+        style={LayoutStyles.toolRow} 
+        horizontal={true} 
+        contentContainerStyle={LayoutStyles.toolRowCointainer}
+        allowEndFade={true}
+        allowStartFade={true}
+        fadeSize={50}
+        >
           <ToolButton title='1' source={require('../assets/fish/tail1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.tail === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(1, 'tail')} isActive={selectedFish.tail === 1 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(2, 'tail')} isActive={selectedFish.tail === 2 ? true : false} />
@@ -165,7 +174,7 @@ export default ToolsContainer = () => {
           <ToolButton title='5' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(4, 'tail')} isActive={selectedFish.tail === 4 ? true : false} />
           <ToolButton title='6' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(5, 'tail')} isActive={selectedFish.tail === 5 ? true : false} />
           <ToolButton title='7' source={require('../assets/fish/tail2.png')} onPress={() => bodyPartHandler(6, 'tail')} isActive={selectedFish.tail === 6 ? true : false} />
-        </ScrollView>
+        </RNFadedScrollView>
 
         <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer}>
           <ToolButton title='1' source={require('../assets/fish/backfins1.png')} onPress={() => bodyPartHandler(0, 'fin')} isActive={selectedFish.fin === 0 ? true : false} />

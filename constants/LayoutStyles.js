@@ -20,8 +20,17 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buildContainer: {
+  buildContainerHorizonatal: {
     flex: 1,
+    flexDirection:'row',
+    backgroundColor: Colors.background_dark,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  
+  buildContainerVertical: {
+    flex: 1,
+    flexDirection:'column',
     backgroundColor: Colors.background_dark,
     alignItems: 'center',
     justifyContent: 'center',

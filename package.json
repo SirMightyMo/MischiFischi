@@ -38,6 +38,7 @@
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-navigation": "^7.27.1",
+    "react-native-qrcode-svg": "^6.1.2",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-svg": "12.1.1",

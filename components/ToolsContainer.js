@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View,Text } from "react-native";
+import { View, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
@@ -10,6 +10,7 @@ import ToolButton from "./ToolButton";
 import uuid from 'react-native-uuid'
 import { Ionicons } from '@expo/vector-icons'
 import { Button } from "react-native-elements";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 
 export default ToolsContainer = () => {
@@ -111,12 +112,12 @@ export default ToolsContainer = () => {
   const [bodyToolPos, setbodyToolPos] = useState(0);
 
   const bodyToolPosHandler = (direction) => {
-    if (direction = 'back' && selectedFish.body > 0) {
+    if (direction === 'back' && selectedFish.body > 0) {
       bodyPartHandler(selectedFish.body - 1, 'body')
-      setbodyToolPos(bodyToolPos - 10)
-    } else if (direction = 'forward' && selectedFish.body < 5) {
+      setbodyToolPos(bodyToolPos - 40)
+    } else if (direction === 'forward' && selectedFish.body < 6) {
       bodyPartHandler(selectedFish.body + 1, 'body')
-      setbodyToolPos(bodyToolPos + 10)
+      setbodyToolPos(bodyToolPos + 40)
     }
     else {
       console.log('no move')
@@ -129,10 +130,10 @@ export default ToolsContainer = () => {
 
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderColor: 'transparent', borderWidth: 2 }}>
           <Button
-            buttonStyle={{ backgroundColor: 'transparent', width: 40 }}
-            icon={<Ionicons name='chevron-back-outline' size={36}
-              color='#111111'
-              onPress={() => bodyToolPosHandler('back')} />}
+            type="clear"
+            onPress={() => bodyToolPosHandler('back')}
+            buttonStyle={{ width: 40, }}
+            icon={<Ionicons name='chevron-back-outline' size={36}color='#111111' />}
           />
           <ScrollView
             style={LayoutStyles.toolRow}
@@ -150,9 +151,8 @@ export default ToolsContainer = () => {
           </ScrollView>
           <Button
             buttonStyle={{ backgroundColor: 'transparent', width: 40 }}
-            icon={<Ionicons name='chevron-forward-outline' size={36}
-              color='#111111'
-              onPress={() => bodyToolPosHandler('forward')} />}
+            onPress={() => bodyToolPosHandler('forward')}
+            icon={<Ionicons name='chevron-forward-outline' size={36} color='#111111' />}
           />
         </View>
 
@@ -192,11 +192,11 @@ export default ToolsContainer = () => {
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <ToolButton title='down' onPress={() => nextFish(-1)} />
-          <ToolButton title='new' onPress={() => newFish()} />
-          <ToolButton title='delete' onPress={() => deleteFish()} />
-          <ToolButton title='up' onPress={() => nextFish(1)} />
-          <ToolButton title='random' onPress={() => randomFish()} />
+          <Button type="clear" icon={<Ionicons name='chevron-back-outline' size={36} color='#111111' />} onPress={() => nextFish(-1)} />
+          <Button type="clear" icon={<FontAwesome5 name="plus-circle" size={24} color="black" />} onPress={() => newFish()} />
+          <Button type="clear" icon={<Ionicons name='md-trash-sharp' size={36} color='#111111' />} onPress={() => deleteFish()} />
+          <Button type="clear" icon={<Ionicons name='chevron-forward-outline' size={36} color='#111111' />} onPress={() => nextFish(1)} />
+          <Button type="clear" icon={<FontAwesome5 name="dice" size={24} color="black" />} onPress={() => randomFish()} />
         </View>
       </ScrollView>
     </View>

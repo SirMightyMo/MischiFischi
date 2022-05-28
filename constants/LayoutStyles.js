@@ -58,6 +58,18 @@ export default {
     paddingLeft:20,
     paddingRight:20,
   },
+  toolRow:{
+    flex:1,
+    width: '100%',
+     flexDirection: 'row',
+     borderColor: 'transparent',
+     borderWidth: 1,
+     marginTop:5,
+     marginBottom:5,
+  },
+  toolRowCointainer:{
+    height: '100%',
+  },
   toolButton:{
     flex:1,
     width:'100%',
@@ -68,31 +80,11 @@ export default {
     borderColor: 'black',
     borderWidth: 2,
     marginRight:10,
-    elevation: 6,
+    elevation:20,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 20,
-    
-  },
-  toolRowCointainer:{
-    height: '100%',
-  },
-  toolRow:{
-    flex:1,
-    width: '100%',
-     flexDirection: 'row',
-     borderColor: 'transparent',
-     borderWidth: 1,
-     marginTop:5,
-     marginBottom:5,
-  },
-  toolColumn:{
-    flex:1,
-    width: '100%',
-     flexDirection: 'column', 
-     borderColor: 'transparent',
-     borderWidth: 1,
   },
   collectionScreen: {
     flex: 1,
@@ -120,7 +112,7 @@ export default {
     alignItems: 'center',
     borderRadius: 5,
     borderColor: 'black',
-    borderWidth: 3,
+    borderWidth: 2,
     margin:10
   },
   text: {

@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "App for MoSy",
+    "githubUrl": "https://github.com/SirMightyMo/MischiFischi"
   }
 }

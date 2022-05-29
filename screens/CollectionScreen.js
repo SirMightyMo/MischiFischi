@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Pressable, Modal } from "react-native";
+import { View, Text, StyleSheet, Pressable, Modal, SafeAreaView } from "react-native";
 import CollectionContainer from "../components/CollectionContainer";
 import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
@@ -8,7 +8,7 @@ import ShareScreen from "./ShareScreen";
 export default CollectionScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={LayoutStyles.collectionScreen}>
+    <SafeAreaView style={LayoutStyles.collectionScreen}>
       <Text>your collection</Text>
       <CollectionContainer />
 
@@ -19,6 +19,6 @@ export default CollectionScreen = () => {
       <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
         <Text style={LayoutStyles.normalButtonText}>SHARE</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 };

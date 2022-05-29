@@ -93,6 +93,7 @@ export const Canvas = () => {
     selectedFish.body = Math.floor(Math.random() * 7)
     selectedFish.fin = Math.floor(Math.random() * 7)
     selectedFish.tail = Math.floor(Math.random() * 7)
+    selectedFish.pattern = Math.floor(Math.random() * 2)
 
     setAppData(appData => ({
       currentId: appData.currentId,

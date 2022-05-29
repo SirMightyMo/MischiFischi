@@ -1,6 +1,6 @@
 import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { Button, View, Alert, Pressable, Text, useWindowDimensions, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { Button, View, Alert, Pressable, Text, useWindowDimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
@@ -145,7 +145,7 @@ export default ShareScreen = (props) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} >
-      <View style={LayoutStyles.modalShareView} >
+      <KeyboardAvoidingView style={LayoutStyles.modalShareView} behavior="padding">
           
         <LinearGradient colors={["#00d7ff", "#193fc6" ]} style={LayoutStyles.modalGradient} >
             
@@ -164,7 +164,7 @@ export default ShareScreen = (props) => {
           <Ionicons style={{color: "#00000050"}} name="ios-close-circle" size={25} />
         </Pressable>
 
-      </View>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   )
 };

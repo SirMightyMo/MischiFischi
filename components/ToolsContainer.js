@@ -6,6 +6,8 @@ import { AppContext } from "../data/AppContext";
 import { storeData } from '../data/AppStorage';
 import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
+import { LinearGradient } from 'expo-linear-gradient';
+import Colors from "../constants/Colors"
 
 import { Ionicons } from '@expo/vector-icons'
 import { Button } from "react-native-elements";
@@ -76,7 +78,7 @@ export default ToolsContainer = () => {
   }
   return (
     <View style={LayoutStyles.toolsContainer}>
-      
+      <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.buildGradient} >
       <ScrollView style={{ width: '100%' }}>
 
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderColor: 'transparent', borderWidth: 2 }}>
@@ -149,6 +151,7 @@ export default ToolsContainer = () => {
           <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
         </View>
       </ScrollView>
+      </LinearGradient>
     </View>
   );
 };

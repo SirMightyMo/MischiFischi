@@ -148,7 +148,7 @@ export default ShareScreen = (props) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%"}}>
         <View style={LayoutStyles.modalShareView}>
             
-          <LinearGradient colors={["#00d7ff", "#193fc6" ]} style={LayoutStyles.modalGradient} >
+          <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.modalGradient} >
               
               <SvgCanvas borderTopLeftRadius={20} borderTopRightRadius={20} />
 

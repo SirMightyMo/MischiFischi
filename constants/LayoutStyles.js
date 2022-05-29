@@ -60,10 +60,7 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     borderTopLeftRadius: 60,
-    borderWidth:1,
-    paddingTop:20,
-    paddingLeft:20,
-    paddingRight:20,
+    overflow: 'hidden'
   },
   toolRow:{
     flex:1,
@@ -150,6 +147,11 @@ export default {
     borderRadius: 20,
     /* padding: 35, */
   },
+  buildGradient: {
+    width: '100%',
+    paddingTop:20,
+    paddingHorizontal: 20
+  },
   overlayButton: {
     width: 25,
     height: 25,
@@ -179,5 +181,15 @@ export default {
     fontWeight: "bold",
     textAlign: "center"
   },
+  btnShadow: {
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    
+    elevation: 4,
+  }
 
 }

@@ -6,5 +6,7 @@ export default {
   buttonHighlight:  '#333399',
   highlight: '#00B4D8',
   normalButton: '#00A3A3',
-  normalButtonPressed: '#25c4c4'
+  normalButtonPressed: '#25c4c4',
+  bgGradientTop: '#00d7ff',
+  bgGradientBottom: '#193fc6',
 };

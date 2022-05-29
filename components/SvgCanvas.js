@@ -116,19 +116,19 @@ export const Canvas = () => {
       <View style={{ width: '100%', height: '100%' }}>
         <SvgCanvas />
       </View>
-      <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', right: '90%', elevation: 2, position: "absolute" }]}>
+      <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', right: '90%', elevation: 2, position: "absolute", shadowColor: "#000" }, LayoutStyles.btnShadow]}>
         <Ionicons name='chevron-back-outline' size={42} color='#EEEEEE' />
       </Pressable>
-      <Pressable onPress={() => nextFish(1)} style={[{ top: '50%', right: '0%', elevation: 2, position: "absolute" }]}>
+      <Pressable onPress={() => nextFish(1)} style={[{ top: '50%', right: '0%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='chevron-forward-outline' size={42} color='#EEEEEE' />
       </Pressable>
-      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', right: '85%', elevation: 2, position: "absolute" }]}>
+      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', right: '85%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='md-trash-sharp' size={26} color='#EEEEEE' />
       </Pressable>
-      <Pressable onPress={() => randomFish()} style={[{ top: '90%', right: '5%', elevation: 2, position: "absolute" }]}>
+      <Pressable onPress={() => randomFish()} style={[{ bottom: '15%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <FontAwesome5 name="dice" size={24} color="#EEEEEE" />
       </Pressable>
-      <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }]}>
+      <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
       </Pressable>
     </View>

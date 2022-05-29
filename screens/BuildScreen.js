@@ -15,8 +15,13 @@ export default BuildScreen = () => {
 
   return (
     <View style={height > 380 ? LayoutStyles.buildContainerVertical : LayoutStyles.buildContainerHorizonatal} >
-      <Canvas />
-      <ToolsContainer />
+      <View style={{flex: 1, width: "100%", height: "100%"}}>
+        <Canvas />
+        <View style={{flex: 0.78}}></View>
+      </View>
+      <View style={{flex: 1, width: "100%", height: "50%", position: "absolute", bottom: 0}}>
+        <ToolsContainer />
+      </View>
     </View>
   );
 };

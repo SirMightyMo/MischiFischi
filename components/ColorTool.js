@@ -62,11 +62,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        borderColor:'black',
+        borderColor: 'rgba(0, 0, 0, 0.5)',
         borderWidth:2,
         borderRadius :10,
         justifyContent:'center',
-        height:'100%'
+        height:'100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)'
 
     },
     thumb: {

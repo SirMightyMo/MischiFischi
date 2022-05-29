@@ -145,8 +145,8 @@ export default ShareScreen = (props) => {
 
   return (
     <SafeAreaView>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} >
-        <KeyboardAvoidingView style={LayoutStyles.modalShareView} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%"}}>
+        <View style={LayoutStyles.modalShareView}>
             
           <LinearGradient colors={["#00d7ff", "#193fc6" ]} style={LayoutStyles.modalGradient} >
               
@@ -165,7 +165,7 @@ export default ShareScreen = (props) => {
             <Ionicons style={{color: "#00000050"}} name="ios-close-circle" size={25} />
           </Pressable>
 
-        </KeyboardAvoidingView>
+        </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>
   )

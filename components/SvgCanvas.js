@@ -5,9 +5,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
-import { Ionicons } from "@expo/vector-icons";
-import { Button } from '@rneui/base';
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { storeData } from '../data/AppStorage';
+import uuid from 'react-native-uuid'
+import FishModel from "../models/FishModel";
 
 import Fish from "./Fish";
 import * as FPart from './fishParts/FishParts';
@@ -78,14 +79,67 @@ export const Canvas = () => {
       storeData(appData)
     }
   }
+  const getHexColor = () => {
+    var makeColorCode = '0123456789ABCDEF';
+    var color = '#';
+    for (var count = 0; count < 6; count++) {
+      color = color + makeColorCode[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  const randomFish = () => {
+    selectedFish.color1 = getHexColor();
+    selectedFish.color2 = getHexColor();
+    selectedFish.body = Math.floor(Math.random() * 7)
+    selectedFish.fin = Math.floor(Math.random() * 7)
+    selectedFish.tail = Math.floor(Math.random() * 7)
+
+    setAppData(appData => ({
+      currentId: appData.currentId,
+      fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
+    }));
+    storeData(appData);
+/*
+    frontColorHandler(getHexColor());
+    backColorHandler(getHexColor());
+    bodyPartHandler(Math.floor(Math.random() * 7), 'body')
+    bodyPartHandler(Math.floor(Math.random() * 7), 'fin')
+    bodyPartHandler(Math.floor(Math.random() * 7), 'tail')
+    patternHandler(Math.floor(Math.random() * 2))
+    */
+  }
+  const newFish = () => {
+    let newFishArray = appData.fish;
+    let UUID = uuid.v4();
+    newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0))
+    setAppData(appData => ({
+      currentId: UUID,
+      fish: newFishArray,
+    }));
+    storeData(appData);
+  }
   return (
-    /* TODO: Insert Buttons for canvas overlay */
-
     <View style={LayoutStyles.canvasContainer} >
+      <View style={{ width: '100%', height: '100%' }}>
+        <SvgCanvas />
+      </View>
+      <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', right: '90%', elevation: 2, position: "absolute" }]}>
+        <Ionicons name='chevron-back-outline' size={42} color='#EEEEEE' />
+      </Pressable>
+      <Pressable onPress={() => nextFish(1)} style={[{ top: '50%', right: '0%', elevation: 2, position: "absolute" }]}>
+        <Ionicons name='chevron-forward-outline' size={42} color='#EEEEEE' />
+      </Pressable>
+      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', right: '85%', elevation: 2, position: "absolute" }]}>
+        <Ionicons name='md-trash-sharp' size={26} color='#EEEEEE' />
+      </Pressable>
+      <Pressable onPress={() => randomFish()} style={[{ top: '90%', right: '5%', elevation: 2, position: "absolute" }]}>
+        <FontAwesome5 name="dice" size={24} color="#EEEEEE" />
+      </Pressable>
+      <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }]}>
+        <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
+      </Pressable>
 
-      <SvgCanvas />
-      <Button type="clear" icon={<Ionicons name='chevron-back-outline' size={36} color='#111111' style={{ alignSelf: 'flex-start', top: 0, right: 0, elevation: 2, position: "absolute" }} />} onPress={() => nextFish(-1)} />
-      <Button type="clear" icon={<Ionicons name='chevron-forward-outline' size={36} color='#111111' style={{ alignSelf: 'flex-end', top: 0, right: 0, elevation: 2, position: "absolute" }} />} onPress={() => nextFish(1)} />
+
 
     </View>
 
@@ -94,3 +148,15 @@ export const Canvas = () => {
 }
 
 
+/*
+
+          <Button type="clear" icon={<FontAwesome5 name="plus-circle" size={24} color="black" />} onPress={() => newFish()} />
+          
+          
+          <Button type="clear" icon={} onPress={() => randomFish()} />
+<Button type="clear" icon={<Ionicons name='md-trash-sharp' size={36} color='#111111' />} onPress={() => deleteFish()} />
+<Button type="clear" style={[{ alignSelf: 'flex-start', top: 0, right: 0, elevation: 2, position: "absolute" }]} icon={<Ionicons name='chevron-back-outline' size={36} color='#111111' />} onPress={() => nextFish(-1)} />
+      <Button type="clear" style={{ alignSelf: 'flex-end', top: -50, right: -30, elevation: 3, position: "absolute" }} icon={<Ionicons name='chevron-forward-outline' size={36} color='#111111' />} onPress={() => nextFish(1)} />
+
+
+      */

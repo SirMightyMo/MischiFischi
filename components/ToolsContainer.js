@@ -4,10 +4,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import { storeData } from '../data/AppStorage';
-import FishModel from "../models/FishModel";
 import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
-import uuid from 'react-native-uuid'
+
 import { Ionicons } from '@expo/vector-icons'
 import { Button } from "react-native-elements";
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -60,33 +59,8 @@ export default ToolsContainer = () => {
     storeData(appData);
   }
   // funktion creates a new Fish with UUID and default colors and default parts
-  const newFish = () => {
-    let newFishArray = appData.fish;
-    let UUID = uuid.v4();
-    newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0))
-    setAppData(appData => ({
-      currentId: UUID,
-      fish: newFishArray,
-    }));
-    storeData(appData);
-  }
   
-  const getHexColor = () => {
-    var makeColorCode = '0123456789ABCDEF';
-    var color = '#';
-    for (var count = 0; count < 6; count++) {
-      color = color + makeColorCode[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-  const randomFish = () => {
-    frontColorHandler(getHexColor());
-    backColorHandler(getHexColor());
-    bodyPartHandler(Math.floor(Math.random() * 7), 'body')
-    bodyPartHandler(Math.floor(Math.random() * 7), 'fin')
-    bodyPartHandler(Math.floor(Math.random() * 7), 'tail')
-    patternHandler(Math.floor(Math.random() * 2))
-  }
+  
   const [bodyToolPos, setbodyToolPos] = useState(0);
 
   const bodyToolPosHandler = (direction) => {
@@ -175,14 +149,6 @@ export default ToolsContainer = () => {
           <ColorTool oldColor={selectedFish.color1} colorHandler={color => frontColorHandler(color)} />
           <Text> Verlauf Farbe 2</Text>
           <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
-        </View>
-
-        <View style={LayoutStyles.toolRow}>
-          
-          <Button type="clear" icon={<FontAwesome5 name="plus-circle" size={24} color="black" />} onPress={() => newFish()} />
-          <Button type="clear" icon={<Ionicons name='md-trash-sharp' size={36} color='#111111' />} onPress={() => deleteFish()} />
-          
-          <Button type="clear" icon={<FontAwesome5 name="dice" size={24} color="black" />} onPress={() => randomFish()} />
         </View>
       </ScrollView>
     </View>

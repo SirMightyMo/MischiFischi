@@ -173,7 +173,6 @@ export default {
     marginVertical: 20,
     marginHorizontal: 20,
     elevation: 2,
-    backgroundColor: "#00A3A3"
   },
   normalButtonText: {
     color: "white",

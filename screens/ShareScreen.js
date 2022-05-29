@@ -1,12 +1,13 @@
 import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { Button, View, Alert, Pressable, Text, useWindowDimensions } from "react-native";
+import { Button, View, Alert, Pressable, Text, useWindowDimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import { MultilineTextInput } from '../components/TextInput';
 import { Ionicons } from "@expo/vector-icons";
 import  { SvgCanvas } from "../components/SvgCanvas";
+import Colors from "../constants/Colors";
 
 import Fish from "../components/Fish";
 import * as FPart from '../components/fishParts/FishParts';
@@ -143,25 +144,27 @@ export default ShareScreen = (props) => {
   }
 
   return (
-    <View style={LayoutStyles.modalShareView} >
-        
-      <LinearGradient colors={["#00d7ff", "#193fc6" ]} style={LayoutStyles.modalGradient} >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} >
+      <KeyboardAvoidingView style={LayoutStyles.modalShareView} behavior="padding">
           
-          <SvgCanvas borderTopLeftRadius={20} borderTopRightRadius={20} />
+        <LinearGradient colors={["#00d7ff", "#193fc6" ]} style={LayoutStyles.modalGradient} >
+            
+            <SvgCanvas borderTopLeftRadius={20} borderTopRightRadius={20} />
 
-          <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
-            <MultilineTextInput />
-            <Pressable style={LayoutStyles.normalButton} onPress={() => confirmTransmission()} >
-              <Text style={LayoutStyles.normalButtonText}>SEND</Text>
-            </Pressable>
-          </View>
-      
-      </LinearGradient>
+            <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
+              <MultilineTextInput />
+              <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
+                <Text style={LayoutStyles.normalButtonText}>SEND</Text>
+              </Pressable>
+            </View>
+        
+        </LinearGradient>
 
-      <Pressable onPress={() => props.setModalVisible(!props.modalVisible)} style={[{alignSelf: 'flex-end', top: 15, right: 15, elevation: 2, position: "absolute"}]}>
-        <Ionicons style={{color: "#00000050"}} name="ios-close-circle" size={25} />
-      </Pressable>
+        <Pressable onPress={() => props.setModalVisible(!props.modalVisible)} android_disableSound={true} style={[{alignSelf: 'flex-end', top: 15, right: 15, elevation: 2, position: "absolute"}]}>
+          <Ionicons style={{color: "#00000050"}} name="ios-close-circle" size={25} />
+        </Pressable>
 
-    </View>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   )
 };

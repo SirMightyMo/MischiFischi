@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { View, Text, StyleSheet, Pressable, Modal } from "react-native";
 import CollectionContainer from "../components/CollectionContainer";
+import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
 import ShareScreen from "./ShareScreen";
 
@@ -15,7 +16,7 @@ export default CollectionScreen = () => {
         <ShareScreen setModalVisible={setModalVisible} modalVisible={modalVisible} />
       </Modal>
 
-      <Pressable style={LayoutStyles.normalButton} onPress={() => setModalVisible(true)} >
+      <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
         <Text style={LayoutStyles.normalButtonText}>SHARE</Text>
       </Pressable>
     </View>

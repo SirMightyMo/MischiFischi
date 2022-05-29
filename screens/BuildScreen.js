@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import SvgCanvas from "../components/SvgCanvas";
+import  { Canvas } from "../components/SvgCanvas";
 import ToolsContainer from "../components/ToolsContainer";
 import LayoutStyles from "../constants/LayoutStyles";
 import { useDimensions } from '@react-native-community/hooks';
@@ -15,15 +15,7 @@ export default BuildScreen = () => {
 
   return (
     <View style={height > 380 ? LayoutStyles.buildContainerVertical : LayoutStyles.buildContainerHorizonatal} >
-      
-      <SvgCanvas />
-      
-        {/*
-        <Text>
-        <QrCodeMaker textToQr='hello world' />
-        </Text> 
-        */}
-      
+      <Canvas />
       <ToolsContainer />
     </View>
   );

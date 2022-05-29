@@ -39,11 +39,18 @@ export default {
   {
     flex: 1,
     width: windowWidth,
-    backgroundColor: Colors.background_dark,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
+    /* backgroundColor: Colors.background_dark, */
+    /* alignItems: 'center', */
+    /* justifyContent: 'center', */
+    /* borderWidth: 1, */
+    /* borderColor: 'black', */
+  },
+  svgCanvas: {
+    flex: 1, 
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%"
   },
   toolsContainer:
   {
@@ -121,14 +128,57 @@ export default {
     fontSize: 18,
     fontWeight: 'bold',
   },
-  backgroundVideo: {
-    height: windowHeight,
+  modalShareView: {
+    margin: 10,
+    backgroundColor: "white",
+    borderRadius: 20,
+    /* padding: 35, */
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalGradient: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-start",
+    borderRadius: 20,
+    /* padding: 35, */
+  },
+  overlayButton: {
+    width: 25,
+    height: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 100,
+    elevation: 2,
+    backgroundColor: "#00000015",
+  },
+  videoStyles: {
+    width: "100%",
+    height: "100%",
     position: "absolute",
     top: 0,
-    left: 0,
-    alignItems: "stretch",
-    bottom: 0,
-    right: 0
-  }
+    left: 0
+  },
+  normalButton: {
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginVertical: 20,
+    marginHorizontal: 20,
+    elevation: 2,
+    backgroundColor: "#00A3A3"
+  },
+  normalButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
 
 }

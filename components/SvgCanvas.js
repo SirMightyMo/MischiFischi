@@ -99,14 +99,6 @@ export const Canvas = () => {
       fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),
     }));
     storeData(appData);
-/*
-    frontColorHandler(getHexColor());
-    backColorHandler(getHexColor());
-    bodyPartHandler(Math.floor(Math.random() * 7), 'body')
-    bodyPartHandler(Math.floor(Math.random() * 7), 'fin')
-    bodyPartHandler(Math.floor(Math.random() * 7), 'tail')
-    patternHandler(Math.floor(Math.random() * 2))
-    */
   }
   const newFish = () => {
     let newFishArray = appData.fish;
@@ -138,25 +130,6 @@ export const Canvas = () => {
       <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }]}>
         <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
       </Pressable>
-
-
-
     </View>
-
-
   );
 }
-
-
-/*
-
-          <Button type="clear" icon={<FontAwesome5 name="plus-circle" size={24} color="black" />} onPress={() => newFish()} />
-          
-          
-          <Button type="clear" icon={} onPress={() => randomFish()} />
-<Button type="clear" icon={<Ionicons name='md-trash-sharp' size={36} color='#111111' />} onPress={() => deleteFish()} />
-<Button type="clear" style={[{ alignSelf: 'flex-start', top: 0, right: 0, elevation: 2, position: "absolute" }]} icon={<Ionicons name='chevron-back-outline' size={36} color='#111111' />} onPress={() => nextFish(-1)} />
-      <Button type="clear" style={{ alignSelf: 'flex-end', top: -50, right: -30, elevation: 3, position: "absolute" }} icon={<Ionicons name='chevron-forward-outline' size={36} color='#111111' />} onPress={() => nextFish(1)} />
-
-
-      */

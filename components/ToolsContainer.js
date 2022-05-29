@@ -58,8 +58,6 @@ export default ToolsContainer = () => {
     }));
     storeData(appData);
   }
-  // funktion creates a new Fish with UUID and default colors and default parts
-  
   
   const [bodyToolPos, setbodyToolPos] = useState(0);
 

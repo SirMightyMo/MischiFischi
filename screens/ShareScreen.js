@@ -7,6 +7,7 @@ import { AppContext } from "../data/AppContext";
 import { MultilineTextInput } from '../components/TextInput';
 import { Ionicons } from "@expo/vector-icons";
 import  { SvgCanvas } from "../components/SvgCanvas";
+import Colors from "../constants/Colors";
 
 import Fish from "../components/Fish";
 import * as FPart from '../components/fishParts/FishParts';
@@ -151,7 +152,7 @@ export default ShareScreen = (props) => {
 
           <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
             <MultilineTextInput />
-            <Pressable style={LayoutStyles.normalButton} onPress={() => confirmTransmission()} >
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
               <Text style={LayoutStyles.normalButtonText}>SEND</Text>
             </Pressable>
           </View>

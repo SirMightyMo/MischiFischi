@@ -15,6 +15,7 @@ import RNFadedScrollView from 'expo-faded-scrollview'
 
 
 export default ToolsContainer = () => {
+
   const [appData, setAppData] = useContext(AppContext);
   const currentId = appData.currentId;
   const selectedFish = appData.fish.find(fish => fish.id === currentId);
@@ -69,31 +70,7 @@ export default ToolsContainer = () => {
     }));
     storeData(appData);
   }
-  const nextFish = (direction) => {
-    if (direction === -1 && appData.fish.indexOf(selectedFish) > 0) {
-      setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
-        fish: appData.fish,
-      }));
-      storeData(appData);
-    }
-    else if (direction === 1 && appData.fish.indexOf(selectedFish) < appData.fish.length - 1) {
-      setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
-        fish: appData.fish,
-      }));
-      storeData(appData);
-    }
-  }
-  const deleteFish = () => {
-    if (appData.fish.indexOf(selectedFish) > 0) {
-      setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) - 1].id,
-        fish: appData.fish.filter(fish => fish.id !== selectedFish.id),
-      }));
-      storeData(appData)
-    }
-  }
+  
   const getHexColor = () => {
     var makeColorCode = '0123456789ABCDEF';
     var color = '#';
@@ -201,10 +178,10 @@ export default ToolsContainer = () => {
         </View>
 
         <View style={LayoutStyles.toolRow}>
-          <Button type="clear" icon={<Ionicons name='chevron-back-outline' size={36} color='#111111' />} onPress={() => nextFish(-1)} />
+          
           <Button type="clear" icon={<FontAwesome5 name="plus-circle" size={24} color="black" />} onPress={() => newFish()} />
           <Button type="clear" icon={<Ionicons name='md-trash-sharp' size={36} color='#111111' />} onPress={() => deleteFish()} />
-          <Button type="clear" icon={<Ionicons name='chevron-forward-outline' size={36} color='#111111' />} onPress={() => nextFish(1)} />
+          
           <Button type="clear" icon={<FontAwesome5 name="dice" size={24} color="black" />} onPress={() => randomFish()} />
         </View>
       </ScrollView>

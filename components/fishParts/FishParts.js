@@ -1955,6 +1955,54 @@ export const Tail7 = (props) => (
   </G>
 );
 
+export function returnJsxPart(part) {
+  switch (part) {
+    case "b1":
+      return <Body1 pattern="none" />;
+    case "b2":
+      return <Body2 pattern="none" />;
+    case "b3":
+      return <Body3 pattern="none" />;
+    case "b4":
+      return <Body4 pattern="none" />;
+    case "b5":
+      return <Body5 pattern="none" />;
+    case "b6":
+      return <Body6 pattern="none" />;
+    case "b7":
+      return <Body7 pattern="none" />;
+    case "f1":
+      return <Fins1 pattern="none" />;
+    case "f2":
+      return <Fins2 pattern="none" />;
+    case "f3":
+      return <Fins3 pattern="none" />;
+    case "f4":
+      return <Fins4 pattern="none" />;
+    case "f5":
+      return <Fins5 pattern="none" />;
+    case "f6":
+      return <Fins6 pattern="none" />;
+    case "f7":
+      return <Fins7 pattern="none" />;
+    case "t1":
+      return <Tail1 pattern="none" />;
+    case "t2":
+      return <Tail2 pattern="none" />;
+    case "t3":
+      return <Tail3 pattern="none" />;
+    case "t4":
+      return <Tail4 pattern="none" />;
+    case "t5":
+      return <Tail5 pattern="none" />;
+    case "t6":
+      return <Tail6 pattern="none" />;
+    case "t7":
+      return <Tail7 pattern="none" />;
+    default:
+      break;
+  }
+};
 
 export function returnSvgPart(part) {
   switch (part) {

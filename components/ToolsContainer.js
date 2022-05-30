@@ -117,6 +117,7 @@ export default ToolsContainer = () => {
         allowEndFade={true}
         allowStartFade={true}
         fadeSize={50}
+        fadeColors={['#ffffff10', '#ffffff60']}
         >
           <ToolButton title='1' part="t1" onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.tail === 0 ? true : false} />
           <ToolButton title='2' part="t2" onPress={() => bodyPartHandler(1, 'tail')} isActive={selectedFish.tail === 1 ? true : false} />
@@ -141,7 +142,9 @@ export default ToolsContainer = () => {
           <ToolButton title='1' source={require('../assets/fish/none.png')} onPress={() => patternHandler(0)} isActive={selectedFish.pattern === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(1)} isActive={selectedFish.pattern === 1 ? true : false} />
           <ToolButton title='3' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(2)} isActive={selectedFish.pattern === 2 ? true : false} />
-          <ToolButton title='3' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(3)} isActive={selectedFish.pattern === 3 ? true : false} />
+          <ToolButton title='4' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(3)} isActive={selectedFish.pattern === 3 ? true : false} />
+          <ToolButton title='5' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(4)} isActive={selectedFish.pattern === 4 ? true : false} />
+          <ToolButton title='6' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(5)} isActive={selectedFish.pattern === 5 ? true : false} />
         </ScrollView>
 
         <View style={LayoutStyles.toolColumn}>

@@ -78,28 +78,25 @@ export default ToolsContainer = () => {
     <View style={LayoutStyles.toolsContainer}>
       <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.buildGradient} >
         <ScrollView showsVerticalScrollIndicator={false} style={{ width: '100%' }}>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderColor: 'transparent', borderWidth: 2 }}>
-            <RNFadedScrollView
-              style={LayoutStyles.toolRow}
-              horizontal={true}
-              contentContainerStyle={LayoutStyles.toolRowCointainer}
-              allowEndFade={true}
-              allowStartFade={true}
-              fadingEdgeLenght={30}
-              fadeSize={30}
-              fadeColors={['rgba(0, 0, 50, 0)', 'rgba(0, 0, 50, 0.6)', 'rgba(0, 0, 50, 0.9)']}
-              showsHorizontalScrollIndicator={false}
-            >
-              <ToolButton part="b1" onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
-              <ToolButton part="b2" onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
-              <ToolButton part="b3" onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
-              <ToolButton part="b4" onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
-              <ToolButton part="b5" onPress={() => bodyPartHandler(4, 'body')} isActive={selectedFish.body === 4 ? true : false} />
-              <ToolButton part="b6" onPress={() => bodyPartHandler(5, 'body')} isActive={selectedFish.body === 5 ? true : false} />
-              <ToolButton part="b7" onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
-            </RNFadedScrollView>
-
-          </View>
+          <RNFadedScrollView
+            style={LayoutStyles.toolRow}
+            horizontal={true}
+            contentContainerStyle={LayoutStyles.toolRowCointainer}
+            allowEndFade={true}
+            allowStartFade={true}
+            fadingEdgeLenght={30}
+            fadeSize={30}
+            fadeColors={['rgba(0, 0, 50, 0)', 'rgba(0, 0, 50, 0.6)', 'rgba(0, 0, 50, 0.9)']}
+            showsHorizontalScrollIndicator={false}
+          >
+            <ToolButton part="b1" onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
+            <ToolButton part="b2" onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
+            <ToolButton part="b3" onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
+            <ToolButton part="b4" onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
+            <ToolButton part="b5" onPress={() => bodyPartHandler(4, 'body')} isActive={selectedFish.body === 4 ? true : false} />
+            <ToolButton part="b6" onPress={() => bodyPartHandler(5, 'body')} isActive={selectedFish.body === 5 ? true : false} />
+            <ToolButton part="b7" onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
+          </RNFadedScrollView>
 
           <RNFadedScrollView
             style={LayoutStyles.toolRow}

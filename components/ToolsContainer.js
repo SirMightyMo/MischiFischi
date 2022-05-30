@@ -164,7 +164,6 @@ export default ToolsContainer = () => {
             <Text> Verlauf Farbe 2</Text>
             <ColorTool oldColor={selectedFish.color2} colorHandler={color => backColorHandler(color)} />
           </View>
-        </ScrollView>
 
         <ScrollView style={LayoutStyles.toolRow} horizontal={true} contentContainerStyle={LayoutStyles.toolRowCointainer} >
           <ToolButton title='1' source={require('../assets/fish/none.png')} onPress={() => patternHandler(0)} isActive={selectedFish.pattern === 0 ? true : false} />

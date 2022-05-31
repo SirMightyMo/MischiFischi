@@ -90,13 +90,13 @@ export default ToolsContainer = () => {
               fadeColors={['rgba(0, 0, 50, 0)', 'rgba(0, 0, 50, 0.6)', 'rgba(0, 0, 50, 0.9)']}
               showsHorizontalScrollIndicator={false}
             >
-              <ToolButton source={require('../assets/fish/b1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
-              <ToolButton source={require('../assets/fish/b2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
-              <ToolButton source={require('../assets/fish/b3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
-              <ToolButton source={require('../assets/fish/b4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
-              <ToolButton source={require('../assets/fish/b5.png')} onPress={() => bodyPartHandler(4, 'body')} isActive={selectedFish.body === 4 ? true : false} />
-              <ToolButton source={require('../assets/fish/b6.png')} onPress={() => bodyPartHandler(5, 'body')} isActive={selectedFish.body === 5 ? true : false} />
-              <ToolButton source={require('../assets/fish/b7.png')} onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
+              <ToolButton title='1' source={require('../assets/fish/b1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
+              <ToolButton title='2' source={require('../assets/fish/b2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
+              <ToolButton title='3' source={require('../assets/fish/b3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
+              <ToolButton title='4' source={require('../assets/fish/b4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
+              <ToolButton title='5' source={require('../assets/fish/b5.png')} onPress={() => bodyPartHandler(4, 'body')} isActive={selectedFish.body === 4 ? true : false} />
+              <ToolButton title='6' source={require('../assets/fish/b6.png')} onPress={() => bodyPartHandler(5, 'body')} isActive={selectedFish.body === 5 ? true : false} />
+              <ToolButton title='7' source={require('../assets/fish/b7.png')} onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
             </RNFadedScrollView>
 
           </View>
@@ -151,10 +151,10 @@ export default ToolsContainer = () => {
           >
           <ToolButton title='1' source={require('../assets/fish/none.png')} onPress={() => patternHandler(0)} isActive={selectedFish.pattern === 0 ? true : false} />
           <ToolButton title='2' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(1)} isActive={selectedFish.pattern === 1 ? true : false} />
-          <ToolButton title='3' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(2)} isActive={selectedFish.pattern === 2 ? true : false} />
-          <ToolButton title='4' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(3)} isActive={selectedFish.pattern === 3 ? true : false} />
-          <ToolButton title='5' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(4)} isActive={selectedFish.pattern === 4 ? true : false} />
-          <ToolButton title='6' source={require('../assets/fish/zebra.png')} onPress={() => patternHandler(5)} isActive={selectedFish.pattern === 5 ? true : false} />
+          <ToolButton title='3' source={require('../assets/fish/waves.png')} onPress={() => patternHandler(2)} isActive={selectedFish.pattern === 2 ? true : false} />
+          <ToolButton title='4' source={require('../assets/fish/doodle.png')} onPress={() => patternHandler(3)} isActive={selectedFish.pattern === 3 ? true : false} />
+          <ToolButton title='5' source={require('../assets/fish/leaves.png')} onPress={() => patternHandler(4)} isActive={selectedFish.pattern === 4 ? true : false} />
+          <ToolButton title='6' source={require('../assets/fish/eyes.png')} onPress={() => patternHandler(5)} isActive={selectedFish.pattern === 5 ? true : false} />
         </RNFadedScrollView>
 
         <View style={LayoutStyles.toolColumn}>

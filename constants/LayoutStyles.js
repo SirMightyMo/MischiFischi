@@ -1,5 +1,6 @@
 import Colors from "./Colors"
 import { Dimensions } from "react-native";
+import { setStatusBarHidden } from "expo-status-bar";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -80,9 +81,10 @@ export default {
     height: '100%',
     backgroundColor: Colors.buttonBackground ,
     alignItems: 'center',
-    borderRadius: 5,
-    borderColor: 'black',
+    borderRadius: 10,
+    borderColor: 'rgba(0, 0, 0, 0.5)',
     borderWidth: 2,
+    overflow: 'hidden',
     marginRight:10,
     elevation:20,
     shadowColor: 'black',

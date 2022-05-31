@@ -116,6 +116,7 @@ export default {
     height:100,
     backgroundColor: 'transparent',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 5,
     borderColor: 'black',
     borderWidth: 2,

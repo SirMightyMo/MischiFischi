@@ -23,7 +23,7 @@ export const SvgCanvas = (props) => {
     <View style={LayoutStyles.svgCanvas}>
       <Video
         source={require('../assets/fish/bg.mp4')}
-        /* posterSource */
+        posterSource={require('../assets/fish/poster.jpg')}
         rate={1.0}
         volume={0.0}
         isMuted={true}
@@ -41,7 +41,7 @@ export const SvgCanvas = (props) => {
             <Stop offset="0" stopColor={selectedFish.color2} stopOpacity="1" />
             <Stop offset="1" stopColor={selectedFish.color1} stopOpacity="1" />
           </LinearGradient>
-          {getPatternJSX(selectedFish.pattern)}
+          {getPatternJSX(selectedFish)}
         </Defs>
         <Fish />
       </Svg>

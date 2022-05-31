@@ -89,13 +89,14 @@ export default ToolsContainer = () => {
             fadeColors={['rgba(0, 0, 50, 0)', 'rgba(0, 0, 50, 0.6)', 'rgba(0, 0, 50, 0.9)']}
             showsHorizontalScrollIndicator={false}
           >
-            <ToolButton part="b1" onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
-            <ToolButton part="b2" onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
-            <ToolButton part="b3" onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
-            <ToolButton part="b4" onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
-            <ToolButton part="b5" onPress={() => bodyPartHandler(4, 'body')} isActive={selectedFish.body === 4 ? true : false} />
-            <ToolButton part="b6" onPress={() => bodyPartHandler(5, 'body')} isActive={selectedFish.body === 5 ? true : false} />
-            <ToolButton part="b7" onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
+            
+            <ToolButton title='1' source={require('../assets/fish/b1.png')} onPress={() => bodyPartHandler(0, 'body')} isActive={selectedFish.body === 0 ? true : false} />
+              <ToolButton title='2' source={require('../assets/fish/b2.png')} onPress={() => bodyPartHandler(1, 'body')} isActive={selectedFish.body === 1 ? true : false} />
+              <ToolButton title='3' source={require('../assets/fish/b3.png')} onPress={() => bodyPartHandler(2, 'body')} isActive={selectedFish.body === 2 ? true : false} />
+              <ToolButton title='4' source={require('../assets/fish/b4.png')} onPress={() => bodyPartHandler(3, 'body')} isActive={selectedFish.body === 3 ? true : false} />
+              <ToolButton title='5' source={require('../assets/fish/b5.png')} onPress={() => bodyPartHandler(4, 'body')} isActive={selectedFish.body === 4 ? true : false} />
+              <ToolButton title='6' source={require('../assets/fish/b6.png')} onPress={() => bodyPartHandler(5, 'body')} isActive={selectedFish.body === 5 ? true : false} />
+              <ToolButton title='7' source={require('../assets/fish/b7.png')} onPress={() => bodyPartHandler(6, 'body')} isActive={selectedFish.body === 6 ? true : false} />
           </RNFadedScrollView>
 
           <RNFadedScrollView

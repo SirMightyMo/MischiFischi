@@ -37,21 +37,6 @@ export default ToolButton = (props) => {
         <TouchableOpacity onPress={props.onPress}>
           <View width={75} height={50} style={{justifyContent: 'center', alignItems: 'center'}}>
             {imageHandler()}
-            <Text style={{
-              position: 'absolute', 
-              backgroundColor: 'white', 
-              bottom: 0, 
-              left: '2%', 
-              fontSize: 10, 
-              borderRadius: 25, 
-              width: 15, 
-              height: 15, 
-              textAlign: 'center', 
-              textAlignVertical: 'center',
-            fontWeight: 'bold'}}
-            > 
-              {props.title} 
-            </Text>
           </View>
         </TouchableOpacity>
       </View>

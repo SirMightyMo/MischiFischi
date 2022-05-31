@@ -20,7 +20,6 @@ export default ShareScreen = (props) => {
   ws.onopen = () => {
     // connection opened
     console.log("Connection open");
-    ws.send("App connected...");
   };
 
   const [appData, setAppData] = useContext(AppContext);
@@ -98,7 +97,7 @@ export default ShareScreen = (props) => {
       <stop offset="0%" stop-color="${selectedFish.color2}" />
       <stop offset="100%" stop-color="${selectedFish.color1}" />
     </linearGradient>
-    ${getPatternSVG(selectedFish.pattern)}
+    ${getPatternSVG(selectedFish)}
     ${FPart.returnSvgStyle(getPatternURL(selectedFish.pattern))}
   </defs>
   ${finsToRender(selectedFish)}

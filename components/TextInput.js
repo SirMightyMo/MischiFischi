@@ -28,7 +28,6 @@ export const MultilineTextInput = () => {
       <TextInputBox
         multiline
         numberOfLines={4}
-        clearTextOnFocus
         placeholder="You better save ocean – tell me how!"
         style={{padding: 25, width: "100%", height: "100%"}}
       />

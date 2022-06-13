@@ -90,7 +90,7 @@ export default ShareScreen = (props) => {
 
   const sendFishData = () => {
 
-    const data = `
+    const svg = `
 <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <defs>
     <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
@@ -106,9 +106,10 @@ export default ShareScreen = (props) => {
 </svg>
     `
 
+    const dataJson = {id:appData.currentId, svg:svg, text:selectedFish.text};
     // Send data to websocket
     try {
-      ws.send(data);
+      ws.send(dataJson);
       Alert.alert(
         "Erfolgreich gesendet!",
         "Der Fisch wurde erfolgreich übermittelt.",
@@ -145,7 +146,7 @@ export default ShareScreen = (props) => {
   return (
     <SafeAreaView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%"}}>
-        <View style={LayoutStyles.modalShareView}>
+        <View style={[LayoutStyles.modalShareView, {backgroundColor: 'rgba(7, 20, 44, 1)'}]}>
             
           <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.modalGradient} >
               

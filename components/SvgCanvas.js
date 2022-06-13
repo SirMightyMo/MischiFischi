@@ -104,7 +104,7 @@ export const Canvas = () => {
   const newFish = () => {
     let newFishArray = appData.fish;
     let UUID = uuid.v4();
-    newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0))
+    newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0, false, undefined))
     setAppData(appData => ({
       currentId: UUID,
       fish: newFishArray,

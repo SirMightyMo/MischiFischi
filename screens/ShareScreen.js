@@ -8,6 +8,7 @@ import { MultilineTextInput } from '../components/TextInput';
 import { Ionicons } from "@expo/vector-icons";
 import  { SvgCanvas } from "../components/SvgCanvas";
 import Colors from "../constants/Colors";
+import { storeData } from '../data/AppStorage';
 
 import Fish from "../components/Fish";
 import * as FPart from '../components/fishParts/FishParts';
@@ -23,7 +24,14 @@ export default ShareScreen = (props) => {
   };
 
   const [appData, setAppData] = useContext(AppContext);
-  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId) ;
+  const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
+
+  let newText;
+
+  const onChangeText = (text) => {
+    newText = text;
+    return newText;
+  };
 
   const bodyToRender = (selectedFish) => {
     switch (selectedFish.body) {
@@ -90,6 +98,14 @@ export default ShareScreen = (props) => {
 
   const sendFishData = () => {
 
+    // checkTextWithBlacklist(selectedFish.text) TODO: Implement function and blacklist
+    selectedFish.text = newText;
+    setAppData(appData => ({
+      currentId: appData.currentId,
+      fish: appData.fish.map(fish => fish.id === appData.currentId ? selectedFish : fish),
+    }));
+    storeData(appData);
+
     const svg = `
 <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <defs>
@@ -135,7 +151,7 @@ export default ShareScreen = (props) => {
   const confirmTransmission = () => {
     Alert.alert(
       "Bitte bestätigen",
-      "Sind Sie sicher, dass Ihr Fisch inkl. Nachricht übermittelt werden sollen?",
+      "Sind Sie sicher, dass Ihr Fisch inkl. Nachricht übermittelt werden soll?",
       [
         { text: "Send", onPress: () => sendFishData() },
         { text: "Cancel", style: "cancel" }
@@ -153,7 +169,7 @@ export default ShareScreen = (props) => {
               <SvgCanvas borderTopLeftRadius={20} borderTopRightRadius={20} />
 
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
-                <MultilineTextInput />
+                <MultilineTextInput onChangeText={onChangeText} />
                 <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>
                 </Pressable>

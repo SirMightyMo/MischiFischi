@@ -33,9 +33,6 @@ export default CollectionScreen = () => {
           <Modal animationType="slide" transparent={true} visible={qrVisible} >
             <QrViewer setQrVisible={setQrVisible} qrVisible={qrVisible} />
           </Modal>
-          <View>
-            <WebsocketInput ws={getWebsocket}/>
-          </View>
           <View style={{flexDirection:'row'}}>
             <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
               <Text style={LayoutStyles.normalButtonText}>SHARE</Text>
@@ -48,3 +45,8 @@ export default CollectionScreen = () => {
     </TouchableWithoutFeedback>
   );
 };
+
+// If input for websocket address is needed, put this into collection-screen return:
+// <View>
+//  <WebsocketInput ws={getWebsocket}/>
+//</View>

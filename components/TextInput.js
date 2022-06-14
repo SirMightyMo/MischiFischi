@@ -16,7 +16,6 @@ export const TextInputBox = (props) => {
 export const MultilineTextInput = (props) => {
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
-  console.log(selectedFish.text);
 
   const placehholderText = `Wie lautet dein Vorschlag, um die Weltmeere zu erhalten, sie nachhaltig zu nutzen und Biodiversität zu schützen?`
 

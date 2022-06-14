@@ -16,13 +16,13 @@ import { getPatternJSX, getPatternSVG, getPatternURL } from '../components/fishP
 
 
 export default ShareScreen = (props) => {  
-  // Websocket for sending data via TCP
-  var ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;
+  // Websocket for sending data
+  let ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;
   ws.onopen = () => {
     // connection opened
-    console.log("Connection open");
+    console.log("connected to websocket...");
   };
-
+  
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
 
@@ -97,7 +97,6 @@ export default ShareScreen = (props) => {
   };
 
   const sendFishData = () => {
-
     // checkTextWithBlacklist(selectedFish.text) TODO: Implement function and blacklist
     selectedFish.text = newText;
     setAppData(appData => ({
@@ -125,12 +124,12 @@ export default ShareScreen = (props) => {
     const dataJson = {id:appData.currentId, svg:svg, text:selectedFish.text};
     // Send data to websocket
     try {
-      ws.send(dataJson);
+      ws.send(JSON.stringify(dataJson));
       Alert.alert(
         "Erfolgreich gesendet!",
         "Der Fisch wurde erfolgreich übermittelt.",
         [
-          { text: "OK", onPress: () => console.log("OK Pressed") }
+          { text: "OK", onPress: () => {} }
         ]
       );
       props.setModalVisible(!props.modalVisible);
@@ -139,11 +138,11 @@ export default ShareScreen = (props) => {
         "Verbindungsfehler",
         "Es konnte keine Verbindung zum Server aufgebaut werden.",
         [
-          { text: "OK", onPress: () => console.log("OK Pressed") }
+          { text: "OK", onPress: () => {} }
         ]
       );
       ws.onerror = (e) => {
-        console.log(e);
+        console.log("Error: " + e);
       }
     }
   }

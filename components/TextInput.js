@@ -21,7 +21,7 @@ export const MultilineTextInput = (props) => {
 
   const getText = () => {
     const fishText = selectedFish.text;
-    if (fishText != undefined) {
+    if (fishText != "") {
       return fishText;
     } else {
       return placehholderText;
@@ -58,5 +58,17 @@ export const MultilineTextInput = (props) => {
         style={{padding: 25, width: "100%", height: "100%"}}
       />
     </View>
+  );
+}
+
+export const WebsocketInput = (props) => {
+  
+  return (
+    <TextInput
+        style={{borderWidth: 1, width: 250, height: 25, padding: 5}}
+        onChangeText={text => props.ws(text)}
+        //value={text}
+        placeholder={"127.0.0.1:42 | Websocket-Adress"}
+      />
   );
 }

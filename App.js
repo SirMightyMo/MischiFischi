@@ -10,7 +10,7 @@ export default App => {
   const UUID = uuid.v4();
   const [appData, setAppData] = useState({
     currentId: UUID,
-    fish: [new FishModel(UUID, 0, 0, 0, '#ff0000', '#00ff00', 0, false, undefined)]
+    fish: [new FishModel(UUID, 0, 0, 0, '#ff0000', '#00ff00', 0, false, "")]
   });
   //get data from local storage and overwrite default data
   useEffect(() => {

@@ -4,7 +4,7 @@ import { Button, View, Alert, Pressable, Text, useWindowDimensions, TouchableWit
 import { LinearGradient } from 'expo-linear-gradient';
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
-import { MultilineTextInput } from '../components/TextInput';
+import { MultilineTextInput, TextInputBox } from '../components/TextInput';
 import { Ionicons } from "@expo/vector-icons";
 import  { SvgCanvas } from "../components/SvgCanvas";
 import Colors from "../constants/Colors";
@@ -17,20 +17,19 @@ import { getPatternJSX, getPatternSVG, getPatternURL } from '../components/fishP
 
 export default ShareScreen = (props) => {  
   // Websocket for sending data
-  let ws = React.useRef(new WebSocket('wss://mischifischiserver.herokuapp.com/')).current;
-  ws.onopen = () => {
-    // connection opened
-    console.log("connected to websocket...");
-  };
-  
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
+  const [fishText, setFishText] = useContext(selectedFish.text);
 
-  let newText;
+  const ws = React.useRef(new WebSocket(props.ws)).current;
+
+  ws.onopen = () => {
+    // connection opened
+    console.log("connected to websocket ");
+  };
 
   const onChangeText = (text) => {
-    newText = text;
-    return newText;
+    setFishText(text);
   };
 
   const bodyToRender = (selectedFish) => {
@@ -98,7 +97,7 @@ export default ShareScreen = (props) => {
 
   const sendFishData = () => {
     // checkTextWithBlacklist(selectedFish.text) TODO: Implement function and blacklist
-    selectedFish.text = newText;
+    selectedFish.text = fishText;
     setAppData(appData => ({
       currentId: appData.currentId,
       fish: appData.fish.map(fish => fish.id === appData.currentId ? selectedFish : fish),
@@ -121,7 +120,7 @@ export default ShareScreen = (props) => {
 </svg>
     `
 
-    const dataJson = {id:appData.currentId, svg:svg, text:selectedFish.text};
+    const dataJson = {"id":appData.currentId, "svg":svg, "text":selectedFish.text};
     // Send data to websocket
     try {
       ws.send(JSON.stringify(dataJson));

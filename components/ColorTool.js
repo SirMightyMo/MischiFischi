@@ -5,7 +5,7 @@ import { Dimensions, StyleSheet, View, } from 'react-native';
 import tinycolor from 'tinycolor2';
 
 //const { width, } =  Dimensions.get('window');
-const width = '90%';
+const width = '100%';
 export default ColorTool = props => {
 
     const oldColor = props.oldColor;
@@ -17,7 +17,7 @@ export default ColorTool = props => {
 
     return (
         <View style={styles.container}>
-            <View style={{ marginHorizontal: 24, marginTop: 10, height: 12, width: width  }}>
+            <View style={{marginHorizontal: 24, marginTop: 12, marginBottom: 0, height: 12, width: width  }}>
                 <SliderHuePicker
                     ref={view => { sliderHuePicker = view; }}
                     oldColor={props.oldColor}
@@ -27,7 +27,7 @@ export default ColorTool = props => {
                     onColorChange={changeColor}
                 />
             </View>
-            <View style={{ marginHorizontal: 24, marginTop: 10, height: 12, width: width  }}>
+            <View style={{ marginHorizontal: 24, marginTop: 14, marginBottom: 0, height: 16, width: width }}>
                 <SliderSaturationPicker
                     ref={view => { sliderSaturationPicker = view; }}
                     oldColor={props.oldColor}
@@ -37,12 +37,11 @@ export default ColorTool = props => {
                     onColorChange={changeColor}
                     backgroundColor={ tinycolor({ h: tinycolor(oldColor).toHsv().h, s: 1, v: 1 }).toHexString()}
                     style={{
-                        height: 12,
-                        borderRadius: 6,
+                        borderRadius: 20, //no effect
                     }}
                 />
             </View>
-            <View style={{ marginHorizontal: 24, marginTop: 10, marginBottom: 10, height: 12, width: width }}>
+            <View style={{ marginHorizontal: 24, marginTop: 14, marginBottom: 10, height: 12, width: width }}>
                 <SliderValuePicker
                     ref={view => { sliderValuePicker = view; }}
                     oldColor={props.oldColor}

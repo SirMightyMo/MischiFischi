@@ -67,8 +67,6 @@ export default {
     flex:1,
     width: '100%',
      flexDirection: 'row',
-     borderColor: 'transparent',
-     borderWidth: 1,
      marginTop:5,
      marginBottom:5,
   },

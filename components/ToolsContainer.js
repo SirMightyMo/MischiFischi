@@ -81,12 +81,14 @@ export default ToolsContainer = () => {
           <RNFadedScrollView
             style={LayoutStyles.toolRow}
             horizontal={true}
+            startFadeStyle={{  borderTopLeftRadius: 10, borderColor: 'transparent', borderWidth: 0,}}
+            endFadeStyle={{  borderTopRightRadius: 10, borderColor: 'transparent', borderWidth: 0,}}
             contentContainerStyle={LayoutStyles.toolRowCointainer}
             allowEndFade={true}
             allowStartFade={true}
             fadingEdgeLenght={30}
             fadeSize={30}
-            fadeColors={['rgba(0, 0, 50, 0)', 'rgba(0, 0, 50, 0.6)', 'rgba(0, 0, 50, 0.9)']}
+            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.8)']}
             showsHorizontalScrollIndicator={false}
           >
             
@@ -106,7 +108,7 @@ export default ToolsContainer = () => {
             allowEndFade={true}
             allowStartFade={true}
             fadeSize={30}
-            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.9)']}
+            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.8)']}
             showsHorizontalScrollIndicator={false}
           >
             <ToolButton title='1' source={require('../assets/fish/t1.png')} onPress={() => bodyPartHandler(0, 'tail')} isActive={selectedFish.tail === 0 ? true : false} />
@@ -125,7 +127,7 @@ export default ToolsContainer = () => {
             allowEndFade={true}
             allowStartFade={true}
             fadeSize={50}
-            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.9)']}
+            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.8)']}
             showsHorizontalScrollIndicator={false}
           >
             <ToolButton title='1' source={require('../assets/fish/f1.png')} onPress={() => bodyPartHandler(0, 'fin')} isActive={selectedFish.fin === 0 ? true : false} />
@@ -144,7 +146,9 @@ export default ToolsContainer = () => {
             allowEndFade={true}
             allowStartFade={true}
             fadeSize={50}
-            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.9)']}
+            startFadeStyle={{  borderBottomLeftRadius: 10, borderColor: 'transparent', borderWidth: 0,}}
+            endFadeStyle={{  borderBottomRightRadius: 10, borderColor: 'transparent', borderWidth: 0,}}
+            fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.8)']}
             showsHorizontalScrollIndicator={false}
           >
           <ToolButton title='1' source={require('../assets/fish/none.png')} onPress={() => patternHandler(0)} isActive={selectedFish.pattern === 0 ? true : false} />

@@ -1,6 +1,6 @@
 import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { View, Alert, Text, Pressable } from "react-native";
+import { View, Alert, Text, Pressable,Modal } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
@@ -51,6 +51,7 @@ export const SvgCanvas = (props) => {
 
 export const Canvas = (props) => {
   const [appData, setAppData] = useContext(AppContext);
+  const [modalVisible, setModalVisible] = useState(false);
   const currentId = appData.currentId;
   const selectedFish = appData.fish.find(fish => fish.id === currentId);
 
@@ -127,17 +128,20 @@ export const Canvas = (props) => {
       <View style={{ width: '100%', height: '100%' }}>
         <SvgCanvas />
       </View>
+      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+        <Ionicons name='md-trash-sharp' size={26} color='#EEEEEE' />
+      </Pressable>
+      <Pressable onPress={() => setModalVisible(true)} style={[{ top: '10%', right: '45%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+        <Ionicons name="information-circle" size={24} color="#EEEEEE" />
+      </Pressable>
+      <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+        <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
+      </Pressable>
       <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', left: '0%', elevation: 2, position: "absolute", shadowColor: "#000" }, LayoutStyles.btnShadow]}>
         <Ionicons name='chevron-back-outline' size={42} color='#EEEEEE' />
       </Pressable>
       <Pressable onPress={() => nextFish(1)} style={[{ top: '50%', right: '0%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='chevron-forward-outline' size={42} color='#EEEEEE' />
-      </Pressable>
-      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
-        <Ionicons name='md-trash-sharp' size={26} color='#EEEEEE' />
-      </Pressable>
-      <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
-        <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
       </Pressable>
       <Pressable onPress={()=> props.navigation.navigate('Collection') } style={[{ bottom: '15%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='save' size={26} color='#EEEEEE' />
@@ -145,6 +149,9 @@ export const Canvas = (props) => {
       <Pressable onPress={() => randomFish()} style={[{ bottom: '15%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <FontAwesome5 name="dice" size={24} color="#EEEEEE" />
       </Pressable>
+      <Modal animationType="slide" transparent={true} visible={modalVisible} >
+        <HelpScreen setModalVisible={setModalVisible} modalVisible={modalVisible} />
+      </Modal>
     </View>
   );
 }

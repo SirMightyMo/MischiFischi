@@ -49,7 +49,7 @@ export const SvgCanvas = (props) => {
   )
 };
 
-export const Canvas = () => {
+export const Canvas = (props) => {
   const [appData, setAppData] = useContext(AppContext);
   const currentId = appData.currentId;
   const selectedFish = appData.fish.find(fish => fish.id === currentId);
@@ -102,9 +102,20 @@ export const Canvas = () => {
     storeData(appData);
   }
   const newFish = () => {
-    let newFishArray = appData.fish;
+    //create new fish with unique ID
     let UUID = uuid.v4();
-    newFishArray.push(new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0, false, ""))
+    let newFish = new FishModel(UUID, 0, 0, 0, '#44FF44', '#44FF44', 0, false, "")
+    // randomize new Fish
+    newFish.color1 = getHexColor();
+    newFish.color2 = getHexColor();
+    newFish.body = Math.floor(Math.random() * 7)
+    newFish.fin = Math.floor(Math.random() * 7)
+    newFish.tail = Math.floor(Math.random() * 7)
+    newFish.pattern = Math.floor(Math.random() * 6)
+    // load fish array an push new fish
+    let newFishArray = appData.fish;
+    newFishArray.push(newFish)
+    //save new fish to storage
     setAppData(appData => ({
       currentId: UUID,
       fish: newFishArray,
@@ -116,20 +127,23 @@ export const Canvas = () => {
       <View style={{ width: '100%', height: '100%' }}>
         <SvgCanvas />
       </View>
-      <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', right: '90%', elevation: 2, position: "absolute", shadowColor: "#000" }, LayoutStyles.btnShadow]}>
+      <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', left: '0%', elevation: 2, position: "absolute", shadowColor: "#000" }, LayoutStyles.btnShadow]}>
         <Ionicons name='chevron-back-outline' size={42} color='#EEEEEE' />
       </Pressable>
       <Pressable onPress={() => nextFish(1)} style={[{ top: '50%', right: '0%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='chevron-forward-outline' size={42} color='#EEEEEE' />
       </Pressable>
-      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', right: '85%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+      <Pressable onPress={() => deleteFish()} style={[{ top: '10%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='md-trash-sharp' size={26} color='#EEEEEE' />
-      </Pressable>
-      <Pressable onPress={() => randomFish()} style={[{ bottom: '15%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
-        <FontAwesome5 name="dice" size={24} color="#EEEEEE" />
       </Pressable>
       <Pressable onPress={() => newFish()} style={[{ top: '10%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
+      </Pressable>
+      <Pressable onPress={()=> props.navigation.navigate('Collection') } style={[{ bottom: '15%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+        <Ionicons name='save' size={26} color='#EEEEEE' />
+      </Pressable>
+      <Pressable onPress={() => randomFish()} style={[{ bottom: '15%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+        <FontAwesome5 name="dice" size={24} color="#EEEEEE" />
       </Pressable>
     </View>
   );

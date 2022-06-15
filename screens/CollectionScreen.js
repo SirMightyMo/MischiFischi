@@ -8,8 +8,8 @@ import ShareScreen from "./ShareScreen";
 import { WebsocketInput } from '../components/TextInput';
 
 export default CollectionScreen = () => {
-  const [getWS, setWS] = useState('wss://mischifischiserver.herokuapp.com');
   const [modalVisible, setModalVisible] = useState(false);
+  const [getWS, setWS] = useState('wss://mischifischiserver.herokuapp.com');
   const [qrVisible, setQrVisible] = useState(false);
 
   const getWebsocket = (text) => {

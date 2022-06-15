@@ -1,25 +1,23 @@
-import { Video } from 'expo-av';
-import React, { useContext, useState } from "react";
-import { Button, View, Alert, Pressable, Text, useWindowDimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, SafeAreaView } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
+import React, { useContext, useState } from "react";
+import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View } from "react-native";
+import { SvgCanvas } from "../components/SvgCanvas";
+import { MultilineTextInput } from '../components/TextInput';
+import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
-import { MultilineTextInput, TextInputBox } from '../components/TextInput';
-import { Ionicons } from "@expo/vector-icons";
-import  { SvgCanvas } from "../components/SvgCanvas";
-import Colors from "../constants/Colors";
 import { storeData } from '../data/AppStorage';
 
-import Fish from "../components/Fish";
 import * as FPart from '../components/fishParts/FishParts';
-import { getPatternJSX, getPatternSVG, getPatternURL } from '../components/fishParts/Patterns';
+import { getPatternSVG, getPatternURL } from '../components/fishParts/Patterns';
 
 
 export default ShareScreen = (props) => {  
   // Websocket for sending data
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
-  const [fishText, setFishText] = useContext(selectedFish.text);
+  const [fishText, setFishText] = useState(selectedFish.text);
 
   const ws = React.useRef(new WebSocket(props.ws)).current;
 

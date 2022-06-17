@@ -125,6 +125,13 @@ export default {
     color: Colors.text,
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign:'center'
+  },
+  textContainer: {
+    margin: 10,
+    marginTop:50,
+    backgroundColor:'rgba(255, 255, 255, 0.3)',
+    borderRadius:10,
   },
   modalShareView: {
     margin: 10,

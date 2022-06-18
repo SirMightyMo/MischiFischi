@@ -104,13 +104,24 @@ export const Canvas = (props) => {
       else if (selFishIndex == 0) { return selFishIndex+1 }
     }
 
-    if (arrayLength > 0) {
-      setAppData(appData => ({
-        currentId: appData.fish[nextIndex()].id,
-        fish: appData.fish.filter(fish => fish.id !== selectedFish.id),
-      }));
-      storeData(appData)
-    }
+    if (arrayLength > 1) {
+      Alert.alert(
+        "Bitte bestätigen",
+        "Wollen Sie diesen Fisch wirklich löschen?",
+        [
+          { text: "Löschen", style: "destructive", onPress: () => deleteFish() },
+          { text: "Abbrechen", style: "cancel" }
+        ]
+      );
+
+      const deleteFish = () => {
+        setAppData(appData => ({
+          currentId: appData.fish[nextIndex()].id,
+          fish: appData.fish.filter(fish => fish.id !== selectedFish.id),
+        }));
+        storeData(appData)
+        }
+      }
   }
   const getHexColor = () => {
     var makeColorCode = '0123456789ABCDEF';

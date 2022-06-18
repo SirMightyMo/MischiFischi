@@ -21,7 +21,7 @@ export const SvgCanvas = (props) => {
   return (
     /* View onLayout not necessarily in use; calculates dimensions of component */
     <View style={LayoutStyles.svgCanvas}>
-      <Image source={require('../assets/fish/poster.jpg')} resizeMethod='auto' style={{height: '100%', width: '100%', position: 'absolute', top: 0, left:0}}/>
+      <Image source={require('../assets/fish/poster.jpg')} resizeMethod='auto' style={{height: '100%', width: '100%', position: 'absolute', top: 0, left:0, borderTopLeftRadius: props.borderTopLeftRadius, borderTopRightRadius: props.borderTopRightRadius, borderBottomLeftRadius: props.borderBottomLeftRadius, borderBottomRightRadius: props.borderBottomRightRadius}}/>
       <Video
         source={require('../assets/fish/bg.mp4')}
         posterSource={require('../assets/fish/poster.jpg')}

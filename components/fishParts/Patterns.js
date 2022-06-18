@@ -60,7 +60,7 @@ export const getPatternSVG = (selectedFish) => {
 }
 
 const calculateCompColor = (fishModel) => {
-    const color = fishModel.color1;
+    /* const color = fishModel.color1;
     // #123456
     const red = parseInt("" + color.charAt(1) + color.charAt(2), 16);
     const green = parseInt("" + color.charAt(3) + color.charAt(4), 16);
@@ -73,7 +73,7 @@ const calculateCompColor = (fishModel) => {
     const result = "#" 
     + (comp_red < 16 ? "0" + comp_red.toString(16) : comp_red.toString(16)) 
     + (comp_green < 16 ? "0" + comp_green.toString(16) : comp_green.toString(16)) 
-    + (comp_blue < 16 ? "0" + comp_blue.toString(16) : comp_blue.toString(16));
+    + (comp_blue < 16 ? "0" + comp_blue.toString(16) : comp_blue.toString(16)); */
     
     return 'white';
 }

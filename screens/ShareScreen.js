@@ -1,6 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useContext, useState } from "react";
+import * as MediaLibrary from 'expo-media-library';
+import * as FileSystem from 'expo-file-system';
 import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View } from "react-native";
 import { SvgCanvas } from "../components/SvgCanvas";
 import { MultilineTextInput } from '../components/TextInput';
@@ -18,6 +20,7 @@ export default ShareScreen = (props) => {
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
   const [fishText, setFishText] = useState(selectedFish.text);
+  const [permissions, requestPermission] = MediaLibrary.usePermissions();
 
   const ws = React.useRef(new WebSocket(props.ws)).current;
 
@@ -155,6 +158,43 @@ export default ShareScreen = (props) => {
     );
   }
 
+  const handleSave = async image  => {
+    let res = await MediaLibrary.requestPermissionsAsync(); 
+
+    const data = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARzQklUCAgI
+    CHwIZIgAAACnSURBVBiVY2CgC3B1DVZFF2NCF5AXFTCUkZLewcDAIMzAwMAIE2dkYGBgkBZmcdbX
+    dxF79vR2jJy8mpe4pBIDn4A4w3+mnw80NJ1L0tKc1rIwMDAwMP1jcmRhYQzh5GRX//v3L8PPXz8Z
+    fv76yaCipqVw9+51brjVn77/mmdkFWbx/eev1J8/flzhYOf6++/v35U3r9327+zMXoTTMzkZNU4U
+    hgcRAADKgzJFIhlCjwAAAABJRU5ErkJggg==`
+    const base64Code = data.split("data:image/png;base64,")[1];
+
+    if(res.granted) {        
+      const filename = FileSystem.documentDirectory + "some_unique_file_name.png";
+
+      await FileSystem.writeAsStringAsync(filename, base64Code, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+  
+      const mediaResult = await MediaLibrary.saveToLibraryAsync(filename);
+      
+      Alert.alert(
+        "Erfolgreich!",
+        "Ihr Fisch wurde erfolgreich in die Foto-Bibliothek exportiert.",
+        [
+          { text: "OK", onPress: () => {} }
+        ]
+      );
+    } else {
+      Alert.alert(
+        "Keine Berechtigung",
+        "Bitte erlauben Sie den Zugriff in den Geräteeinstellungen.",
+        [
+          { text: "OK", onPress: () => {} }
+        ]
+      );
+    }
+}
+
   return (
     <SafeAreaView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%"}}>
@@ -163,6 +203,9 @@ export default ShareScreen = (props) => {
           <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.modalGradient} >
               
               <SvgCanvas borderTopLeftRadius={20} borderTopRightRadius={20} />
+              {/* <Pressable onPress={()=> handleSave() } style={[{ top: '38%', right: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
+                <Ionicons name='download-outline' size={26} color='#EEEEEE' />
+              </Pressable> */}
 
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
                 <MultilineTextInput onChangeText={onChangeText} />

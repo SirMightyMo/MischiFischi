@@ -4,7 +4,7 @@ import { AppContext } from './data/AppContext';
 import FishModel from './models/FishModel';
 import { getData } from './data/AppStorage';
 import uuid from 'react-native-uuid';
-import { Modal } from "react-native";
+import { Modal, ImageBackground } from "react-native";
 import HelpScreen from './screens/HelpScreen';
 
 export default App => {
@@ -22,10 +22,12 @@ export default App => {
 
   return (
     <AppContext.Provider value={[appData, setAppData]}>
+      <ImageBackground source={require('./assets/fish/poster_smooth.jpg')} resizeMode="cover" style={{height: '100%'}}>
       <MainNavigator />
       <Modal animationType="slide" transparent={true} visible={modalVisible} >
         <HelpScreen setModalVisible={setModalVisible} modalVisible={modalVisible} />
       </Modal>
+      </ImageBackground>
     </AppContext.Provider>
 
   );

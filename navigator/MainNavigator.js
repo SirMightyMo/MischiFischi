@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@expo/vector-icons'
 import BuildScreen from '../screens/BuildScreen'
@@ -8,17 +8,26 @@ import Colors from "../constants/Colors";
 
 const Tab = createBottomTabNavigator();
 
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'transparent',
+    borderWidth: 0
+  },
+};
+
 export default MainNavigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Tab.Navigator screenOptions={({ route }) => ({
-        tabBarActiveTintColor: 'red',
+        tabBarActiveTintColor: 'white',
         headerStyle: { height: 0 },
-        tabBarInactiveTintColor: 'gray',
-        tabBarInactiveBackgroundColor: Colors.buttonBackground,
+        tabBarInactiveTintColor: 'rgba(255, 255, 255, 0.5)',
+        tabBarInactiveBackgroundColor: 'transparent',
         tabBarActiveBackgroundColor: Colors.buttonHighlight,
-        tabBarItemStyle:{borderTopLeftRadius:10,borderTopRightRadius:10,borderWidth:0},
-        tabBarStyle:{backgroundColor:Colors.bgGradientBottom,borderWidth:0},
+        tabBarItemStyle:{borderTopLeftRadius:10,borderTopRightRadius:10,borderWidth:0, borderColor: Colors.buttonHighlight},
+        tabBarStyle:{backgroundColor:'#0c1935',borderWidth:0, borderColor: 'transparent'},
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 

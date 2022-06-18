@@ -1,6 +1,6 @@
 import { Video } from 'expo-av';
 import React, { useContext, useState } from "react";
-import { View, Alert, Text, Pressable,Modal } from "react-native";
+import { View, Alert, Text, Pressable,Modal, Image } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
@@ -21,9 +21,11 @@ export const SvgCanvas = (props) => {
   return (
     /* View onLayout not necessarily in use; calculates dimensions of component */
     <View style={LayoutStyles.svgCanvas}>
+      <Image source={require('../assets/fish/poster.jpg')} resizeMethod='auto' style={{height: '100%', width: '100%', position: 'absolute', top: 0, left:0}}/>
       <Video
         source={require('../assets/fish/bg.mp4')}
         posterSource={require('../assets/fish/poster.jpg')}
+        usePoster={true}
         rate={1.0}
         volume={0.0}
         isMuted={true}
@@ -34,7 +36,8 @@ export const SvgCanvas = (props) => {
         style={[
           LayoutStyles.videoStyles,
           { borderTopLeftRadius: props.borderTopLeftRadius, borderTopRightRadius: props.borderTopRightRadius, borderBottomLeftRadius: props.borderBottomLeftRadius, borderBottomRightRadius: props.borderBottomRightRadius }]}
-      />
+        />
+        
       <Svg height="100%" width="100%" viewBox="0 0 640 360">
         <Defs>
           <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0">

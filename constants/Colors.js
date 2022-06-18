@@ -7,6 +7,6 @@ export default {
   highlight: '#00B4D8',
   normalButton: '#00A3A3',
   normalButtonPressed: '#25c4c4',
-  bgGradientTop: 'rgba(0, 255, 255, 0.5)',
-  bgGradientBottom: 'rgba(0, 255, 255, 0.2)',
+  bgGradientTop: '#078b99',
+  bgGradientBottom: '#043f4f',
 };

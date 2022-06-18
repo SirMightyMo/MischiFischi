@@ -20,13 +20,13 @@ export default CollectionContainer = () => {
 
   return (
     < View style={LayoutStyles.collectionContainer} >
-      <Text>Collection Container</Text>
+      <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>Your Collection</Text>
 
       <FlatList
         data={fishCollection}
         renderItem={(itemData) => {
           return <CollectionTile
-            title={itemData.item.id}
+            //title={itemData.item.id}
             id={itemData.item.id}
             onPress={() => clickHandler(itemData.item.id)}
             isActive={appData.currentId === itemData.item.id} />

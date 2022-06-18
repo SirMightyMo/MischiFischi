@@ -52,23 +52,45 @@ export const SvgCanvas = (props) => {
   )
 };
 
+const calculateCompColor = (colorHexString) => {
+  const color = colorHexString;
+  // #123456
+  const red = parseInt("" + color.charAt(1) + color.charAt(2), 16);
+  const green = parseInt("" + color.charAt(3) + color.charAt(4), 16);
+  const blue = parseInt("" + color.charAt(5) + color.charAt(6), 16);
+  
+  const comp_red = 0xFF - red;
+  const comp_green = 0xFF - green;
+  const comp_blue = 0xFF - blue;
+
+  const result = "#" 
+  + (comp_red < 16 ? "0" + comp_red.toString(16) : comp_red.toString(16)) 
+  + (comp_green < 16 ? "0" + comp_green.toString(16) : comp_green.toString(16)) 
+  + (comp_blue < 16 ? "0" + comp_blue.toString(16) : comp_blue.toString(16));
+  
+  return result;
+}
+
 export const Canvas = (props) => {
   const [appData, setAppData] = useContext(AppContext);
   const [modalVisible, setModalVisible] = useState(false);
   const currentId = appData.currentId;
   const selectedFish = appData.fish.find(fish => fish.id === currentId);
 
+  const fishIndex = appData.fish.indexOf(selectedFish);
+  const arrayLength = appData.fish.length;
+
   const nextFish = (direction) => {
-    if (direction === -1 && appData.fish.indexOf(selectedFish) > 0) {
+    if (direction === -1 && fishIndex > 0) {
       setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
+        currentId: appData.fish[fishIndex + direction].id,
         fish: appData.fish,
       }));
       storeData(appData);
     }
-    else if (direction === 1 && appData.fish.indexOf(selectedFish) < appData.fish.length - 1) {
+    else if (direction === 1 && fishIndex < appData.fish.length - 1) {
       setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) + direction].id,
+        currentId: appData.fish[fishIndex + direction].id,
         fish: appData.fish,
       }));
       storeData(appData);
@@ -132,7 +154,7 @@ export const Canvas = (props) => {
         <SvgCanvas />
       </View>
       <Pressable onPress={() => deleteFish()} style={[{ top: '10%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
-        <Ionicons name='md-trash-sharp' size={26} color='#EEEEEE' />
+        <Ionicons name='md-trash-sharp' size={26} color={fishIndex == 0 && fishIndex == arrayLength-1 ? 'transparent' : '#EEEEEE'} />
       </Pressable>
       <Pressable onPress={() => setModalVisible(true)} style={[{ top: '10%', right: '45%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name="information-circle" size={24} color="#EEEEEE" />
@@ -141,10 +163,10 @@ export const Canvas = (props) => {
         <FontAwesome5 name="plus-circle" size={24} color="#EEEEEE" />
       </Pressable>
       <Pressable onPress={() => nextFish(-1)} style={[{ top: '50%', left: '0%', elevation: 2, position: "absolute", shadowColor: "#000" }, LayoutStyles.btnShadow]}>
-        <Ionicons name='chevron-back-outline' size={42} color='#EEEEEE' />
+        <Ionicons name='chevron-back-outline' size={42} color={fishIndex == 0 ? 'transparent' : '#EEEEEE'} />
       </Pressable>
       <Pressable onPress={() => nextFish(1)} style={[{ top: '50%', right: '0%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
-        <Ionicons name='chevron-forward-outline' size={42} color='#EEEEEE' />
+        <Ionicons name='chevron-forward-outline' size={42} color={fishIndex == arrayLength-1 ? 'transparent' : '#EEEEEE'} />
       </Pressable>
       <Pressable onPress={()=> props.navigation.navigate('Collection') } style={[{ bottom: '15%', left: '5%', elevation: 2, position: "absolute" }, LayoutStyles.btnShadow]}>
         <Ionicons name='save' size={26} color='#EEEEEE' />

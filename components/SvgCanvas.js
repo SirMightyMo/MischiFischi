@@ -100,8 +100,8 @@ export const Canvas = (props) => {
     const selFishIndex = appData.fish.indexOf(selectedFish)
 
     const nextIndex = () => {
-      if (selFishIndex == arrayLength-1) { return selFishIndex-1 }
-      else if (selFishIndex == 0) { return selFishIndex+1 }
+      if (selFishIndex == arrayLength-1 && selFishIndex != 0) { return selFishIndex-1 }
+      else { return selFishIndex+1 }
     }
 
     if (arrayLength > 1) {

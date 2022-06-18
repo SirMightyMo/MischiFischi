@@ -97,9 +97,16 @@ export const Canvas = (props) => {
     }
   }
   const deleteFish = () => {
-    if (appData.fish.indexOf(selectedFish) > 0) {
+    const selFishIndex = appData.fish.indexOf(selectedFish)
+
+    const nextIndex = () => {
+      if (selFishIndex == arrayLength-1) { return selFishIndex-1 }
+      else if (selFishIndex == 0) { return selFishIndex+1 }
+    }
+
+    if (arrayLength > 0) {
       setAppData(appData => ({
-        currentId: appData.fish[appData.fish.indexOf(selectedFish) - 1].id,
+        currentId: appData.fish[nextIndex()].id,
         fish: appData.fish.filter(fish => fish.id !== selectedFish.id),
       }));
       storeData(appData)

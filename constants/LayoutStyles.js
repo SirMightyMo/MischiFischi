@@ -133,6 +133,13 @@ export default {
     fontWeight: 'bold',
     textAlign:'center'
   },
+  titleText: {
+    margin: 10,
+    color: Colors.text,
+    fontSize: 22,
+    fontWeight: 'bold',
+    textAlign:'center'
+  },
   textContainer: {
     margin: 10,
     marginTop:50,

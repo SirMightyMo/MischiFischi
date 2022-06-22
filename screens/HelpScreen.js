@@ -14,15 +14,18 @@ export default HelpScreen = (props) => {
             {/*ToDo: text needs Style */}
             <View style={LayoutStyles.textContainer}>
               <Text style={LayoutStyles.text}>
-                Hallo Welt,
-                {"\n"}
-
-                diese App soll dir die Socken ausziehen und das Hirn weg blasen.
-                {"\n"}
-                Viel Spaß
+                <Text style={LayoutStyles.titleText}>
+                  Mischi Fischi
+                </Text>
+                {"\n"} {"\n"}
+                Die App soll spielerisch vermitteln, wie schön Artenvielfalt sein kann:
+                Mittels eines Baukastensystems und unterschiedlichen Bestandteilen wie Farben,
+                Mustern und Formen kann ein selbst gestalteter Fisch erstellt und exportiert werden.
+                {"\n"}{"\n"}
+                Viel Spaß!
               </Text>
             </View>
-            <View style={{ flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20 }}>
+            <View style={{ flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 10, paddingHorizontal: 20 }}>
               <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => props.setModalVisible(!props.modalVisible)} >
                 <Text style={LayoutStyles.normalButtonText}>Verstanden!</Text>
               </Pressable>

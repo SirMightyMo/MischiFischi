@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler'
 import LayoutStyles from "../constants/LayoutStyles";
@@ -8,9 +8,6 @@ import ColorTool from "./ColorTool";
 import ToolButton from "./ToolButton";
 import { LinearGradient } from 'expo-linear-gradient';
 import Colors from "../constants/Colors"
-
-import { Ionicons } from '@expo/vector-icons'
-import { Button } from "react-native-elements";
 import RNFadedScrollView from 'expo-faded-scrollview'
 
 export default ToolsContainer = () => {
@@ -58,7 +55,7 @@ export default ToolsContainer = () => {
     }));
     storeData(appData);
   }
-  
+
   return (
     <View style={LayoutStyles.toolsContainer}>
       <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.buildGradient} >

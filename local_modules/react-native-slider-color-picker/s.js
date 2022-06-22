@@ -135,7 +135,7 @@ export class SliderSaturationPicker extends React.Component {
 
         return (
             <View style={styles.container}>
-                <ImageBackground backgroundColor={backgroundColor} source={trackImage} resizeMode='stretch' style={{ flex: 1, justifyContent: "center", borderColor:'transparent', borderWidth:1, borderRadius:10 }} >
+                <ImageBackground backgroundColor={backgroundColor} source={trackImage} resizeMode='stretch'imageStyle={{borderRadius:10}} style={{ flex: 1, justifyContent: "center", borderColor:'transparent', borderWidth:0, borderRadius:10 }} >
                     <Slider
                         maximumTrackTintColor='transparent'
                         minimumTrackTintColor='trasparent'

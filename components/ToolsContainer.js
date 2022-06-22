@@ -126,7 +126,7 @@ export default ToolsContainer = () => {
             contentContainerStyle={LayoutStyles.toolRowCointainer}
             allowEndFade={true}
             allowStartFade={true}
-            fadeSize={50}
+            fadeSize={30}
             fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.8)']}
             showsHorizontalScrollIndicator={false}
           >
@@ -145,7 +145,7 @@ export default ToolsContainer = () => {
             contentContainerStyle={LayoutStyles.toolRowCointainer}
             allowEndFade={true}
             allowStartFade={true}
-            fadeSize={50}
+            fadeSize={30}
             startFadeStyle={{  borderBottomLeftRadius: 10, borderColor: 'transparent', borderWidth: 0,}}
             endFadeStyle={{  borderBottomRightRadius: 10, borderColor: 'transparent', borderWidth: 0,}}
             fadeColors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.8)']}

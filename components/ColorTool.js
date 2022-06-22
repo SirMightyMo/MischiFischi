@@ -27,7 +27,7 @@ export default ColorTool = props => {
                     onColorChange={changeColor}
                 />
             </View>
-            <View style={{ marginHorizontal: 24, marginTop: 14, marginBottom: 0, height: 16, width: width }}>
+            <View style={{ marginHorizontal: 24, marginTop: 14, marginBottom: 0, height: 14, width: width }}>
                 <SliderSaturationPicker
                     ref={view => { sliderSaturationPicker = view; }}
                     oldColor={props.oldColor}

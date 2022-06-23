@@ -131,7 +131,7 @@ export default {
     color: Colors.text,
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign:'center'
+    textAlign:'center',
   },
   titleText: {
     margin: 10,
@@ -152,6 +152,19 @@ export default {
     borderRadius: 20,
     /* padding: 35, */
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 2
+  },
+  modalHelpView: {
+    margin: 10,
+    backgroundColor: "white",
+    borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

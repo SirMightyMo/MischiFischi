@@ -20,7 +20,7 @@ export default CollectionContainer = () => {
 
   return (
     < View style={LayoutStyles.collectionContainer} >
-      <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>Your Collection</Text>
+      <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>Deine Fische</Text>
 
       <FlatList
         data={fishCollection}

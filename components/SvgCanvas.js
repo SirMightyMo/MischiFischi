@@ -125,13 +125,6 @@ export const Canvas = (props) => {
   const handleSave = async b64  => {
     let res = await MediaLibrary.requestPermissionsAsync(); 
 
-   /*  const data = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARzQklUCAgI
-    CHwIZIgAAACnSURBVBiVY2CgC3B1DVZFF2NCF5AXFTCUkZLewcDAIMzAwMAIE2dkYGBgkBZmcdbX
-    dxF79vR2jJy8mpe4pBIDn4A4w3+mnw80NJ1L0tKc1rIwMDAwMP1jcmRhYQzh5GRX//v3L8PPXz8Z
-    fv76yaCipqVw9+51brjVn77/mmdkFWbx/eev1J8/flzhYOf6++/v35U3r9327+zMXoTTMzkZNU4U
-    hgcRAADKgzJFIhlCjwAAAABJRU5ErkJggg==`
-    const base64Code = data.split("data:image/png;base64,")[1]; */
-
     if(res.granted) {        
       const filename = FileSystem.documentDirectory + "some_unique_file_name.png";
 
@@ -143,7 +136,7 @@ export const Canvas = (props) => {
       
       Alert.alert(
         "Erfolgreich!",
-        "Ihr Fisch wurde erfolgreich in die Foto-Bibliothek exportiert.",
+        "Dein Fisch wurde erfolgreich in die Foto-Bibliothek exportiert.",
         [
           { text: "OK", onPress: () => {} }
         ]
@@ -151,7 +144,7 @@ export const Canvas = (props) => {
     } else {
       Alert.alert(
         "Keine Berechtigung",
-        "Bitte erlauben Sie den Zugriff in den Geräteeinstellungen.",
+        "Bitte erlaube den Zugriff auf deine Fotos in den Geräteeinstellungen.",
         [
           { text: "OK", onPress: () => {} }
         ]

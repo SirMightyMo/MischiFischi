@@ -16,6 +16,8 @@ import { getPatternSVG, getPatternURL } from '../components/fishParts/Patterns';
 
 
 export default ShareScreen = (props) => {  
+  console.log(props.ws);
+
   // Websocket for sending data
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
@@ -31,7 +33,6 @@ export default ShareScreen = (props) => {
        (e) => {
          setKeyboardVisible(true); // or some other action
          setKeyboardHeight(e.endCoordinates.height)
-         console.log('Keyboard');
        }
      );
      const keyboardDidHideListener = Keyboard.addListener(
@@ -39,7 +40,6 @@ export default ShareScreen = (props) => {
        () => {
          setKeyboardVisible(false); // or some other action
          setKeyboardHeight(0)
-         console.log('No Keyboard');
        }
      );
  

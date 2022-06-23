@@ -24,7 +24,6 @@ const [keyboardHeight, setKeyboardHeight] = useState();
        (e) => {
          setKeyboardVisible(true); // or some other action
          setKeyboardHeight(e.endCoordinates.height)
-         console.log('Keyboard');
        }
      );
      const keyboardDidHideListener = Keyboard.addListener(
@@ -32,7 +31,6 @@ const [keyboardHeight, setKeyboardHeight] = useState();
        () => {
          setKeyboardVisible(false); // or some other action
          setKeyboardHeight(0)
-         console.log('No Keyboard');
        }
      );
  
@@ -46,10 +44,11 @@ const [keyboardHeight, setKeyboardHeight] = useState();
 
 
   const getWebsocket = (text) => {
-    if (text.substring(0, 4) == 'ws://' || text.substring(0, 5) == 'wss://') {
-      setWS(text);
+    console.log(text.substring(0, 5));
+    if (text.substring(0, 5) == 'ws://' || text.substring(0, 6) == 'wss://') {
+        setWS(text);
     } else {
-      setWS('ws://'+text);
+        setWS('ws://'+text);
     }
   }
   

@@ -66,6 +66,7 @@ export const WebsocketInput = (props) => {
         //value={text}
         placeholder={"127.0.0.1:42 | Websocket-Adress"}
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
+        autoCorrect={false}
       />
   );
 }

@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import * as FileSystem from 'expo-file-system';
 import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView } from "react-native";
@@ -22,6 +22,32 @@ export default ShareScreen = (props) => {
   const [fishText, setFishText] = useState(selectedFish.text);
   const [permissions, requestPermission] = MediaLibrary.usePermissions();
   const [charCount, setCharCount] = useState(140);
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [keyboardHeight, setKeyboardHeight] = useState();
+
+  useEffect(() => {
+     const keyboardDidShowListener = Keyboard.addListener(
+       'keyboardDidShow',
+       (e) => {
+         setKeyboardVisible(true); // or some other action
+         setKeyboardHeight(e.endCoordinates.height)
+         console.log('Keyboard');
+       }
+     );
+     const keyboardDidHideListener = Keyboard.addListener(
+       'keyboardDidHide',
+       () => {
+         setKeyboardVisible(false); // or some other action
+         setKeyboardHeight(0)
+         console.log('No Keyboard');
+       }
+     );
+ 
+     return () => {
+       keyboardDidHideListener.remove();
+       keyboardDidShowListener.remove();
+     };
+   }, []);
 
   const ws = React.useRef(new WebSocket(props.ws)).current;
 
@@ -210,10 +236,11 @@ export default ShareScreen = (props) => {
 }
 
   return (
+  
     <SafeAreaView>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%"}}>
-        <View style={[LayoutStyles.modalShareView, {backgroundColor: 'rgba(7, 20, 44, 1)'}]}>
-            
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%" }}>
+        <View style={[LayoutStyles.modalShareView, {backgroundColor: 'transparent', /*height: isKeyboardVisible ? '75%' : '95%'*/ paddingBottom: isKeyboardVisible ? keyboardHeight : 0}]}>
+
           <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.modalGradient} >
               
               <SvgCanvas borderTopLeftRadius={20} borderTopRightRadius={20} />
@@ -222,9 +249,9 @@ export default ShareScreen = (props) => {
               </Pressable> */}
 
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
-                <Text style={{color: charCount == 0 ? 'red' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/140 Zeichen</Text>
+                <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/140 Zeichen</Text>
                 <MultilineTextInput checkAndSetText={checkAndSetText} setCharCount={setCharCount}/>
-                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
+                <Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>
                 </Pressable>
               </View>
@@ -238,5 +265,6 @@ export default ShareScreen = (props) => {
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>
+
   )
 };

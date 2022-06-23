@@ -6,6 +6,7 @@ import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
 import ShareScreen from "./ShareScreen";
 import { LinearGradient } from 'expo-linear-gradient';
+import { KeyboardAvoidingView } from "react-native";
 
 export default CollectionScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -38,9 +39,9 @@ export default CollectionScreen = () => {
               <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>SHARE</Text>
               </Pressable>
-              <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setQrVisible(true)} >
+              {/* <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setQrVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>QR</Text>
-              </Pressable>
+              </Pressable> */}
             </View>
         </SafeAreaView>
       {/* </LinearGradient> */}

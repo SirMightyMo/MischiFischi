@@ -40,7 +40,7 @@ export const MultilineTextInput = (props) => {
         /* borderBottomColor: '#000000', */
         /* borderBottomWidth: 1, */
         width: "100%",
-        height: "80%",
+        maxHeight: "60%",
         marginBottom: 10,
         borderRadius: 20,
         paddingVertical: 20,

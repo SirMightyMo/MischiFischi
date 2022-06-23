@@ -5,7 +5,7 @@ import { AppContext } from "../data/AppContext";
 import CollectionTile from "./CollectionTile";
 import { storeData } from "../data/AppStorage";
 
-export default CollectionContainer = () => {
+export default CollectionContainer = (props) => {
   const [appData, setAppData] = useContext(AppContext);
   const fishCollection = appData.fish;
   const clickHandler = (id) => {
@@ -19,7 +19,7 @@ export default CollectionContainer = () => {
   }
 
   return (
-    < View style={LayoutStyles.collectionContainer} >
+    < View style={[LayoutStyles.collectionContainer, props.style]} >
       <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>Deine Fische</Text>
 
       <FlatList

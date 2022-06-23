@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Pressable, Modal, SafeAreaView, Keyboard, TouchableWithoutFeedback, ImageBackground } from "react-native";
 import CollectionContainer from "../components/CollectionContainer";
 import QrViewer from "../components/QrViewer";
@@ -6,12 +6,44 @@ import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
 import ShareScreen from "./ShareScreen";
 import { LinearGradient } from 'expo-linear-gradient';
-import { KeyboardAvoidingView } from "react-native";
+import { WebsocketInput } from '../components/TextInput';
 
 export default CollectionScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [getWS, setWS] = useState('wss://mischifischiserver.herokuapp.com');
   const [qrVisible, setQrVisible] = useState(false);
+
+/* TEMPORARY FOR TESTING PURPOSES */
+/* ----------------------------------------------------- */
+const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+const [keyboardHeight, setKeyboardHeight] = useState();
+
+  useEffect(() => {
+     const keyboardDidShowListener = Keyboard.addListener(
+       'keyboardDidShow',
+       (e) => {
+         setKeyboardVisible(true); // or some other action
+         setKeyboardHeight(e.endCoordinates.height)
+         console.log('Keyboard');
+       }
+     );
+     const keyboardDidHideListener = Keyboard.addListener(
+       'keyboardDidHide',
+       () => {
+         setKeyboardVisible(false); // or some other action
+         setKeyboardHeight(0)
+         console.log('No Keyboard');
+       }
+     );
+ 
+     return () => {
+       keyboardDidHideListener.remove();
+       keyboardDidShowListener.remove();
+     };
+   }, []);
+
+/* ----------------------------------------------------- */
+
 
   const getWebsocket = (text) => {
     if (text.substring(0, 4) == 'ws://' || text.substring(0, 5) == 'wss://') {
@@ -26,7 +58,7 @@ export default CollectionScreen = () => {
       {/* <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={{width: '100%', height: '100%'}} > */}
         <SafeAreaView style={LayoutStyles.collectionScreen}>
             <Text></Text>
-            <CollectionContainer />
+            <CollectionContainer style={{bottom: isKeyboardVisible ? keyboardHeight : 0}}/>
             
             <Modal animationType="slide" transparent={true} visible={modalVisible} >
               <ShareScreen setModalVisible={setModalVisible} modalVisible={modalVisible} ws={getWS} />
@@ -35,6 +67,9 @@ export default CollectionScreen = () => {
             <Modal animationType="slide" transparent={true} visible={qrVisible} >
               <QrViewer setQrVisible={setQrVisible} qrVisible={qrVisible} />
             </Modal>
+            <View>
+              <WebsocketInput ws={getWebsocket} style={{bottom: isKeyboardVisible ? keyboardHeight : 0}}/>
+            </View>
             <View style={{flexDirection:'row', borderWidth: 0}}>
               <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>SHARE</Text>

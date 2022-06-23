@@ -61,10 +61,11 @@ export const WebsocketInput = (props) => {
   
   return (
     <TextInput
-        style={{borderWidth: 1, width: 250, height: 25, padding: 5}}
+        style={[props.style,{borderWidth: 1, width: 250, height: 25, padding: 5, borderColor: 'white', margin: 15, color: 'white'}]}
         onChangeText={text => props.ws(text)}
         //value={text}
         placeholder={"127.0.0.1:42 | Websocket-Adress"}
+        placeholderTextColor="rgba(255, 255, 255, 0.5)"
       />
   );
 }

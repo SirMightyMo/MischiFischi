@@ -28,14 +28,10 @@ export const MultilineTextInput = (props) => {
     }
   }
 
-/*   const onChangeText = (text) => {
-    selectedFish.newtext = text;
-    setAppData(appData => ({
-      currentId: appData.currentId,
-      fish: appData.fish.map(fish => fish.id === appData.currentId ? selectedFish : fish),
-    }));
-    storeData(appData);
-  } */
+  const onChangeText = (text) => {
+    props.checkAndSetText(text);    
+    props.setCharCount(140 - text.length);
+  }
   
   return (
     <View
@@ -53,7 +49,7 @@ export const MultilineTextInput = (props) => {
       <TextInputBox
         multiline
         numberOfLines={4}
-        onChangeText={text => props.onChangeText(text)}
+        onChangeText={text => onChangeText(text)}
         placeholder={getText()}
         style={{padding: 25, width: "100%", height: "100%"}}
       />

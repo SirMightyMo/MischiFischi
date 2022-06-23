@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React, { useContext, useState } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import * as FileSystem from 'expo-file-system';
-import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView } from "react-native";
 import { SvgCanvas } from "../components/SvgCanvas";
 import { MultilineTextInput } from '../components/TextInput';
 import Colors from "../constants/Colors";
@@ -21,6 +21,7 @@ export default ShareScreen = (props) => {
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
   const [fishText, setFishText] = useState(selectedFish.text);
   const [permissions, requestPermission] = MediaLibrary.usePermissions();
+  const [charCount, setCharCount] = useState(140);
 
   const ws = React.useRef(new WebSocket(props.ws)).current;
 
@@ -29,7 +30,8 @@ export default ShareScreen = (props) => {
     console.log("connected to websocket ");
   };
 
-  const onChangeText = (text) => {
+  const checkAndSetText = (text) => {
+    /* Check Text for blacklisted words and word/char count */
     setFishText(text);
   };
 
@@ -96,9 +98,21 @@ export default ShareScreen = (props) => {
     }
   };
 
-  const sendFishData = () => {
+  const sendFishData = () => {    
     // checkTextWithBlacklist(selectedFish.text) TODO: Implement function and blacklist
     selectedFish.text = fishText;
+
+    if (fishText.split(' ').length < 2) {
+      return Alert.alert(
+        "Text zu kurz",
+        "Bitte beschreiben Sie Ihren Vorschlag mit mind. zwei Wörtern.",
+        [
+          { text: "OK", onPress: () => {} }
+        ]
+      );
+    }
+
+
     setAppData(appData => ({
       currentId: appData.currentId,
       fish: appData.fish.map(fish => fish.id === appData.currentId ? selectedFish : fish),
@@ -208,7 +222,8 @@ export default ShareScreen = (props) => {
               </Pressable> */}
 
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
-                <MultilineTextInput onChangeText={onChangeText} />
+                <Text style={{color: charCount == 0 ? 'red' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/140 Zeichen</Text>
+                <MultilineTextInput checkAndSetText={checkAndSetText} setCharCount={setCharCount}/>
                 <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>
                 </Pressable>

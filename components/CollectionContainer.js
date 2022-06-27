@@ -27,6 +27,7 @@ export default CollectionContainer = (props) => {
           return <CollectionTile
             //title={itemData.item.id}
             id={itemData.item.id}
+            sent={itemData.item.sent}
             onPress={() => clickHandler(itemData.item.id)}
             isActive={appData.currentId === itemData.item.id} />
         }}

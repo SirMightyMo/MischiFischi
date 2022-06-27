@@ -5,8 +5,7 @@ import QrViewer from "../components/QrViewer";
 import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
 import ShareScreen from "./ShareScreen";
-import { LinearGradient } from 'expo-linear-gradient';
-import { WebsocketInput } from '../components/TextInput';
+import { Ionicons } from "@expo/vector-icons";
 
 export default CollectionScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -32,7 +31,6 @@ export default CollectionScreen = () => {
   
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%", borderWidth: 0}}>
-      {/* <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={{width: '100%', height: '100%'}} > */}
         <SafeAreaView style={LayoutStyles.collectionScreen}>
             <Text></Text>
             <CollectionContainer />
@@ -44,21 +42,19 @@ export default CollectionScreen = () => {
             <Modal animationType="slide" transparent={true} visible={qrVisible} >
               <QrViewer setQrVisible={setQrVisible} qrVisible={qrVisible} />
             </Modal>
-            <View style={{flexDirection:'row', borderWidth: 0}}>
+            <View style={{flexDirection:'row', borderWidth: 0, width:'100%', justifyContent:'center'}}>
               <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>SHARE</Text>
               </Pressable>
+              <View style={{position:'absolute', right: '5%', width: 100, flexDirection:'row', alignSelf: 'center'}}>
+                <Ionicons name="checkmark-circle-outline" size={15} color="#CCCCCC" style={{marginHorizontal: 2}} />
+                <Text style={{color:'#CCCCCC', marginHorizontal: 2}}>gesendet</Text>
+              </View>
               {/* <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setQrVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>QR</Text>
               </Pressable> */}
             </View>
         </SafeAreaView>
-      {/* </LinearGradient> */}
     </TouchableWithoutFeedback>
   );
 };
-
-// If input for websocket address is needed, put this into collection-screen return:
-// <View>
-//  <WebsocketInput ws={getWebsocket}/>
-//</View>

@@ -10,11 +10,7 @@ import { WebsocketInput } from '../components/TextInput';
 
 export default CollectionScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
-<<<<<<< HEAD
-  const [getWS, setWS] = useState('ws://mischifischiserver.herokuapp.com/');
-=======
-  const [getWS, setWS] = useState('ws://10.1.35.11:7001');
->>>>>>> master
+  const [getWS, setWS] = useState('wss://mischifischiserver.herokuapp.com/');
   const [qrVisible, setQrVisible] = useState(false);
   
   return (
@@ -31,12 +27,6 @@ export default CollectionScreen = () => {
             <Modal animationType="slide" transparent={true} visible={qrVisible} >
               <QrViewer setQrVisible={setQrVisible} qrVisible={qrVisible} />
             </Modal>
-<<<<<<< HEAD
-=======
-            {/* <View>
-              <WebsocketInput ws={getWebsocket} style={{bottom: isKeyboardVisible ? keyboardHeight : 0}}/>
-            </View> */}
->>>>>>> master
             <View style={{flexDirection:'row', borderWidth: 0}}>
               <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>SHARE</Text>

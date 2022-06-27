@@ -18,6 +18,7 @@ export default ToolsContainer = () => {
 
   const frontColorHandler = (color) => {
     selectedFish.color1 = color;
+    selectedFish.sent = false;
 
     setAppData(appData => ({
       currentId: appData.currentId,
@@ -27,6 +28,7 @@ export default ToolsContainer = () => {
   }
   const backColorHandler = (color) => {
     selectedFish.color2 = color;
+    selectedFish.sent = false;
 
     setAppData(appData => ({
       currentId: appData.currentId,
@@ -39,6 +41,7 @@ export default ToolsContainer = () => {
     selectedFish.body = part === 'body' ? (style) : (selectedFish.body);
     selectedFish.fin = part === 'fin' ? (style) : (selectedFish.fin);
     selectedFish.tail = part === 'tail' ? (style) : (selectedFish.tail);
+    selectedFish.sent = false;
 
     setAppData(appData => ({
       currentId: appData.currentId,
@@ -49,6 +52,7 @@ export default ToolsContainer = () => {
 
   const patternHandler = (patternId) => {
     selectedFish.pattern = patternId;
+    selectedFish.sent = false;
     setAppData(appData => ({
       currentId: appData.currentId,
       fish: appData.fish.map(fish => fish.id === currentId ? selectedFish : fish),

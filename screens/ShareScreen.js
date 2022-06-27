@@ -154,11 +154,16 @@ export default ShareScreen = (props) => {
       );
     }
 
+    ////////////////////////////////
+    selectedFish.sent = true;
     setAppData(appData => ({
       currentId: appData.currentId,
       fish: appData.fish.map(fish => fish.id === appData.currentId ? selectedFish : fish),
     }));
     storeData(appData);
+
+    console.log(selectedFish.sent)
+    ////////////////////////////////
 
     const svg = `
 <svg id="${appData.currentId}" data-name="${appData.currentId}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
@@ -235,9 +240,10 @@ export default ShareScreen = (props) => {
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
                 <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/80 Zeichen</Text>
                 <MultilineTextInput checkAndSetText={checkAndSetText} setCharCount={setCharCount}/>
-                <Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton, }, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
+                {!selectedFish.sent && (<Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton, }, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>
-                </Pressable>
+                </Pressable>)}
+                {selectedFish.sent && (<Text style={{color: 'yellow'}}>Dieser Fisch wurde bereits gesendet und kann ohne Änderungen nicht noch einmal versendet werden.</Text>) }
               </View>
           
           </LinearGradient>

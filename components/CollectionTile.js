@@ -4,6 +4,7 @@ import Svg, { Defs, LinearGradient, Stop } from "react-native-svg";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import { getPatternJSX } from './fishParts/Patterns';
+import { Ionicons } from "@expo/vector-icons";
 
 export default ColletionTile = (props) => {
 
@@ -30,7 +31,7 @@ export default ColletionTile = (props) => {
           </Defs>
           <Fish fishId={props.id} />
         </Svg>
-
+        {props.sent && (<Ionicons name="checkmark-circle-outline" size={15} color="#EEEEEE" style={{position:'absolute', right: 15, bottom: 30}}/>)}
         <Text style={{position: "absolute", left: '5%', bottom: '15%', alignSelf: 'flex-start', textAlign: "left", fontWeight: 'bold', fontSize: 18}}> {props.title} </Text>
         
       </TouchableOpacity>

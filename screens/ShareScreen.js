@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React, { useContext, useState, useEffect } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import * as FileSystem from 'expo-file-system';
-import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView } from "react-native";
+import { Alert, Keyboard, Pressable, SafeAreaView, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView, Platform } from "react-native";
 import { SvgCanvas } from "../components/SvgCanvas";
 import { MultilineTextInput } from '../components/TextInput';
 import Colors from "../constants/Colors";
@@ -16,14 +16,12 @@ import { getPatternSVG, getPatternURL } from '../components/fishParts/Patterns';
 
 
 export default ShareScreen = (props) => {  
-  console.log(props.ws);
-
   // Websocket for sending data
   const [appData, setAppData] = useContext(AppContext);
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
   const [fishText, setFishText] = useState(selectedFish.text);
   const [permissions, requestPermission] = MediaLibrary.usePermissions();
-  const [charCount, setCharCount] = useState(140);
+  const [charCount, setCharCount] = useState(80);
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const [keyboardHeight, setKeyboardHeight] = useState();
 
@@ -198,11 +196,17 @@ export default ShareScreen = (props) => {
     );
   }
 
+  const keyboardPadding = () => {
+    if (Platform.OS === 'ios') {
+      return {paddingBottom: isKeyboardVisible ? keyboardHeight : 0}
+    }
+  }
+
   return (
   
     <SafeAreaView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%" }}>
-        <View style={[LayoutStyles.modalShareView, {backgroundColor: 'transparent', /*height: isKeyboardVisible ? '75%' : '95%'*/ paddingBottom: isKeyboardVisible ? keyboardHeight : 0}]}>
+        <View style={[LayoutStyles.modalShareView, {backgroundColor: 'transparent'}, keyboardPadding()]}>
 
           <LinearGradient colors={[Colors.bgGradientTop, Colors.bgGradientBottom]} style={LayoutStyles.modalGradient} >
               
@@ -212,7 +216,7 @@ export default ShareScreen = (props) => {
               </Pressable> */}
 
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
-                <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/140 Zeichen</Text>
+                <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/80 Zeichen</Text>
                 <MultilineTextInput checkAndSetText={checkAndSetText} setCharCount={setCharCount}/>
                 <Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>

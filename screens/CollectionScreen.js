@@ -22,7 +22,6 @@ export default CollectionScreen = () => {
     try {
      const response = await fetch('https://mischifischiserver.herokuapp.com/websocket');
      const json = await response.json();
-     console.log(json.adress.adress)
      setWS(json.adress.adress);
    } catch (error) {
      console.error(error);

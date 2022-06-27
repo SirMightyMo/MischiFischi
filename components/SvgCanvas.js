@@ -35,14 +35,6 @@ export const SvgCanvas = (props) => {
           base64 => {
             //this.setState({ base64 });
             props.passData(base64);
-
-            // For Debugging:
-            /* let b64array = base64.match(/.{1,10000}/g);
-            console.log("--------------------------------------")
-            for (const string of b64array) {
-              console.log(string);
-            } */
-
           },
           { width: 1080, height: 1080 }, // Size of the image in pixels (too large files cant be shown in console when debugging)
         );

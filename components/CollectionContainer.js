@@ -9,7 +9,6 @@ export default CollectionContainer = (props) => {
   const [appData, setAppData] = useContext(AppContext);
   const fishCollection = appData.fish;
   const clickHandler = (id) => {
-    console.log('collection click')
     setAppData(appData => ({
       currentId: id,
       idCounter: appData.idCounter,

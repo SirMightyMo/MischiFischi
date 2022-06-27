@@ -129,7 +129,6 @@ export default ShareScreen = (props) => {
 
     blacklist.some(badword => {
       if (fishText.toLowerCase().includes(badword.toLowerCase())){
-        console.log(badword);
         blacklistWord = badword;
       }
     })

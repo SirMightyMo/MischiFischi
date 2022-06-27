@@ -10,6 +10,7 @@ import Colors from "../constants/Colors";
 import LayoutStyles from "../constants/LayoutStyles";
 import { AppContext } from "../data/AppContext";
 import { storeData } from '../data/AppStorage';
+import { blacklist } from '../assets/blacklist';
 
 import * as FPart from '../components/fishParts/FishParts';
 import { getPatternSVG, getPatternURL } from '../components/fishParts/Patterns';
@@ -123,8 +124,26 @@ export default ShareScreen = (props) => {
   };
 
   const sendFishData = () => {    
-    // checkTextWithBlacklist(selectedFish.text) TODO: Implement function and blacklist
     selectedFish.text = fishText;
+    let blacklistWord = false;
+
+    blacklist.some(badword => {
+      if (fishText.toLowerCase().includes(badword.toLowerCase())){
+        console.log(badword);
+        blacklistWord = badword;
+      }
+    })
+
+    if (blacklistWord) {
+
+      return Alert.alert(
+        "Blacklist-Treffer",
+        `"${blacklistWord}" ist gesperrt. Bitte verwende keine unangebrachten Wörter.`,
+        [
+          { text: "OK", onPress: () => {} }
+        ]
+      );
+    }
 
     if (fishText.split(' ').length < 2) {
       return Alert.alert(
@@ -135,7 +154,6 @@ export default ShareScreen = (props) => {
         ]
       );
     }
-
 
     setAppData(appData => ({
       currentId: appData.currentId,

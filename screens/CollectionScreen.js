@@ -11,7 +11,25 @@ import { WebsocketInput } from '../components/TextInput';
 export default CollectionScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [getWS, setWS] = useState('wss://mischifischiserver.herokuapp.com/');
+  const [isLoading, setLoading] = useState(true);
   const [qrVisible, setQrVisible] = useState(false);
+
+  useEffect(() => {
+    getWebsocket();
+  });
+
+  const getWebsocket = async () => {
+    try {
+     const response = await fetch('https://mischifischiserver.herokuapp.com/websocket');
+     const json = await response.json();
+     console.log(json.adress.adress)
+     setWS(json.adress.adress);
+   } catch (error) {
+     console.error(error);
+   } finally {
+     setLoading(false);
+   }
+ }
   
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={{width: "100%", height: "100%", borderWidth: 0}}>

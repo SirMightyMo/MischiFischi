@@ -218,7 +218,7 @@ export default ShareScreen = (props) => {
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
                 <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/80 Zeichen</Text>
                 <MultilineTextInput checkAndSetText={checkAndSetText} setCharCount={setCharCount}/>
-                <Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton}, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
+                <Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton, }, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>
                 </Pressable>
               </View>

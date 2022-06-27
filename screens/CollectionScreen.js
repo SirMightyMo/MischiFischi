@@ -46,10 +46,6 @@ export default CollectionScreen = () => {
               <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setModalVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>SHARE</Text>
               </Pressable>
-              <View style={{position:'absolute', right: '5%', width: 100, flexDirection:'row', alignSelf: 'center'}}>
-                <Ionicons name="checkmark-circle-outline" size={15} color="#CCCCCC" style={{marginHorizontal: 2}} />
-                <Text style={{color:'#CCCCCC', marginHorizontal: 2}}>gesendet</Text>
-              </View>
               {/* <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton }, LayoutStyles.normalButton]} onPress={() => setQrVisible(true)} >
                 <Text style={LayoutStyles.normalButtonText}>QR</Text>
               </Pressable> */}

@@ -9,7 +9,6 @@ export const blacklist = [
 "Aa Lutscher",
 "Aa Wurst",
 "AAA Batterie",
-"Aal",
 "Aalauge",
 "Aalficker",
 "Aalfresse",

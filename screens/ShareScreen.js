@@ -22,7 +22,7 @@ export default ShareScreen = (props) => {
   const selectedFish = appData.fish.find(fish => fish.id === appData.currentId);
   const [fishText, setFishText] = useState(selectedFish.text);
   const [permissions, requestPermission] = MediaLibrary.usePermissions();
-  const [charCount, setCharCount] = useState(80);
+  const [charCount, setCharCount] = useState(60);
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const [keyboardHeight, setKeyboardHeight] = useState();
 

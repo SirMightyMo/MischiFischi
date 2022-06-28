@@ -238,7 +238,7 @@ export default ShareScreen = (props) => {
               </Pressable> */}
 
               <View style={{flex: 1, justifyContent: "space-between", alignItems: "center", width: "100%", paddingVertical: 35, paddingHorizontal: 20}}>
-                <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/80 Zeichen</Text>
+                <Text style={{color: charCount == 0 ? '#fa6b6b' : 'white', width: '100%', textAlign: 'right'}}>{charCount}/60 Zeichen</Text>
                 <MultilineTextInput checkAndSetText={checkAndSetText} setCharCount={setCharCount}/>
                 {!selectedFish.sent && (<Pressable style={({ pressed }) => [{marginBottom: 20, backgroundColor: pressed ? Colors.normalButtonPressed : Colors.normalButton, }, LayoutStyles.normalButton]} onPress={() => confirmTransmission()} >
                   <Text style={LayoutStyles.normalButtonText}>SEND</Text>

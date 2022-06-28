@@ -8,7 +8,7 @@ export const TextInputBox = (props) => {
     <TextInput
       {...props}
       editable
-      maxLength={80}
+      maxLength={60}
     />
   );
 }
@@ -30,7 +30,7 @@ export const MultilineTextInput = (props) => {
 
   const onChangeText = (text) => {
     props.checkAndSetText(text);    
-    props.setCharCount(80 - text.length);
+    props.setCharCount(60 - text.length);
   }
   
   return (
